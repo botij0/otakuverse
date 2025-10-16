@@ -4,8 +4,8 @@ Custom myanimelist modern to practice my frontend skills
 
 ## API
 
-Api post: https://myanimelist.net/forum/?topicid=1973141
+Api changed to Jikan, because is free
 
-Api Authorization docs: https://myanimelist.net/apiconfig/references/authorization
+Oficial website: https://jikan.moe/
 
-Api V2 docs: https://myanimelist.net/apiconfig/references/api/v2
+Docs: https://jikan.docs.apiary.io/#introduction/v4-rest-api-release
