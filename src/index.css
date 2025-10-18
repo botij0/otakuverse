@@ -1,5 +1,29 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+/* @tailwind base; */
+@tailwind utilities;
+
+@font-face {
+  font-family: "MochiyPopOne";
+  src: url("/src/fonts/MochiyPopOne-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "NunitoSans";
+  src: url("/src/fonts/NunitoSans.ttf") format("truetype");
+  font-style: normal;
+}
+
+@theme {
+  --font-title: "MochiyPopOne", sans-serif;
+  --font-text: "NunitoSans", sans-serif;
+}
+
+html {
+  font-family: var(--font-text);
+}
 
 @custom-variant dark (&:is(.dark *));
 
@@ -108,13 +132,4 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
-}
-
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
 }

@@ -5,7 +5,7 @@ import Footer from "@/components/custom/Footer";
 
 export const MainLayout = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-tertiary">
       <Navbar onSearch={() => Promise.resolve} />
 
       <Outlet />

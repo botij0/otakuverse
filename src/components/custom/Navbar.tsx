@@ -23,7 +23,7 @@ const Navbar = ({ onSearch }: NavbarProps) => {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <div className="flex items-center gap-2">
-            <div className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+            <div className="text-2xl font-title bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
               AnimeVerse
             </div>
           </div>
