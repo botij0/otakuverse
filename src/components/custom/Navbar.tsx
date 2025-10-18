@@ -37,7 +37,7 @@ const Navbar = ({ onSearch }: NavbarProps) => {
                 placeholder="Search anime or manga..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10 bg-secondary border-border focus:ring-2 focus:ring-primary"
+                className="pl-10 bg-muted border-border focus:ring-2 focus:ring-primary"
               />
             </div>
           </form>

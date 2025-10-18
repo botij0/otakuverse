@@ -1,9 +1,10 @@
 export default {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
+  darkMode: ["class"],
   theme: {
     extend: {
       colors: {
-        tertiary: "#7a00ff",
+        primary: "#7a00ff",
         accentLime: "#c6ff00",
         warning: "#ff3131",
         asphalt: "#121212",
