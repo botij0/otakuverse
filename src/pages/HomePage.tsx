@@ -12,8 +12,9 @@ export const HomePage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const page = searchParams.get("page") ?? "1";
-  const category = searchParams.get("category") ?? "anime";
+  const type = searchParams.get("type") ?? "anime";
   const gender = searchParams.get("gender") ?? "";
+  const limit = searchParams.get("limit") ?? "15";
 
   return (
     <>

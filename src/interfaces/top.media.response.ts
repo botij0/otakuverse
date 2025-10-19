@@ -39,7 +39,7 @@ export interface Image {
 
 type Status = "Finished Airing" | "Airing" | "Finished" | "On Hiatus" | "Publishing";
 
-type MediaType =
+export type MediaType =
   | "Movie"
   | "OVA"
   | "TV Special"

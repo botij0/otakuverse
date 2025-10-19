@@ -1,15 +1,38 @@
-import { Star } from "lucide-react";
+import { Star, User } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import type { Demographic, MediaType } from "@/interfaces/top.media.response";
+import { Badge } from "../ui/badge";
 
 interface MediaCardProps {
   title: string;
   imageUrl: string;
   score?: number;
-  episodes: number | null;
-  type?: string;
+  episodes?: number | null;
+  type: MediaType;
+  genres: Demographic[];
+  members?: number;
 }
 
-const MediaCard = ({ title, imageUrl, score, episodes, type }: MediaCardProps) => {
+const MediaCard = ({
+  title,
+  imageUrl,
+  score,
+  episodes,
+  type,
+  genres,
+  members,
+}: MediaCardProps) => {
+  let epsLabel = "eps";
+  let statusLabel = "Airing";
+  if (
+    type === "Light Novel" ||
+    type === "Manga" ||
+    type === "Manhwa" ||
+    type === "Novel"
+  ) {
+    epsLabel = "vols";
+    statusLabel = "Publishing";
+  }
   return (
     <Card className="group overflow-hidden border-border bg-card hover:border-primary transition-all duration-300 hover:shadow-primary cursor-pointer">
       <div className="relative aspect-[3/4] overflow-hidden">
@@ -23,7 +46,16 @@ const MediaCard = ({ title, imageUrl, score, episodes, type }: MediaCardProps) =
         {score && (
           <div className="absolute top-2 right-2 flex items-center gap-1 bg-background/80 backdrop-blur px-2 py-1 rounded-md">
             <Star className="h-3 w-3 fill-accent text-accent" />
-            <span className="text-sm font-semibold">{score.toFixed(1)}</span>
+            <span className="text-sm font-semibold">{score}</span>
+          </div>
+        )}
+
+        {members && (
+          <div className="absolute bottom-2 right-2 flex items-center gap-1 bg-background/80 backdrop-blur px-2 py-1 rounded-md">
+            <User className="h-3 w-3 fill-accent text-accent" />
+            <span className="text-sm font-semibold">
+              {members.toLocaleString("en-US")}
+            </span>
           </div>
         )}
       </div>
@@ -35,7 +67,20 @@ const MediaCard = ({ title, imageUrl, score, episodes, type }: MediaCardProps) =
         <div className="flex items-center gap-2 text-sm text-muted-foreground">
           {type && <span className="capitalize">{type}</span>}
           <span>•</span>
-          {episodes !== null ? <span>{episodes} eps</span> : <span>Publishing</span>}
+          {episodes !== undefined &&
+            (episodes !== null ? (
+              <span>
+                {episodes} {epsLabel}
+              </span>
+            ) : (
+              <span>{statusLabel}</span>
+            ))}
+        </div>
+
+        <div className="flex items-center gap-2 text-sm text-muted-foreground mt-4">
+          {genres[0] && <Badge>{genres[0].name}</Badge>}
+
+          {genres[1] && <Badge variant={"secondary"}>{genres[1].name}</Badge>}
         </div>
       </CardContent>
     </Card>

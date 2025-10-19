@@ -35,7 +35,7 @@ const MediaGrid = ({ media, loading, title }: MediaGridProps) => {
           {title}
         </h2>
       )}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 animate-fade-in">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 animate-fade-in">
         {media.map((mediaItem: Anime | Manga) => (
           <MediaCard
             key={mediaItem.mal_id}
@@ -44,6 +44,8 @@ const MediaGrid = ({ media, loading, title }: MediaGridProps) => {
             score={mediaItem.score}
             episodes={"episodes" in mediaItem ? mediaItem.episodes : mediaItem.volumes}
             type={mediaItem.type}
+            genres={mediaItem.genres}
+            members={mediaItem.members}
           />
         ))}
       </div>
