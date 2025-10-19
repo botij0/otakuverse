@@ -1,16 +1,15 @@
 import { Star } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
-interface AnimeCardProps {
+interface MediaCardProps {
   title: string;
   imageUrl: string;
   score?: number;
   episodes: number | null;
   type?: string;
-  year?: number | null;
 }
 
-const AnimeCard = ({ title, imageUrl, score, episodes, type, year }: AnimeCardProps) => {
+const MediaCard = ({ title, imageUrl, score, episodes, type }: MediaCardProps) => {
   return (
     <Card className="group overflow-hidden border-border bg-card hover:border-primary transition-all duration-300 hover:shadow-primary cursor-pointer">
       <div className="relative aspect-[3/4] overflow-hidden">
@@ -35,22 +34,12 @@ const AnimeCard = ({ title, imageUrl, score, episodes, type, year }: AnimeCardPr
         </h3>
         <div className="flex items-center gap-2 text-sm text-muted-foreground">
           {type && <span className="capitalize">{type}</span>}
-          {episodes && (
-            <>
-              <span>•</span>
-              <span>{episodes} eps</span>
-            </>
-          )}
-          {year && (
-            <>
-              <span>•</span>
-              <span>{year}</span>
-            </>
-          )}
+          <span>•</span>
+          {episodes !== null ? <span>{episodes} eps</span> : <span>Publishing</span>}
         </div>
       </CardContent>
     </Card>
   );
 };
 
-export default AnimeCard;
+export default MediaCard;

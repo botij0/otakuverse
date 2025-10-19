@@ -52,7 +52,7 @@ const Navbar = ({ onSearch }: NavbarProps) => {
             </a>
             <Button
               variant="default"
-              className="bg-gradient-to-r from-primary to-primary-glow hover:opacity-90 transition-opacity"
+              className="bg-gradient-to-r from-primary to-fuchsia-900 hover:opacity-90 transition-opacity"
             >
               Sign In
             </Button>
