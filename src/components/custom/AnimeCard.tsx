@@ -12,7 +12,7 @@ interface AnimeCardProps {
 
 const AnimeCard = ({ title, imageUrl, score, episodes, type, year }: AnimeCardProps) => {
   return (
-    <Card className="group overflow-hidden border-border bg-card hover:border-primary transition-all duration-300 hover:shadow-glow cursor-pointer">
+    <Card className="group overflow-hidden border-border bg-card hover:border-primary transition-all duration-300 hover:shadow-primary cursor-pointer">
       <div className="relative aspect-[3/4] overflow-hidden">
         <img
           src={imageUrl}

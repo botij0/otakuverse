@@ -30,7 +30,7 @@ const AnimeGrid = ({ animes, loading, title }: AnimeGridProps) => {
   return (
     <section className="py-12">
       {title && (
-        <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+        <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent font-title">
           {title}
         </h2>
       )}
