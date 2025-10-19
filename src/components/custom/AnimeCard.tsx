@@ -5,7 +5,7 @@ interface AnimeCardProps {
   title: string;
   imageUrl: string;
   score?: number;
-  episodes?: number;
+  episodes: number | null;
   type?: string;
   year?: number | null;
 }
