@@ -1,7 +1,9 @@
 // 20251018113128
 // https://api.jikan.moe/v4/top/anime
 
-export const topAnimeResponseMock = {
+import type { TopAnimeResponse } from "@/interfaces/top.anime.response";
+
+export const topAnimeMock: TopAnimeResponse = {
   pagination: {
     last_visible_page: 1183,
     has_next_page: true,
@@ -75,7 +77,6 @@ export const topAnimeResponseMock = {
           url: "https://myanimelist.net/anime/genre/10/Fantasy",
         },
       ],
-      explicit_genres: [],
       themes: [],
       demographics: [
         {
@@ -109,6 +110,7 @@ export const topAnimeResponseMock = {
         to: "2010-07-04T00:00:00+00:00",
         string: "Apr 5, 2009 to Jul 4, 2010",
       },
+      duration: "24 min per ep",
       score: 9.1,
       scored_by: 2253147,
       rank: 2,
@@ -363,7 +365,6 @@ export const topAnimeResponseMock = {
         string: "Apr 8, 2015 to Mar 30, 2016",
       },
       duration: "24 min per ep",
-      rating: "PG-13 - Teens 13 or older",
       score: 9.05,
       scored_by: 267153,
       rank: 6,
@@ -673,7 +674,6 @@ export const topAnimeResponseMock = {
           url: "https://myanimelist.net/anime/genre/10/Fantasy",
         },
       ],
-      explicit_genres: [],
       themes: [],
       demographics: [
         {
@@ -715,7 +715,6 @@ export const topAnimeResponseMock = {
       members: 169434,
       favorites: 1472,
       synopsis: "Sequel to Chainsaw Man.",
-      background: "",
       season: null,
       year: null,
       studios: [
@@ -773,11 +772,9 @@ export const topAnimeResponseMock = {
           large_image_url: "https://cdn.myanimelist.net/images/anime/4/50361l.webp",
         },
       },
-      approved: true,
       title: "Gintama'",
       title_english: "Gintama Season 2",
       title_japanese: "銀魂'",
-      title_synonyms: ["Gintama (2011)"],
       type: "TV",
       source: "Manga",
       episodes: 51,
@@ -789,7 +786,6 @@ export const topAnimeResponseMock = {
         string: "Apr 4, 2011 to Mar 26, 2012",
       },
       duration: "24 min per ep",
-      rating: "PG-13 - Teens 13 or older",
       score: 9.02,
       scored_by: 252241,
       rank: 11,
@@ -897,38 +893,6 @@ export const topAnimeResponseMock = {
         "While Gintoki Sakata was away, the Yorozuya found themselves a new leader: Kintoki, Gintoki's golden-haired doppelganger. In order to regain his former position, Gintoki will need the help of those around him, a troubling feat when no one can remember him! Between Kintoki and Gintoki, who will claim the throne as the main character?\n\nIn addition, Yorozuya make a trip back down to red-light district of Yoshiwara to aid an elderly courtesan in her search for her long-lost lover. Although the district is no longer in chains beneath the earth's surface, the trio soon learn of the tragic backstories of Yoshiwara's inhabitants that still haunt them. With flashback after flashback, this quest has Yorozuya witnessing everlasting love and protecting it as best they can with their hearts and souls.\n\n[Written by MAL Rewrite]",
       season: "fall",
       year: 2012,
-      producers: [
-        {
-          mal_id: 16,
-          type: "anime",
-          name: "TV Tokyo",
-          url: "https://myanimelist.net/anime/producer/16/TV_Tokyo",
-        },
-        {
-          mal_id: 17,
-          type: "anime",
-          name: "Aniplex",
-          url: "https://myanimelist.net/anime/producer/17/Aniplex",
-        },
-        {
-          mal_id: 53,
-          type: "anime",
-          name: "Dentsu",
-          url: "https://myanimelist.net/anime/producer/53/Dentsu",
-        },
-        {
-          mal_id: 1365,
-          type: "anime",
-          name: "Shueisha",
-          url: "https://myanimelist.net/anime/producer/1365/Shueisha",
-        },
-        {
-          mal_id: 1406,
-          type: "anime",
-          name: "Miracle Bus",
-          url: "https://myanimelist.net/anime/producer/1406/Miracle_Bus",
-        },
-      ],
       studios: [
         {
           mal_id: 14,
@@ -1100,7 +1064,6 @@ export const topAnimeResponseMock = {
         string: "Oct 11, 2022 to Dec 27, 2022",
       },
       duration: "24 min per ep",
-      rating: "R - 17+ (violence & profanity)",
       score: 8.99,
       scored_by: 355070,
       rank: 13,
@@ -1162,7 +1125,6 @@ export const topAnimeResponseMock = {
       title: "Gintama.",
       title_english: "Gintama Season 5",
       title_japanese: "銀魂。",
-      title_synonyms: ["Gintama (2017)"],
       type: "TV",
       source: "Manga",
       episodes: 12,
@@ -1271,7 +1233,6 @@ export const topAnimeResponseMock = {
         string: "Apr 9, 2022 to Jun 25, 2022",
       },
       duration: "23 min per ep",
-      rating: "PG-13 - Teens 13 or older",
       score: 8.97,
       scored_by: 604384,
       rank: 15,
@@ -1486,20 +1447,6 @@ export const topAnimeResponseMock = {
         "Edo is a city that was home to the vigor and ambition of samurai across the country. However, following feudal Japan's surrender to powerful aliens known as the \"Amanto,\" those aspirations now seem unachievable. With the once-influential shogunate rebuilt as a puppet government, a new law is passed that promptly prohibits all swords in public. \n\nEnter Gintoki Sakata, an eccentric silver-haired man who always carries around a wooden sword and maintains his stature as a samurai despite the ban. As the founder of Yorozuya, a small business for odd jobs, Gintoki often embarks on endeavors to help other people—though usually in rather strange and unforeseen ways. \n\nAssisted by Shinpachi Shimura, a boy with glasses supposedly learning the way of the samurai; Kagura, a tomboyish girl with superhuman strength and an endless appetite; and Sadaharu, their giant pet dog who loves biting on people's heads, the Yorozuya encounter anything from alien royalty to scuffles with local gangs in the ever-changing world of Edo.\n\n[Written by MAL Rewrite]",
       season: "spring",
       year: 2006,
-      licensors: [
-        {
-          mal_id: 376,
-          type: "anime",
-          name: "Sentai Filmworks",
-          url: "https://myanimelist.net/anime/producer/376/Sentai_Filmworks",
-        },
-        {
-          mal_id: 1468,
-          type: "anime",
-          name: "Crunchyroll",
-          url: "https://myanimelist.net/anime/producer/1468/Crunchyroll",
-        },
-      ],
       studios: [
         {
           mal_id: 14,
@@ -1576,7 +1523,6 @@ export const topAnimeResponseMock = {
       title: "Koe no Katachi",
       title_english: "A Silent Voice",
       title_japanese: "聲の形",
-      title_synonyms: ["The Shape of Voice"],
       type: "Movie",
       source: "Manga",
       episodes: 1,
@@ -1620,7 +1566,6 @@ export const topAnimeResponseMock = {
           url: "https://myanimelist.net/anime/genre/8/Drama",
         },
       ],
-      explicit_genres: [],
       themes: [],
       demographics: [
         {
