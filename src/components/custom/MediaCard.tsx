@@ -1,4 +1,4 @@
-import { Star, User } from "lucide-react";
+import { Award, Star, User } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import type { Demographic, MediaType } from "@/interfaces/top.media.response";
 import { Badge } from "../ui/badge";
@@ -63,7 +63,7 @@ const MediaCard = ({
 
         {rank && (
           <div className="absolute top-2 left-2 flex items-center gap-1 bg-background/80 backdrop-blur px-2 py-1 rounded-md">
-            <User className="h-3 w-3 fill-accent text-accent" />
+            <Award className="h-4 w-4 fill-accent text-accent" />
             <span className="text-sm font-semibold">{rank.toLocaleString("en-US")}</span>
           </div>
         )}
