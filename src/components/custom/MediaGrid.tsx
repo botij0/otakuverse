@@ -46,6 +46,7 @@ const MediaGrid = ({ media, loading, title }: MediaGridProps) => {
             type={mediaItem.type}
             genres={mediaItem.genres}
             members={mediaItem.members}
+            rank={mediaItem.rank}
           />
         ))}
       </div>

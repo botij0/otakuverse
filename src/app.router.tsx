@@ -1,7 +1,8 @@
 import { createBrowserRouter } from "react-router";
 
-import { MainLayout } from "@/layouts/MainLayout";
 import { HomePage } from "./pages/HomePage";
+import { TypePage } from "./pages/type/TypePage";
+import { MainLayout } from "@/layouts/MainLayout";
 
 export const appRouter = createBrowserRouter([
   // Main routes
@@ -13,13 +14,13 @@ export const appRouter = createBrowserRouter([
         index: true,
         element: <HomePage />,
       },
+      {
+        path: "type/:type",
+        element: <TypePage />,
+      },
       // {
       //   path: "product/:idSlug",
       //   element: <ProductPage />,
-      // },
-      // {
-      //   path: "gender/:gender",
-      //   element: <GenderPage />,
       // },
     ],
   },

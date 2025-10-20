@@ -6,7 +6,7 @@ import Footer from "@/components/custom/Footer";
 export const MainLayout = () => {
   return (
     <div className="min-h-screen">
-      <Navbar onSearch={() => Promise.resolve} />
+      <Navbar />
 
       <Outlet />
 

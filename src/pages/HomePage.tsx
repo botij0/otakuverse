@@ -1,29 +1,32 @@
-import MediaGrid from "@/components/custom/MediaGrid";
-import { CustomPagination } from "@/components/custom/CustomPagination";
+// import { CustomPagination } from "@/components/custom/CustomPagination";
 import Hero from "@/components/custom/Hero";
+import MediaGrid from "@/components/custom/MediaGrid";
 import { topAnimeMock } from "@/mocks/top.anime.mock";
 import { topMangaMock } from "@/mocks/top.manga.mock";
-import { useSearchParams } from "react-router";
 
-const animesPerPage = 15;
-const totalPages = Math.ceil(topAnimeMock.data.length / animesPerPage);
+// const animesPerPage = 15;
+// const totalPages = Math.ceil(topAnimeMock.data.length / animesPerPage);
+
+const sortedAnimes = topAnimeMock.data.sort((a, b) => a.rank - b.rank);
+const sortedMangas = topMangaMock.data.sort((a, b) => a.rank - b.rank);
 
 export const HomePage = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
-
-  const page = searchParams.get("page") ?? "1";
-  const type = searchParams.get("type") ?? "anime";
-  const gender = searchParams.get("gender") ?? "";
-  const limit = searchParams.get("limit") ?? "15";
-
   return (
     <>
-      <Hero onSearch={(query) => console.log("Searching for:", query)} />
+      <Hero />
 
       <main className="container mx-auto px-4">
-        <MediaGrid media={topMangaMock.data || []} loading={false} title={"Top Manga"} />
+        <MediaGrid
+          media={sortedAnimes.slice(0, 10) || []}
+          loading={false}
+          title={"Top 10 Anime"}
+        />
 
-        <CustomPagination totalPages={totalPages} />
+        <MediaGrid
+          media={sortedMangas.slice(0, 10) || []}
+          loading={false}
+          title={"Top 10 Manga"}
+        />
       </main>
     </>
   );

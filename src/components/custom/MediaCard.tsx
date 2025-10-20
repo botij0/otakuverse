@@ -11,6 +11,7 @@ interface MediaCardProps {
   type: MediaType;
   genres: Demographic[];
   members?: number;
+  rank?: number;
 }
 
 const MediaCard = ({
@@ -21,6 +22,7 @@ const MediaCard = ({
   type,
   genres,
   members,
+  rank,
 }: MediaCardProps) => {
   let epsLabel = "eps";
   let statusLabel = "Airing";
@@ -56,6 +58,13 @@ const MediaCard = ({
             <span className="text-sm font-semibold">
               {members.toLocaleString("en-US")}
             </span>
+          </div>
+        )}
+
+        {rank && (
+          <div className="absolute top-2 left-2 flex items-center gap-1 bg-background/80 backdrop-blur px-2 py-1 rounded-md">
+            <User className="h-3 w-3 fill-accent text-accent" />
+            <span className="text-sm font-semibold">{rank.toLocaleString("en-US")}</span>
           </div>
         )}
       </div>

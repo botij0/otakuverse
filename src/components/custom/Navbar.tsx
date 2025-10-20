@@ -1,20 +1,18 @@
 import { useState } from "react";
-import { Search, Menu, X } from "lucide-react";
+import { Menu, Search, X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Link } from "react-router";
+import { Input } from "../ui/input";
 
-interface NavbarProps {
-  onSearch: (query: string) => void;
-}
-
-const Navbar = ({ onSearch }: NavbarProps) => {
+const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    onSearch(searchQuery);
+    // onSearch(searchQuery);
+    //TODO: Handle search Manga and Anime
   };
 
   return (
@@ -37,19 +35,31 @@ const Navbar = ({ onSearch }: NavbarProps) => {
                 placeholder="Search anime or manga..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10 bg-muted border-border focus:ring-2 focus:ring-primary"
+                className="pl-10 bg-muted border-border focus:ring-2 focus:ring-primary text-primary-foreground"
               />
             </div>
           </form>
 
           {/* Desktop Nav Links */}
           <div className="hidden md:flex items-center gap-6">
-            <a href="#" className="text-foreground hover:text-primary transition-colors">
-              Trending
-            </a>
-            <a href="#" className="text-foreground hover:text-primary transition-colors">
-              Top Rated
-            </a>
+            <Link
+              to="/"
+              className="text-foreground hover:text-primary transition-colors py-2"
+            >
+              All
+            </Link>
+            <Link
+              to="/type/anime"
+              className="text-foreground hover:text-primary transition-colors py-2"
+            >
+              Anime
+            </Link>
+            <Link
+              to="/type/manga"
+              className="text-foreground hover:text-primary transition-colors py-2"
+            >
+              Manga
+            </Link>
             <Button
               variant="default"
               className="bg-gradient-to-r from-primary to-fuchsia-900 hover:opacity-90 transition-opacity"
@@ -78,26 +88,32 @@ const Navbar = ({ onSearch }: NavbarProps) => {
                   placeholder="Search anime or manga..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-10 bg-secondary border-border"
+                  className="pl-10 bg-muted border-border focus:ring-2 focus:ring-primary text-primary-foreground"
                 />
               </div>
             </form>
             <div className="flex flex-col gap-3">
-              <a
-                href="#"
+              <Link
+                to="#"
                 className="text-foreground hover:text-primary transition-colors py-2"
               >
-                Trending
-              </a>
-              <a
-                href="#"
+                All
+              </Link>
+              <Link
+                to="#"
                 className="text-foreground hover:text-primary transition-colors py-2"
               >
-                Top Rated
-              </a>
+                Anime
+              </Link>
+              <Link
+                to="#"
+                className="text-foreground hover:text-primary transition-colors py-2"
+              >
+                Manga
+              </Link>
               <Button
                 variant="default"
-                className="w-full bg-gradient-to-r from-primary to-primary-glow"
+                className="w-full bg-gradient-to-r from-primary to-fuchsia-900"
               >
                 Sign In
               </Button>
