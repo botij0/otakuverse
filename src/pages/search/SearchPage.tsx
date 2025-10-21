@@ -9,13 +9,13 @@ const sortedAnimes = topAnimeMock.data.sort((a, b) => a.rank - b.rank).slice(0, 
 export const SearchPage = () => {
   const [searchParams] = useSearchParams();
 
-  const query = searchParams.get("query") || "No query";
+  const query = searchParams.get("query") || null;
   return (
     <>
       <Hero showSearchBar={true} />
 
       <main className="container mx-auto px-4">
-        <MediaGrid media={sortedAnimes || []} loading={false} title={query} />
+        {query && <MediaGrid media={sortedAnimes || []} loading={false} title={query} />}
       </main>
     </>
   );

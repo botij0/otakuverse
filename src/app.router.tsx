@@ -20,7 +20,7 @@ export const appRouter = createBrowserRouter([
         element: <TypePage />,
       },
       {
-        path: "search/",
+        path: "search",
         element: <SearchPage />,
       },
     ],
