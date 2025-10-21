@@ -3,6 +3,7 @@ import { createBrowserRouter } from "react-router";
 import { HomePage } from "./pages/HomePage";
 import { TypePage } from "./pages/type/TypePage";
 import { MainLayout } from "@/layouts/MainLayout";
+import { SearchPage } from "./pages/search/SearchPage";
 
 export const appRouter = createBrowserRouter([
   // Main routes
@@ -18,10 +19,10 @@ export const appRouter = createBrowserRouter([
         path: "type/:type",
         element: <TypePage />,
       },
-      // {
-      //   path: "product/:idSlug",
-      //   element: <ProductPage />,
-      // },
+      {
+        path: "search/",
+        element: <SearchPage />,
+      },
     ],
   },
 ]);
