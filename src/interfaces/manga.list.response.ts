@@ -1,4 +1,4 @@
-import type { TopMediaResponse, Media } from "./top.media.response";
+import type { TopMediaResponse, Media } from "./media.list.response";
 
 export interface TopMangaResponse extends TopMediaResponse {
   data: Manga[];

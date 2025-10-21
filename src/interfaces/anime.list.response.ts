@@ -1,6 +1,6 @@
-import type { TopMediaResponse, Media, Demographic } from "./top.media.response";
+import type { TopMediaResponse, Media, Demographic } from "./media.list.response";
 
-export interface TopAnimeResponse extends TopMediaResponse {
+export interface AnimeListResponse extends TopMediaResponse {
   data: Anime[];
 }
 

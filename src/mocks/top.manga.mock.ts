@@ -1,7 +1,7 @@
 // 20251019133214
 // https://api.jikan.moe/v4/top/manga
 
-import type { TopMangaResponse } from "@/interfaces/top.manga.response";
+import type { TopMangaResponse } from "@/interfaces/manga.list.response";
 
 export const topMangaMock: TopMangaResponse = {
   pagination: {

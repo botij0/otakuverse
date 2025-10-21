@@ -1,9 +1,9 @@
 // 20251018113128
 // https://api.jikan.moe/v4/top/anime
 
-import type { TopAnimeResponse } from "@/interfaces/top.anime.response";
+import type { AnimeListResponse } from "@/interfaces/anime.list.response";
 
-export const topAnimeMock: TopAnimeResponse = {
+export const topAnimeMock: AnimeListResponse = {
   pagination: {
     last_visible_page: 1183,
     has_next_page: true,

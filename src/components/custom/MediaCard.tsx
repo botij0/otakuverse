@@ -1,6 +1,6 @@
 import { Award, Star, User } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import type { Demographic, MediaType } from "@/interfaces/top.media.response";
+import type { Demographic, MediaType } from "@/interfaces/media.list.response";
 import { Badge } from "../ui/badge";
 
 interface MediaCardProps {
