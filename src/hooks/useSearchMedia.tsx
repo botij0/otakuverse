@@ -1,14 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
-import { useParams, useSearchParams } from "react-router";
+import { useSearchParams } from "react-router";
 
 import { getAnimeAction } from "@/actions/get-anime.action";
 
-export const useMedia = () => {
-  const { type } = useParams();
+export const useSearchMedia = () => {
   const [searchParams] = useSearchParams();
 
   const query = searchParams.get("query") || undefined;
-  // const page = searchParams.get("page") || 1;
 
   return useQuery({
     queryKey: ["media", { query }],
