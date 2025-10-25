@@ -7,12 +7,14 @@ export const useSearchMedia = () => {
   const [searchParams] = useSearchParams();
 
   const query = searchParams.get("query") || undefined;
+  const page = Number(searchParams.get("page")) || 1;
 
   return useQuery({
-    queryKey: ["media", { query }],
+    queryKey: ["media", { query, page }],
     queryFn: () =>
       getAnimeAction({
         query,
+        page,
       }),
     staleTime: 1000 * 60 * 5,
   });
