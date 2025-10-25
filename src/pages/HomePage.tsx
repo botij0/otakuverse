@@ -1,11 +1,7 @@
-// import { CustomPagination } from "@/components/custom/CustomPagination";
 import Hero from "@/components/custom/Hero";
 import MediaGrid from "@/components/custom/MediaGrid";
 import { topAnimeMock } from "@/mocks/top.anime.mock";
 import { topMangaMock } from "@/mocks/top.manga.mock";
-
-// const animesPerPage = 15;
-// const totalPages = Math.ceil(topAnimeMock.data.length / animesPerPage);
 
 const sortedAnimes = topAnimeMock.data.sort((a, b) => a.rank - b.rank);
 const sortedMangas = topMangaMock.data.sort((a, b) => a.rank - b.rank);

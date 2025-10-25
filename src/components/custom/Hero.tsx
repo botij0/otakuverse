@@ -1,9 +1,10 @@
-import heroBanner from "@/assets/hero-banner.jpg";
 import { Search } from "lucide-react";
-import { Input } from "../ui/input";
-import { useRef, type KeyboardEvent } from "react";
-import { Button } from "../ui/button";
 import { useSearchParams } from "react-router";
+import { useRef, type KeyboardEvent } from "react";
+
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import heroBanner from "@/assets/hero-banner.jpg";
 
 interface HeroProps {
   showSearchBar?: boolean;

@@ -1,8 +1,8 @@
-// import { CustomPagination } from "@/components/custom/CustomPagination";
+import { useSearchParams } from "react-router";
+
 import Hero from "@/components/custom/Hero";
 import MediaGrid from "@/components/custom/MediaGrid";
 import { useSearchMedia } from "@/hooks/useSearchMedia";
-import { useSearchParams } from "react-router";
 
 export const SearchPage = () => {
   const [searchParams] = useSearchParams();

@@ -1,9 +1,9 @@
-import { useRef, useState, type KeyboardEvent } from "react";
 import { Menu, Search, X } from "lucide-react";
-
-import { Button } from "@/components/ui/button";
 import { Link, useNavigate, useSearchParams } from "react-router";
-import { Input } from "../ui/input";
+import { useRef, useState, type KeyboardEvent } from "react";
+
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
   const navigate = useNavigate();

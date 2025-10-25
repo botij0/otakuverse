@@ -1,7 +1,8 @@
+import { Loader2 } from "lucide-react";
+
 import MediaCard from "@/components/custom/MediaCard";
 import type { Anime } from "@/interfaces/anime.list.response";
 import type { Manga } from "@/interfaces/manga.list.response";
-import { Loader2 } from "lucide-react";
 
 interface MediaGridProps {
   media?: Anime[] | Manga[];
