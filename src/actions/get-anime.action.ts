@@ -13,6 +13,7 @@ export const getAnimeAction = async (options: Options): Promise<Anime[] | []> =>
   const { data } = await jikanApi.get<AnimeListResponse>("/anime", {
     params: {
       q: query,
+      order_by: "rank",
     },
   });
 

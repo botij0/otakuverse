@@ -1,18 +1,31 @@
-import { useState } from "react";
+import { useRef, useState, type KeyboardEvent } from "react";
 import { Menu, Search, X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router";
+import { Link, useNavigate, useSearchParams } from "react-router";
 import { Input } from "../ui/input";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    // onSearch(searchQuery);
-    //TODO: Handle search Manga and Anime
+  const query = searchParams.get("query") || "";
+
+  const handleSearch = (event: KeyboardEvent<HTMLInputElement>) => {
+    if (event.key !== "Enter") return;
+    const query = inputRef.current?.value;
+
+    const newSearchParams = new URLSearchParams();
+
+    if (!query) {
+      newSearchParams.delete("query");
+    } else {
+      newSearchParams.set("query", inputRef.current!.value);
+    }
+    navigate("/search");
+    setSearchParams(newSearchParams);
   };
 
   return (
@@ -27,18 +40,19 @@ const Navbar = () => {
           </div>
 
           {/* Desktop Search */}
-          <form onSubmit={handleSearch} className="hidden md:flex flex-1 max-w-md mx-8">
+          <div className="hidden md:flex flex-1 max-w-md mx-8">
             <div className="relative w-full">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input
                 type="text"
                 placeholder="Search anime or manga..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
+                ref={inputRef}
+                onKeyDown={handleSearch}
+                defaultValue={query}
                 className="pl-10 bg-muted border-border focus:ring-2 focus:ring-primary text-primary-foreground"
               />
             </div>
-          </form>
+          </div>
 
           {/* Desktop Nav Links */}
           <div className="hidden md:flex items-center gap-6">
@@ -80,18 +94,19 @@ const Navbar = () => {
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden py-4 space-y-4 animate-fade-in">
-            <form onSubmit={handleSearch} className="w-full">
+            <div className="w-full">
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                 <Input
                   type="text"
                   placeholder="Search anime or manga..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
+                  ref={inputRef}
+                  onKeyDown={handleSearch}
+                  defaultValue={query}
                   className="pl-10 bg-muted border-border focus:ring-2 focus:ring-primary text-primary-foreground"
                 />
               </div>
-            </form>
+            </div>
             <div className="flex flex-col gap-3">
               <Link
                 to="#"

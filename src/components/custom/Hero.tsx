@@ -1,18 +1,32 @@
 import heroBanner from "@/assets/hero-banner.jpg";
 import { Search } from "lucide-react";
 import { Input } from "../ui/input";
-import { useState } from "react";
+import { useRef, type KeyboardEvent } from "react";
 import { Button } from "../ui/button";
+import { useSearchParams } from "react-router";
 
 interface HeroProps {
   showSearchBar?: boolean;
 }
 
 const Hero = ({ showSearchBar = false }: HeroProps) => {
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
+  const query = searchParams.get("query") || "";
+
+  const handleSearch = (event: KeyboardEvent<HTMLInputElement>) => {
+    if (event.key !== "Enter") return;
+    const query = inputRef.current?.value;
+
+    const newSearchParams = new URLSearchParams();
+
+    if (!query) {
+      newSearchParams.delete("query");
+    } else {
+      newSearchParams.set("query", inputRef.current!.value);
+    }
+    setSearchParams(newSearchParams);
   };
 
   return (
@@ -48,15 +62,16 @@ const Hero = ({ showSearchBar = false }: HeroProps) => {
 
         {/* Hero Search Bar */}
         {showSearchBar && (
-          <form onSubmit={handleSearch} className="max-w-2xl mx-auto animate-scale-in">
+          <div className="max-w-2xl mx-auto animate-scale-in">
             <div className="flex gap-2">
               <div className="relative flex-1">
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                 <Input
                   type="text"
                   placeholder="Search for anime or manga..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
+                  ref={inputRef}
+                  onKeyDown={handleSearch}
+                  defaultValue={query}
                   className="h-14 pl-12 text-lg bg-card border-border focus:ring-2 focus:ring-primary shadow-lg text-primary-foreground"
                 />
               </div>
@@ -70,7 +85,7 @@ const Hero = ({ showSearchBar = false }: HeroProps) => {
                 Search
               </Button>
             </div>
-          </form>
+          </div>
         )}
       </div>
     </section>
