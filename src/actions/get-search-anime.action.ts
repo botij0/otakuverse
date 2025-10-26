@@ -7,7 +7,9 @@ interface Options {
   page: number;
 }
 
-export const getAnimeAction = async (options: Options): Promise<AnimeListResponse> => {
+export const getSearchAnimeAction = async (
+  options: Options
+): Promise<AnimeListResponse> => {
   const { query, page } = options;
 
   if (!query) return emptyMediaResponse as AnimeListResponse;

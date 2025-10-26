@@ -1,9 +1,9 @@
 import { createBrowserRouter } from "react-router";
 
 import { HomePage } from "./pages/HomePage";
-import { TypePage } from "./pages/type/TypePage";
 import { MainLayout } from "@/layouts/MainLayout";
 import { SearchPage } from "./pages/search/SearchPage";
+import { MediaDetails } from "./pages/details/MediaDetails";
 
 export const appRouter = createBrowserRouter([
   // Main routes
@@ -16,8 +16,8 @@ export const appRouter = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: "type/:type",
-        element: <TypePage />,
+        path: ":mediaType/:id",
+        element: <MediaDetails />,
       },
       {
         path: "search",
