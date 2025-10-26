@@ -4,6 +4,7 @@ import { HomePage } from "./pages/HomePage";
 import { MainLayout } from "@/layouts/MainLayout";
 import { SearchPage } from "./pages/search/SearchPage";
 import { AnimeDetails } from "./pages/details/AnimeDetails";
+import { MangaDetails } from "./pages/details/MangaDetails";
 
 export const appRouter = createBrowserRouter([
   // Main routes
@@ -18,6 +19,10 @@ export const appRouter = createBrowserRouter([
       {
         path: "anime/:id",
         element: <AnimeDetails />,
+      },
+      {
+        path: "manga/:id",
+        element: <MangaDetails />,
       },
       {
         path: "search",

@@ -45,6 +45,8 @@ const MediaCard = ({
   const handleClick = () => {
     if (epsLabel === "eps") {
       navigate(`/anime/${id}`);
+    } else {
+      navigate(`manga/${id}`);
     }
   };
 
