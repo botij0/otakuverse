@@ -5,26 +5,21 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useQuery } from "@tanstack/react-query";
-import { getAnimeDetailsAction } from "@/actions/get-anime-details.action copy";
-import { topAnimeMock } from "@/mocks/top.anime.mock";
+import { getAnimeDetailsAction } from "@/actions/get-anime-details.action";
 
-export const MediaDetails = () => {
-  // const { mediaType, id } = useParams<{ mediaType: string; id: string }>();
+export const AnimeDetails = () => {
+  const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
 
-  // const {
-  //   data: media,
-  //   isLoading,
-  //   error,
-  // } = useQuery({
-  //   queryKey: ["media", { mediaType, id }],
-  //   queryFn: () => getAnimeDetailsAction(id!),
-  //   enabled: !!id,
-  // });
-
-  const isLoading = false;
-  const error = null;
-  const media = topAnimeMock.data[0];
+  const {
+    data: anime,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ["animeDetail", id],
+    queryFn: () => getAnimeDetailsAction(id!),
+    enabled: !!id,
+  });
 
   if (isLoading) {
     return (
@@ -43,7 +38,7 @@ export const MediaDetails = () => {
     );
   }
 
-  if (error || !media) {
+  if (error || !anime) {
     return (
       <div className="min-h-screen bg-background">
         <main className="container mx-auto px-4 py-20 text-center">
@@ -57,18 +52,18 @@ export const MediaDetails = () => {
   }
 
   return (
-    <main className="container mx-auto px-4 py-8">
-      <Button variant="ghost" onClick={() => navigate(-1)} className="mb-6 group">
+    <main className="container mx-auto px-4 py-8 text-primary-foreground">
+      <Button onClick={() => navigate(-1)} className="mb-6 group" variant={"outline"}>
         <ArrowLeft className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1" />
         Back
       </Button>
 
-      <div className="grid md:grid-cols-3 gap-8">
+      <div className="grid md:grid-cols-4 gap-y-8 md:gap-x-24">
         <div className="space-y-4">
-          <div className="relative aspect-[3/4] overflow-hidden rounded-lg border border-border shadow-glow">
+          <div className="overflow-hidden rounded-lg border shadow">
             <img
-              src={media.images.webp.large_image_url}
-              alt={media.title}
+              src={anime.images.webp.large_image_url}
+              alt={anime.title}
               className="h-full w-full object-cover"
             />
           </div>
@@ -77,56 +72,58 @@ export const MediaDetails = () => {
             <div className="flex items-center gap-2">
               <Star className="h-4 w-4 fill-accent text-accent" />
               <span className="font-semibold text-lg">
-                {media.score?.toFixed(1) || "N/A"}
+                {anime.score?.toFixed(1) || "N/A"}
               </span>
               <span className="text-sm text-muted-foreground">
-                ({media.scored_by?.toLocaleString()} users)
+                ({anime.scored_by?.toLocaleString()} users)
               </span>
             </div>
 
             <div className="flex items-center gap-2 text-sm">
-              <Tv className="h-4 w-4 text-primary" />
-              <span>{media.type}</span>
+              <Tv className="h-4 w-4 text-accent" />
+              <span>{anime.type}</span>
             </div>
 
-            {media.episodes && (
+            {anime.episodes && (
               <div className="flex items-center gap-2 text-sm">
-                <Calendar className="h-4 w-4 text-primary" />
-                <span>{media.episodes} Episodes</span>
+                <Calendar className="h-4 w-4 text-accent" />
+                <span>{anime.episodes} Episodes</span>
               </div>
             )}
 
-            {media.duration && (
+            {anime.duration && (
               <div className="flex items-center gap-2 text-sm">
-                <Clock className="h-4 w-4 text-primary" />
-                <span>{media.duration}</span>
+                <Clock className="h-4 w-4 text-accent" />
+                <span>{anime.duration}</span>
               </div>
             )}
 
             <div className="flex items-center gap-2 text-sm">
-              <Users className="h-4 w-4 text-primary" />
-              <span>{media.members?.toLocaleString()} members</span>
+              <Users className="h-4 w-4 text-accent" />
+              <span>{anime.members?.toLocaleString()} members</span>
             </div>
           </div>
         </div>
 
-        <div className="md:col-span-2 space-y-6">
+        <div className="md:col-span-3 space-y-6">
           <div>
-            <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              {media.title}
+            <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent font-title">
+              {anime.title}
             </h1>
-            {media.title_english && media.title_english !== media.title && (
-              <p className="text-xl text-muted-foreground">{media.title_english}</p>
+            {anime.title_english && anime.title_english !== anime.title && (
+              <p className="text-xl text-muted-foreground font-title">
+                {anime.title_english}
+              </p>
             )}
           </div>
 
           <div className="flex flex-wrap gap-2">
-            {media.genres?.map((genre: any) => (
+            {anime.genres?.map((genre: any) => (
               <Badge key={genre.mal_id} variant="secondary">
                 {genre.name}
               </Badge>
             ))}
-            {media.themes?.map((theme: any) => (
+            {anime.themes?.map((theme: any) => (
               <Badge key={theme.mal_id} variant="outline">
                 {theme.name}
               </Badge>
@@ -136,33 +133,33 @@ export const MediaDetails = () => {
           <div className="space-y-2">
             <h2 className="text-2xl font-semibold">Synopsis</h2>
             <p className="text-muted-foreground leading-relaxed">
-              {media.synopsis || "No synopsis available."}
+              {anime.synopsis || "No synopsis available."}
             </p>
           </div>
 
           <div className="grid grid-cols-2 gap-4 bg-card border border-border rounded-lg p-4">
             <div>
               <p className="text-sm text-muted-foreground">Status</p>
-              <p className="font-semibold">{media.status}</p>
+              <p className="font-semibold">{anime.status}</p>
             </div>
-            {media.aired?.string && (
+            {anime.aired?.string && (
               <div>
                 <p className="text-sm text-muted-foreground">Aired</p>
-                <p className="font-semibold">{media.aired.string}</p>
+                <p className="font-semibold">{anime.aired.string}</p>
               </div>
             )}
-            {media.season && (
+            {anime.season && (
               <div>
                 <p className="text-sm text-muted-foreground">Season</p>
                 <p className="font-semibold capitalize">
-                  {media.season} {media.year}
+                  {anime.season} {anime.year}
                 </p>
               </div>
             )}
-            {media.studios?.length > 0 && (
+            {anime.studios?.length > 0 && (
               <div>
                 <p className="text-sm text-muted-foreground">Studio</p>
-                <p className="font-semibold">{media.studios[0].name}</p>
+                <p className="font-semibold">{anime.studios[0].name}</p>
               </div>
             )}
           </div>

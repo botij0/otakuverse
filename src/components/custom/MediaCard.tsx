@@ -3,8 +3,10 @@ import { Award, Star, User } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import type { Demographic, MediaType } from "@/interfaces/media.list.response";
+import { useNavigate } from "react-router";
 
 interface MediaCardProps {
+  id: number;
   title: string;
   imageUrl: string;
   score?: number;
@@ -16,6 +18,7 @@ interface MediaCardProps {
 }
 
 const MediaCard = ({
+  id,
   title,
   imageUrl,
   score,
@@ -25,6 +28,8 @@ const MediaCard = ({
   members,
   rank,
 }: MediaCardProps) => {
+  const navigate = useNavigate();
+
   let epsLabel = "eps";
   let statusLabel = "Airing";
   if (
@@ -36,8 +41,18 @@ const MediaCard = ({
     epsLabel = "vols";
     statusLabel = "Publishing";
   }
+
+  const handleClick = () => {
+    if (epsLabel === "eps") {
+      navigate(`/anime/${id}`);
+    }
+  };
+
   return (
-    <Card className="group overflow-hidden border-border bg-card hover:border-primary transition-all duration-300 hover:shadow-primary cursor-pointer">
+    <Card
+      className="group overflow-hidden border-border bg-card hover:border-primary transition-all duration-300 hover:shadow-primary cursor-pointer"
+      onClick={handleClick}
+    >
       <div className="relative aspect-[3/4] overflow-hidden">
         <img
           src={imageUrl}

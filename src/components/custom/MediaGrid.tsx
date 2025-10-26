@@ -40,6 +40,7 @@ const MediaGrid = ({ media, loading, title }: MediaGridProps) => {
         {media.map((mediaItem: Anime | Manga) => (
           <MediaCard
             key={mediaItem.mal_id}
+            id={mediaItem.mal_id}
             title={mediaItem.title}
             imageUrl={mediaItem.images.webp.large_image_url}
             score={mediaItem.score}
