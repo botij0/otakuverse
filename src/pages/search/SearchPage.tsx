@@ -2,15 +2,17 @@ import { useSearchParams } from "react-router";
 
 import Hero from "@/components/custom/Hero";
 import MediaGrid from "@/components/custom/MediaGrid";
-import { useSearchMedia } from "@/hooks/useSearchMedia";
-import { CustomPagination } from "@/components/custom/CustomPagination";
+import { useSearchAnime } from "@/hooks/useSearchAnime";
+// import { CustomPagination } from "@/components/custom/CustomPagination";
+import { useSearchManga } from "@/hooks/useSearchManga";
 
 export const SearchPage = () => {
   const [searchParams] = useSearchParams();
-  const { data } = useSearchMedia();
+  const { data: animeData, isLoading: isLoadingAnime } = useSearchAnime();
+  const { data: mangaData, isLoading: isLoadingManga } = useSearchManga();
 
   const query = searchParams.get("query") || null;
-  if (!data) {
+  if (isLoadingAnime || isLoadingManga) {
     return (
       <>
         <Hero showSearchBar={true} />
@@ -21,17 +23,27 @@ export const SearchPage = () => {
       </>
     );
   }
-  const media = data!.data;
+  const animesList = animeData!.data;
+  const mangaList = mangaData!.data;
+
+  //TODO: Create two new pages one for manga search and another to anime search, each with pagiation.
 
   return (
     <>
       <Hero showSearchBar={true} />
 
       <main className="container mx-auto px-4">
-        {query && data && (
+        {query && animeData && (
           <>
-            <MediaGrid media={media} loading={false} title={query} />
-            <CustomPagination totalPages={data!.pagination.last_visible_page} />
+            <MediaGrid media={animesList} loading={false} title={`Anime ('${query}')`} />
+            {/* <CustomPagination totalPages={animeData!.pagination.last_visible_page} /> */}
+          </>
+        )}
+
+        {query && mangaData && (
+          <>
+            <MediaGrid media={mangaList} loading={false} title={`Manga ('${query}')`} />
+            {/* <CustomPagination totalPages={mangaData!.pagination.last_visible_page} /> */}
           </>
         )}
       </main>

@@ -1,12 +1,13 @@
 import type { TopMediaResponse, Media } from "./media.list.response";
 
-export interface TopMangaResponse extends TopMediaResponse {
+export interface MangaListResponse extends TopMediaResponse {
   data: Manga[];
 }
 
 export interface Manga extends Media {
   chapters: number | null;
   volumes: number | null;
+  scored: number;
   publishing: boolean;
   published: Published;
   authors: Author[];
