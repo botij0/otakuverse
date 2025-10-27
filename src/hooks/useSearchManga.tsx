@@ -8,6 +8,7 @@ export const useSearchManga = () => {
 
   const query = searchParams.get("query") || undefined;
   const page = Number(searchParams.get("page")) || 1;
+  const limit = Number(searchParams.get("limit")) || 10;
 
   return useQuery({
     queryKey: ["mangaSearch", { query, page }],
@@ -15,6 +16,7 @@ export const useSearchManga = () => {
       getSearchMangaAction({
         query,
         page,
+        limit,
       }),
     staleTime: 1000 * 60 * 5,
   });

@@ -46,7 +46,7 @@ const MediaCard = ({
     if (epsLabel === "eps") {
       navigate(`/anime/${id}`);
     } else {
-      navigate(`manga/${id}`);
+      navigate(`/manga/${id}`);
     }
   };
 

@@ -6,12 +6,13 @@ import { emptyMediaResponse } from "@/interfaces/media.list.response";
 interface Options {
   query?: string;
   page: number;
+  limit: number;
 }
 
 export const getSearchAnimeAction = async (
   options: Options
 ): Promise<AnimeListResponse> => {
-  const { query, page } = options;
+  const { query, page, limit } = options;
 
   if (!query) return emptyMediaResponse as AnimeListResponse;
 
@@ -20,7 +21,7 @@ export const getSearchAnimeAction = async (
       q: query,
       page: page,
       order_by: "rank",
-      limit: 10,
+      limit: limit,
     },
   });
 
@@ -30,7 +31,7 @@ export const getSearchAnimeAction = async (
 export const getSearchMangaAction = async (
   options: Options
 ): Promise<MangaListResponse> => {
-  const { query, page } = options;
+  const { query, page, limit } = options;
 
   if (!query) return emptyMediaResponse as MangaListResponse;
 
@@ -39,7 +40,7 @@ export const getSearchMangaAction = async (
       q: query,
       page: page,
       order_by: "rank",
-      limit: 10,
+      limit: limit,
     },
   });
 
