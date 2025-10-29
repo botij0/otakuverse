@@ -4,6 +4,7 @@ import { useRef, useState, type KeyboardEvent } from "react";
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { NavMenuCustom } from "./NavMenuCustom";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -39,26 +40,8 @@ const Navbar = () => {
           </div>
 
           {/* Desktop Nav Links */}
-          <div className="hidden md:flex items-center gap-x-10 text-lg font-semibold">
-            <Link
-              to="/"
-              className="text-foreground hover:text-accent transition-colors py-2"
-            >
-              Home
-            </Link>
-            <Link
-              to="/type/anime"
-              className="text-foreground hover:text-accent transition-colors py-2"
-            >
-              Anime
-            </Link>
-            <Link
-              to="/type/manga"
-              className="text-foreground hover:text-accent transition-colors py-2"
-            >
-              Manga
-            </Link>
-          </div>
+
+          <NavMenuCustom />
 
           {/* Desktop Search */}
           <div className="hidden md:flex flex-1 max-w-xs mx-8">
