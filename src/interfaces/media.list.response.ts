@@ -47,7 +47,10 @@ export type MediaType =
   | "Light Novel"
   | "Manga"
   | "Manhwa"
-  | "Novel";
+  | "Novel"
+  | "One-Shot"
+  | "Manhua"
+  | "Doujinshi";
 
 export interface Pagination {
   last_visible_page: number;

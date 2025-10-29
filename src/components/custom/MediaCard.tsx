@@ -17,6 +17,16 @@ interface MediaCardProps {
   rank?: number;
 }
 
+const mangaTypes = [
+  "Light Novel",
+  "Manga",
+  "Manhwa",
+  "Novel",
+  "One-Shot",
+  "Manhua",
+  "Doujinshi",
+];
+
 const MediaCard = ({
   id,
   title,
@@ -32,12 +42,7 @@ const MediaCard = ({
 
   let epsLabel = "eps";
   let statusLabel = "Airing";
-  if (
-    type === "Light Novel" ||
-    type === "Manga" ||
-    type === "Manhwa" ||
-    type === "Novel"
-  ) {
+  if (mangaTypes.includes(type)) {
     epsLabel = "vols";
     statusLabel = "Publishing";
   }

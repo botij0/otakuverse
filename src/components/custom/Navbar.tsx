@@ -7,11 +7,9 @@ import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [, setSearchParams] = useSearchParams();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
-
-  const query = searchParams.get("query") || "";
 
   const handleSearch = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key !== "Enter") return;
@@ -26,6 +24,7 @@ const Navbar = () => {
     }
     navigate("/search");
     setSearchParams(newSearchParams);
+    inputRef.current!.value = "";
   };
 
   return (
@@ -39,8 +38,30 @@ const Navbar = () => {
             </div>
           </div>
 
+          {/* Desktop Nav Links */}
+          <div className="hidden md:flex items-center gap-x-10 text-lg font-semibold">
+            <Link
+              to="/"
+              className="text-foreground hover:text-accent transition-colors py-2"
+            >
+              Home
+            </Link>
+            <Link
+              to="/type/anime"
+              className="text-foreground hover:text-accent transition-colors py-2"
+            >
+              Anime
+            </Link>
+            <Link
+              to="/type/manga"
+              className="text-foreground hover:text-accent transition-colors py-2"
+            >
+              Manga
+            </Link>
+          </div>
+
           {/* Desktop Search */}
-          <div className="hidden md:flex flex-1 max-w-md mx-8">
+          <div className="hidden md:flex flex-1 max-w-xs mx-8">
             <div className="relative w-full">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input
@@ -48,38 +69,9 @@ const Navbar = () => {
                 placeholder="Search anime or manga..."
                 ref={inputRef}
                 onKeyDown={handleSearch}
-                defaultValue={query}
                 className="pl-10 bg-muted border-border focus:ring-2 focus:ring-primary text-primary-foreground"
               />
             </div>
-          </div>
-
-          {/* Desktop Nav Links */}
-          <div className="hidden md:flex items-center gap-6">
-            <Link
-              to="/"
-              className="text-foreground hover:text-primary transition-colors py-2"
-            >
-              All
-            </Link>
-            <Link
-              to="/type/anime"
-              className="text-foreground hover:text-primary transition-colors py-2"
-            >
-              Anime
-            </Link>
-            <Link
-              to="/type/manga"
-              className="text-foreground hover:text-primary transition-colors py-2"
-            >
-              Manga
-            </Link>
-            <Button
-              variant="default"
-              className="bg-gradient-to-r from-primary to-fuchsia-900 hover:opacity-90 transition-opacity"
-            >
-              Sign In
-            </Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -102,7 +94,6 @@ const Navbar = () => {
                   placeholder="Search anime or manga..."
                   ref={inputRef}
                   onKeyDown={handleSearch}
-                  defaultValue={query}
                   className="pl-10 bg-muted border-border focus:ring-2 focus:ring-primary text-primary-foreground"
                 />
               </div>

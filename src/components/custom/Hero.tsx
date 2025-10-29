@@ -16,8 +16,12 @@ const Hero = ({ showSearchBar = false }: HeroProps) => {
 
   const query = searchParams.get("query") || "";
 
-  const handleSearch = (event: KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key !== "Enter") return;
+    handleSearch();
+  };
+
+  const handleSearch = () => {
     const query = inputRef.current?.value;
 
     const newSearchParams = new URLSearchParams();
@@ -71,17 +75,17 @@ const Hero = ({ showSearchBar = false }: HeroProps) => {
                   type="text"
                   placeholder="Search for anime or manga..."
                   ref={inputRef}
-                  onKeyDown={handleSearch}
+                  onKeyDown={handleKeyDown}
                   defaultValue={query}
-                  className="h-14 pl-12 text-lg bg-card border-border focus:ring-2 focus:ring-primary shadow-lg text-primary-foreground"
+                  className="h-14 pl-12 bg-card border-primary focus:ring-2 focus:ring-primary shadow-lg text-primary-foreground font-bold"
                 />
               </div>
               <Button
-                type="submit"
                 variant="default"
                 size="lg"
+                onClick={handleSearch}
                 className="h-14 px-8 bg-gradient-to-br from-primary/90 to-fuchsia-900/90
-              transition-opacity text-lg font-semibold"
+                  transition-opacity text-lg font-semibold"
               >
                 Search
               </Button>
