@@ -3,7 +3,6 @@ import { Link, useNavigate, useSearchParams } from "react-router";
 import { useRef, useState, type KeyboardEvent } from "react";
 
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import { NavMenuCustom } from "./NavMenuCustom";
 
 const Navbar = () => {
@@ -33,15 +32,16 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center gap-2">
-            <div className="text-2xl font-title bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+          <div className="flex items-center me-4">
+            <div className="text-lg lg:text-2xl font-title bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
               AnimeVerse
             </div>
           </div>
 
           {/* Desktop Nav Links */}
-
-          <NavMenuCustom />
+          <div className="hidden md:flex">
+            <NavMenuCustom />
+          </div>
 
           {/* Desktop Search */}
           <div className="hidden md:flex flex-1 max-w-xs mx-8">
@@ -83,29 +83,110 @@ const Navbar = () => {
             </div>
             <div className="flex flex-col gap-3">
               <Link
-                to="#"
+                to="/"
                 className="text-foreground hover:text-primary transition-colors py-2"
               >
-                All
+                Home
               </Link>
-              <Link
-                to="#"
-                className="text-foreground hover:text-primary transition-colors py-2"
-              >
-                Anime
-              </Link>
-              <Link
-                to="#"
-                className="text-foreground hover:text-primary transition-colors py-2"
-              >
-                Manga
-              </Link>
-              <Button
-                variant="default"
-                className="w-full bg-gradient-to-r from-primary to-fuchsia-900"
-              >
-                Sign In
-              </Button>
+
+              <div className="space-y-2">
+                <div className="flex items-center justify-between text-muted-foreground w-full  transition-colors">
+                  Anime
+                </div>
+                <hr />
+                <ul className="pl-5 space-y-2 text-foreground">
+                  <li>
+                    <Link
+                      to="#"
+                      className="block hover:text-primary transition-colors py-1"
+                    >
+                      Top Anime
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="#"
+                      className="block hover:text-primary transition-colors py-1"
+                    >
+                      Seasonal Animes
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="#"
+                      className="block text-sm hover:text-primary transition-colors py-1"
+                    >
+                      Search Anime
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="#"
+                      className="block text-sm hover:text-primary transition-colors py-1"
+                    >
+                      Recomendations
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="space-y-2">
+                <div className="flex items-center justify-between text-muted-foreground w-full  transition-colors">
+                  Manga
+                </div>
+                <hr />
+                <ul className="pl-5 space-y-2 text-foreground">
+                  <li>
+                    <Link
+                      to="#"
+                      className="block hover:text-primary transition-colors py-1"
+                    >
+                      Top Mangas
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="#"
+                      className="block text-sm hover:text-primary transition-colors py-1"
+                    >
+                      Search Manga
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="#"
+                      className="block text-sm hover:text-primary transition-colors py-1"
+                    >
+                      Recomendations
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="space-y-2">
+                <div className="flex items-center justify-between text-muted-foreground w-full  transition-colors">
+                  Characters
+                </div>
+                <hr />
+                <ul className="pl-5 space-y-2 text-foreground">
+                  <li>
+                    <Link
+                      to="#"
+                      className="block hover:text-primary transition-colors py-1"
+                    >
+                      Top Characters
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="#"
+                      className="block text-sm hover:text-primary transition-colors py-1"
+                    >
+                      Search Characters
+                    </Link>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         )}
