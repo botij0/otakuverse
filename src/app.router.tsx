@@ -36,7 +36,7 @@ export const appRouter = createBrowserRouter([
         element: <SearchPage />,
       },
       {
-        path: "search/anime",
+        path: "anime/search",
         element: <SearchAnimePage />,
       },
       {
