@@ -7,7 +7,6 @@ import { AnimeDetails } from "./pages/details/AnimeDetails";
 import { MangaDetails } from "./pages/details/MangaDetails";
 import { SearchAnimePage } from "./pages/search/SearchAnimePage";
 import { SearchMangaPage } from "./pages/search/SearchMangaPage";
-import { TestPage } from "./pages/TestPage";
 
 export const appRouter = createBrowserRouter([
   // Main routes
@@ -40,9 +39,5 @@ export const appRouter = createBrowserRouter([
         element: <SearchMangaPage />,
       },
     ],
-  },
-  {
-    path: "test",
-    element: <TestPage />,
   },
 ]);

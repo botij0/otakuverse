@@ -1,12 +1,4 @@
-import {
-  AwardIcon,
-  CircleCheckIcon,
-  CircleHelpIcon,
-  CircleIcon,
-  Search,
-  SunSnow,
-  Users,
-} from "lucide-react";
+import { AwardIcon, Search, SunSnow, Users } from "lucide-react";
 
 import { useIsMobile } from "@/hooks/useIsMobile";
 
@@ -26,10 +18,10 @@ export function NavMenuCustom() {
 
   return (
     <NavigationMenu viewport={isMobile}>
-      <NavigationMenuList className="flex-wrap">
+      <NavigationMenuList className="flex-wrap lg:gap-x-10">
         <NavigationMenuItem>
           <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-            <a href="/home">Home</a>
+            <a href="/">Home</a>
           </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem className="hidden md:block">
@@ -38,10 +30,10 @@ export function NavMenuCustom() {
             <ul className="grid w-[200px] gap-2">
               <li>
                 <NavigationMenuLink asChild>
-                  <a href="#" className="flex-row items-center gap-2">
+                  <Link to="#" className="flex-row items-center gap-2">
                     <AwardIcon />
                     Top Anime
-                  </a>
+                  </Link>
                 </NavigationMenuLink>
               </li>
               <li>
@@ -74,25 +66,29 @@ export function NavMenuCustom() {
         <NavigationMenuItem className="hidden md:block">
           <NavigationMenuTrigger>Manga</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid w-[200px] gap-4">
+            <ul className="grid w-[200px] gap-2">
               <li>
                 <NavigationMenuLink asChild>
-                  <a href="#" className="flex-row items-center gap-2">
-                    <CircleHelpIcon />
-                    Backlog
-                  </a>
+                  <Link to="#" className="flex-row items-center gap-2">
+                    <AwardIcon />
+                    Top Manga
+                  </Link>
                 </NavigationMenuLink>
+              </li>
+              <li>
                 <NavigationMenuLink asChild>
-                  <a href="#" className="flex-row items-center gap-2">
-                    <CircleIcon />
-                    To Do
-                  </a>
+                  <Link to="#" className="flex-row items-center gap-2">
+                    <Search />
+                    Search Manga
+                  </Link>
                 </NavigationMenuLink>
+              </li>
+              <li>
                 <NavigationMenuLink asChild>
-                  <a href="#" className="flex-row items-center gap-2">
-                    <CircleCheckIcon />
-                    Done
-                  </a>
+                  <Link to="#" className="flex-row items-center gap-2">
+                    <Users />
+                    Recomendations
+                  </Link>
                 </NavigationMenuLink>
               </li>
             </ul>
@@ -102,25 +98,21 @@ export function NavMenuCustom() {
         <NavigationMenuItem className="hidden md:block">
           <NavigationMenuTrigger>Characters</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid w-[200px] gap-4">
+            <ul className="grid w-[200px] gap-2">
               <li>
                 <NavigationMenuLink asChild>
-                  <a href="#" className="flex-row items-center gap-2">
-                    <CircleHelpIcon />
-                    Backlog
-                  </a>
+                  <Link to="#" className="flex-row items-center gap-2">
+                    <AwardIcon />
+                    Top Characters
+                  </Link>
                 </NavigationMenuLink>
+              </li>
+              <li>
                 <NavigationMenuLink asChild>
-                  <a href="#" className="flex-row items-center gap-2">
-                    <CircleIcon />
-                    To Do
-                  </a>
-                </NavigationMenuLink>
-                <NavigationMenuLink asChild>
-                  <a href="#" className="flex-row items-center gap-2">
-                    <CircleCheckIcon />
-                    Done
-                  </a>
+                  <Link to="#" className="flex-row items-center gap-2">
+                    <SunSnow />
+                    Seasonal Characters
+                  </Link>
                 </NavigationMenuLink>
               </li>
             </ul>
