@@ -3,6 +3,7 @@ import { createBrowserRouter } from "react-router";
 import { HomePage } from "./pages/HomePage";
 import { MainLayout } from "@/layouts/MainLayout";
 import { SearchPage } from "./pages/search/SearchPage";
+import { TopAnimePage } from "./pages/anime/TopAnimePage";
 import { AnimeDetailsPage } from "./pages/anime/AnimeDetailsPage";
 import { MangaDetailsPage } from "./pages/manga/MangaDetailsPage";
 import { SearchAnimePage } from "./pages/anime/SearchAnimePage";
@@ -21,6 +22,10 @@ export const appRouter = createBrowserRouter([
       {
         path: "anime/:id",
         element: <AnimeDetailsPage />,
+      },
+      {
+        path: "anime/top",
+        element: <TopAnimePage />,
       },
       {
         path: "manga/:id",

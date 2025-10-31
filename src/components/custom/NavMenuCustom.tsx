@@ -21,7 +21,7 @@ export function NavMenuCustom() {
       <NavigationMenuList className="flex-wrap lg:gap-x-10">
         <NavigationMenuItem>
           <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-            <a href="/">Home</a>
+            <Link to="/">Home</Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem className="hidden md:block">
@@ -30,7 +30,7 @@ export function NavMenuCustom() {
             <ul className="grid w-[200px] gap-2">
               <li>
                 <NavigationMenuLink asChild>
-                  <Link to="#" className="flex-row items-center gap-2">
+                  <Link to="/anime/top" className="flex-row items-center gap-2">
                     <AwardIcon />
                     Top Anime
                   </Link>
