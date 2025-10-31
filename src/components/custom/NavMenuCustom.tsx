@@ -110,8 +110,8 @@ export function NavMenuCustom() {
               <li>
                 <NavigationMenuLink asChild>
                   <Link to="#" className="flex-row items-center gap-2">
-                    <SunSnow />
-                    Seasonal Characters
+                    <Search />
+                    Search Character
                   </Link>
                 </NavigationMenuLink>
               </li>

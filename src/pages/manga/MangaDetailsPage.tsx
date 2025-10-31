@@ -14,7 +14,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { useQuery } from "@tanstack/react-query";
 import { getMangaDetailsAction } from "@/actions/get-manga-details.action";
 
-export const MangaDetails = () => {
+export const MangaDetailsPage = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
 

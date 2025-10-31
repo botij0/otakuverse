@@ -7,7 +7,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { useQuery } from "@tanstack/react-query";
 import { getAnimeDetailsAction } from "@/actions/get-anime-details.action";
 
-export const AnimeDetails = () => {
+export const AnimeDetailsPage = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
 
