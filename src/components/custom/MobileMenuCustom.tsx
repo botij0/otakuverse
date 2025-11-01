@@ -38,7 +38,10 @@ export const MobileMenuCustom = ({ inputRef, handleSearch }: MobileMenuCustomPro
           <hr />
           <ul className="pl-5 space-y-2 text-foreground">
             <li>
-              <Link to="#" className="block hover:text-primary transition-colors py-1">
+              <Link
+                to="/anime/top"
+                className="block hover:text-primary transition-colors py-1"
+              >
                 Top Anime
               </Link>
             </li>
@@ -73,7 +76,10 @@ export const MobileMenuCustom = ({ inputRef, handleSearch }: MobileMenuCustomPro
           <hr />
           <ul className="pl-5 space-y-2 text-foreground">
             <li>
-              <Link to="#" className="block hover:text-primary transition-colors py-1">
+              <Link
+                to="/manga/top"
+                className="block hover:text-primary transition-colors py-1"
+              >
                 Top Mangas
               </Link>
             </li>

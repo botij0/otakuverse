@@ -3,11 +3,12 @@ import { createBrowserRouter } from "react-router";
 import { HomePage } from "./pages/HomePage";
 import { MainLayout } from "@/layouts/MainLayout";
 import { SearchPage } from "./pages/search/SearchPage";
-import { TopAnimePage } from "./pages/anime/TopAnimePage";
+import { AnimeTopPage } from "./pages/anime/AnimeTopPage";
 import { AnimeDetailsPage } from "./pages/anime/AnimeDetailsPage";
 import { MangaDetailsPage } from "./pages/manga/MangaDetailsPage";
-import { SearchAnimePage } from "./pages/anime/SearchAnimePage";
-import { SearchMangaPage } from "./pages/manga/SearchMangaPage";
+import { SearchAnimePage } from "./pages/anime/AnimeSearchPage";
+import { SearchMangaPage } from "./pages/manga/MangaSearchPage";
+import { MangaTopPage } from "./pages/manga/MangaTopPage";
 
 export const appRouter = createBrowserRouter([
   // Main routes
@@ -20,28 +21,36 @@ export const appRouter = createBrowserRouter([
         element: <HomePage />,
       },
       {
+        path: "search",
+        element: <SearchPage />,
+      },
+
+      // Anime
+      {
         path: "anime/:id",
         element: <AnimeDetailsPage />,
       },
       {
         path: "anime/top",
-        element: <TopAnimePage />,
-      },
-      {
-        path: "manga/:id",
-        element: <MangaDetailsPage />,
-      },
-      {
-        path: "search",
-        element: <SearchPage />,
+        element: <AnimeTopPage />,
       },
       {
         path: "anime/search",
         element: <SearchAnimePage />,
       },
+
+      // Manga
       {
-        path: "search/manga",
+        path: "manga/:id",
+        element: <MangaDetailsPage />,
+      },
+      {
+        path: "manga/search",
         element: <SearchMangaPage />,
+      },
+      {
+        path: "manga/top",
+        element: <MangaTopPage />,
       },
     ],
   },

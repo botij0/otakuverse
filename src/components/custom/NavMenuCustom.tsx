@@ -69,7 +69,7 @@ export function NavMenuCustom() {
             <ul className="grid w-[200px] gap-2">
               <li>
                 <NavigationMenuLink asChild>
-                  <Link to="#" className="flex-row items-center gap-2">
+                  <Link to="/manga/top" className="flex-row items-center gap-2">
                     <AwardIcon />
                     Top Manga
                   </Link>

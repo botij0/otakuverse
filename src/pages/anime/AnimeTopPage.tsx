@@ -2,10 +2,10 @@ import { useSearchParams } from "react-router";
 import { useQuery } from "@tanstack/react-query";
 
 import MediaGrid from "@/components/custom/MediaGrid";
-import { getTopAnimeAction } from "@/actions/get-top-anime.action";
+import { getAnimeTopAction } from "@/actions/get-anime-top.action";
 import { CustomPagination } from "@/components/custom/CustomPagination";
 
-export const TopAnimePage = () => {
+export const AnimeTopPage = () => {
   const [searchParams] = useSearchParams();
 
   const page = Number(searchParams.get("page")) || 1;
@@ -17,7 +17,7 @@ export const TopAnimePage = () => {
   } = useQuery({
     queryKey: ["animeTop", { page }],
     queryFn: () =>
-      getTopAnimeAction({
+      getAnimeTopAction({
         page,
       }),
     staleTime: 1000 * 60 * 5,
