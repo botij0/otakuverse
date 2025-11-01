@@ -31,7 +31,7 @@ export const SearchPage = () => {
         {query && (
           <>
             <MediaGrid
-              media={animesList}
+              media={animesList.slice(0, 10)}
               loading={isLoadingAnime}
               title={`Anime ('${query}')`}
             />
@@ -41,7 +41,7 @@ export const SearchPage = () => {
         {query && (
           <>
             <MediaGrid
-              media={mangaList}
+              media={mangaList.slice(0, 10)}
               loading={isLoadingManga}
               title={`Manga ('${query}')`}
             />

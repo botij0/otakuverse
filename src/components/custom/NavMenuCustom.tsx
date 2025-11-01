@@ -46,7 +46,7 @@ export function NavMenuCustom() {
               </li>
               <li>
                 <NavigationMenuLink asChild>
-                  <Link to="#" className="flex-row items-center gap-2">
+                  <Link to="/anime/search" className="flex-row items-center gap-2">
                     <Search />
                     Search Anime
                   </Link>
@@ -77,7 +77,7 @@ export function NavMenuCustom() {
               </li>
               <li>
                 <NavigationMenuLink asChild>
-                  <Link to="#" className="flex-row items-center gap-2">
+                  <Link to="/manga/search" className="flex-row items-center gap-2">
                     <Search />
                     Search Manga
                   </Link>

@@ -5,6 +5,7 @@ import { useRef, type KeyboardEvent } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import heroBanner from "@/assets/hero-banner.jpg";
+import { GenresToggleGroup } from "./GenresToggleGroup";
 
 interface HeroProps {
   showSearchBar?: boolean;
@@ -67,30 +68,66 @@ const Hero = ({ showSearchBar = false }: HeroProps) => {
 
         {/* Hero Search Bar */}
         {showSearchBar && (
-          <div className="max-w-2xl mx-auto animate-scale-in">
-            <div className="flex gap-2">
-              <div className="relative flex-1">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                <Input
-                  type="text"
-                  placeholder="Search for anime or manga..."
-                  ref={inputRef}
-                  onKeyDown={handleKeyDown}
-                  defaultValue={query}
-                  className="h-14 pl-12 bg-card border-primary focus:ring-2 focus:ring-primary shadow-lg text-primary-foreground font-bold"
-                />
-              </div>
-              <Button
-                variant="default"
-                size="lg"
-                onClick={handleSearch}
-                className="h-14 px-8 bg-gradient-to-br from-primary/90 to-fuchsia-900/90
+          <>
+            <div className="max-w-2xl mx-auto animate-scale-in">
+              <div className="flex gap-2">
+                <div className="relative flex-1">
+                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                  <Input
+                    type="text"
+                    placeholder="Search for anime or manga..."
+                    ref={inputRef}
+                    onKeyDown={handleKeyDown}
+                    defaultValue={query}
+                    className="h-14 pl-12 bg-card border-primary-on focus:ring-2 focus:ring-primary shadow-lg text-primary-foreground font-bold"
+                  />
+                </div>
+                <Button
+                  variant="default"
+                  size="lg"
+                  onClick={handleSearch}
+                  className="h-14 px-8 bg-gradient-to-br from-primary/90 to-fuchsia-900/90
                   transition-opacity text-lg font-semibold"
-              >
-                Search
-              </Button>
+                >
+                  Search
+                </Button>
+              </div>
             </div>
-          </div>
+            {/* Quick Links */}
+            {/* <div className="flex flex-wrap justify-center gap-4 mt-8 animate-fade-in">
+              <Button
+                variant="secondary"
+                className="bg-secondary/80 hover:bg-secondary backdrop-blur"
+                onClick={() => handleSearch("action")}
+              >
+                Action
+              </Button>
+              <Button
+                variant="secondary"
+                className="bg-secondary/80 hover:bg-secondary backdrop-blur"
+                onClick={() => handleSearch("romance")}
+              >
+                Romance
+              </Button>
+              <Button
+                variant="secondary"
+                className="bg-secondary/80 hover:bg-secondary backdrop-blur"
+                onClick={() => handleSearch("fantasy")}
+              >
+                Fantasy
+              </Button>
+              <Button
+                variant="secondary"
+                className="bg-secondary/80 hover:bg-secondary backdrop-blur"
+                onClick={() => handleSearch("comedy")}
+              >
+                Comedy
+              </Button>
+            </div> */}
+            <div className="mt-3">
+              <GenresToggleGroup />
+            </div>
+          </>
         )}
       </div>
     </section>

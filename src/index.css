@@ -63,6 +63,8 @@ html {
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-primary-off: var(--primary-off);
+  --color-primary-on: var(--primary-on);
 }
 
 :root {
@@ -80,6 +82,8 @@ html {
   /* Primary */
   --primary: oklch(0.55 0.23 282);
   --primary-foreground: oklch(1 0 0);
+  --primary-off: oklch(0.317 0.0818 293.98);
+  --primary-on: oklch(0.4116 0.1419 287.12);
 
   /* Secondary */
   --secondary: oklch(0.62 0.26 300);

@@ -10,6 +10,8 @@ export const SearchMangaPage = () => {
   const { data: mangaData, isLoading, error } = useSearchManga();
 
   const query = searchParams.get("query") || null;
+  const genres = searchParams.get("genres") || null;
+
   if (isLoading) {
     return (
       <>
@@ -29,9 +31,9 @@ export const SearchMangaPage = () => {
       <Hero showSearchBar={true} />
 
       <main className="container mx-auto px-4">
-        {query && (
+        {(query || genres) && (
           <>
-            <MediaGrid media={mangaList} loading={false} title={`Manga ('${query}')`} />
+            <MediaGrid media={mangaList} loading={false} title={"Manga Search Results"} />
             <CustomPagination totalPages={mangaData!.pagination.last_visible_page} />
           </>
         )}
