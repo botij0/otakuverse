@@ -20,12 +20,15 @@ export function NavMenuCustom() {
     <NavigationMenu viewport={isMobile}>
       <NavigationMenuList className="flex-wrap lg:gap-x-10">
         <NavigationMenuItem>
-          <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+          <NavigationMenuLink
+            asChild
+            className={navigationMenuTriggerStyle() + " text-md"}
+          >
             <Link to="/">Home</Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem className="hidden md:block">
-          <NavigationMenuTrigger>Anime</NavigationMenuTrigger>
+          <NavigationMenuTrigger className="text-md">Anime</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[200px] gap-2">
               <li>
@@ -64,7 +67,7 @@ export function NavMenuCustom() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem className="hidden md:block">
-          <NavigationMenuTrigger>Manga</NavigationMenuTrigger>
+          <NavigationMenuTrigger className="text-md">Manga</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[200px] gap-2">
               <li>
@@ -96,7 +99,7 @@ export function NavMenuCustom() {
         </NavigationMenuItem>
 
         <NavigationMenuItem className="hidden md:block">
-          <NavigationMenuTrigger>Characters</NavigationMenuTrigger>
+          <NavigationMenuTrigger className="text-md">Characters</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[200px] gap-2">
               <li>

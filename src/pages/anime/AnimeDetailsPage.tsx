@@ -117,24 +117,23 @@ export const AnimeDetailsPage = () => {
             )}
           </div>
 
-          <div className="flex flex-wrap gap-2">
-            {anime.genres?.map((genre: any) => (
-              <Badge key={genre.mal_id} variant="secondary">
-                {genre.name}
-              </Badge>
-            ))}
-            {anime.themes?.map((theme: any) => (
-              <Badge key={theme.mal_id} variant="outline">
-                {theme.name}
-              </Badge>
-            ))}
-          </div>
-
           <div className="space-y-2">
             <h2 className="text-2xl font-semibold">Synopsis</h2>
             <p className="text-muted-foreground leading-relaxed">
               {anime.synopsis || "No synopsis available."}
             </p>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {anime.genres?.map((genre: any) => (
+              <Badge key={genre.mal_id} variant="default">
+                {genre.name}
+              </Badge>
+            ))}
+            {anime.themes?.map((theme: any) => (
+              <Badge key={theme.mal_id} variant="secondary">
+                {theme.name}
+              </Badge>
+            ))}
           </div>
 
           <div className="grid grid-cols-2 gap-4 bg-card border border-border rounded-lg p-4">
