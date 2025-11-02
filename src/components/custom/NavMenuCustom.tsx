@@ -41,7 +41,7 @@ export function NavMenuCustom() {
               </li>
               <li>
                 <NavigationMenuLink asChild>
-                  <Link to="#" className="flex-row items-center gap-2">
+                  <Link to="/anime/seasonal" className="flex-row items-center gap-2">
                     <SunSnow />
                     Seasonal Animes
                   </Link>
@@ -57,7 +57,7 @@ export function NavMenuCustom() {
               </li>
               <li>
                 <NavigationMenuLink asChild>
-                  <Link to="#" className="flex-row items-center gap-2">
+                  <Link to="/anime/recomendations" className="flex-row items-center gap-2">
                     <Users />
                     Recomendations
                   </Link>
@@ -88,7 +88,7 @@ export function NavMenuCustom() {
               </li>
               <li>
                 <NavigationMenuLink asChild>
-                  <Link to="#" className="flex-row items-center gap-2">
+                  <Link to="/manga/recomendations" className="flex-row items-center gap-2">
                     <Users />
                     Recomendations
                   </Link>
@@ -104,7 +104,7 @@ export function NavMenuCustom() {
             <ul className="grid w-[200px] gap-2">
               <li>
                 <NavigationMenuLink asChild>
-                  <Link to="#" className="flex-row items-center gap-2">
+                  <Link to="/character/top" className="flex-row items-center gap-2">
                     <AwardIcon />
                     Top Characters
                   </Link>
@@ -112,7 +112,7 @@ export function NavMenuCustom() {
               </li>
               <li>
                 <NavigationMenuLink asChild>
-                  <Link to="#" className="flex-row items-center gap-2">
+                  <Link to="/character/search" className="flex-row items-center gap-2">
                     <Search />
                     Search Character
                   </Link>

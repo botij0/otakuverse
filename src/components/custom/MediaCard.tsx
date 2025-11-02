@@ -15,6 +15,8 @@ interface MediaCardProps {
   genres: Demographic[];
   members?: number;
   rank?: number;
+  nicknames?: string[];
+  isCharacter?: boolean;
 }
 
 const mangaTypes = [
@@ -37,6 +39,8 @@ const MediaCard = ({
   genres,
   members,
   rank,
+  nicknames,
+  isCharacter,
 }: MediaCardProps) => {
   const navigate = useNavigate();
 
@@ -48,7 +52,9 @@ const MediaCard = ({
   }
 
   const handleClick = () => {
-    if (epsLabel === "eps") {
+    if (isCharacter) {
+      navigate(`/characters/${id}`);
+    } else if (epsLabel === "eps") {
       navigate(`/anime/${id}`);
     } else {
       navigate(`/manga/${id}`);
@@ -98,7 +104,7 @@ const MediaCard = ({
         </h3>
         <div className="flex items-center gap-2 text-sm text-muted-foreground">
           {type && <span className="capitalize">{type}</span>}
-          <span>•</span>
+          {type && episodes !== undefined && <span>•</span>}
           {episodes !== undefined &&
             (episodes !== null ? (
               <span>
@@ -110,9 +116,17 @@ const MediaCard = ({
         </div>
 
         <div className="flex items-center gap-2 text-sm text-muted-foreground mt-4">
-          {genres[0] && <Badge>{genres[0].name}</Badge>}
-
-          {genres[1] && <Badge variant={"secondary"}>{genres[1].name}</Badge>}
+          {isCharacter ? (
+            <>
+              {nicknames[0] && <Badge>{nicknames[0]}</Badge>}
+              {nicknames[1] && <Badge variant={"secondary"}>{nicknames[1]}</Badge>}
+            </>
+          ) : (
+            <>
+              {genres[0] && <Badge>{genres[0].name}</Badge>}
+              {genres[1] && <Badge variant={"secondary"}>{genres[1].name}</Badge>}
+            </>
+          )}
         </div>
       </CardContent>
     </Card>

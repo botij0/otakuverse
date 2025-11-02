@@ -1,8 +1,9 @@
-import { getMangaTopAction } from "@/actions/get-manga-top.action";
-import { CustomPagination } from "@/components/custom/CustomPagination";
-import MediaGrid from "@/components/custom/MediaGrid";
 import { useQuery } from "@tanstack/react-query";
 import { useSearchParams } from "react-router";
+
+import MediaGrid from "@/components/custom/MediaGrid";
+import { CustomPagination } from "@/components/custom/CustomPagination";
+import { getMangaTopAction } from "@/actions/get-manga-top.action";
 
 export const MangaTopPage = () => {
   const [searchParams] = useSearchParams();
@@ -22,22 +23,14 @@ export const MangaTopPage = () => {
     staleTime: 1000 * 60 * 5,
   });
 
-  if (isLoading) {
-    return (
-      <>
-        <main className="container mx-auto px-4">
-          <MediaGrid loading={true} />
-        </main>
-      </>
-    );
-  }
-
-  const animeList = mangaData && !error ? mangaData.data : [];
+  const mangaList = mangaData && !error ? mangaData.data : [];
 
   return (
     <main className="container mx-auto px-4">
-      <MediaGrid media={animeList} loading={isLoading} title={"Top Anime"} />
-      <CustomPagination totalPages={mangaData!.pagination.last_visible_page} />
+      <MediaGrid media={mangaList} loading={isLoading} title={"Top Manga"} />
+      {mangaData && (
+        <CustomPagination totalPages={mangaData!.pagination.last_visible_page} />
+      )}
     </main>
   );
 };

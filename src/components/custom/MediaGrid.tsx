@@ -3,9 +3,10 @@ import { Loader2 } from "lucide-react";
 import MediaCard from "@/components/custom/MediaCard";
 import type { Anime } from "@/interfaces/anime.list.response";
 import type { Manga } from "@/interfaces/manga.list.response";
+import type { Character } from "@/interfaces/character.list.response";
 
 interface MediaGridProps {
-  media?: Anime[] | Manga[];
+  media?: Anime[] | Manga[] | Character[];
   loading?: boolean;
   title?: string;
 }
@@ -40,20 +41,25 @@ const MediaGrid = ({ media, loading, title }: MediaGridProps) => {
         </h2>
       )}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 animate-fade-in">
-        {media.map((mediaItem: Anime | Manga) => (
-          <MediaCard
-            key={mediaItem.mal_id}
-            id={mediaItem.mal_id}
-            title={mediaItem.title}
-            imageUrl={mediaItem.images.webp.large_image_url}
-            score={mediaItem.score}
-            episodes={"episodes" in mediaItem ? mediaItem.episodes : mediaItem.volumes}
-            type={mediaItem.type}
-            genres={mediaItem.genres}
-            members={mediaItem.members}
-            rank={mediaItem.rank}
-          />
-        ))}
+        {media.map((mediaItem: Anime | Manga | Character, index: number) => {
+          const isCharacter = "name" in mediaItem;
+          return (
+            <MediaCard
+              key={mediaItem.mal_id}
+              id={mediaItem.mal_id}
+              title={isCharacter ? mediaItem.name : mediaItem.title}
+              imageUrl={isCharacter ? mediaItem.images.webp.image_url : mediaItem.images.webp.large_image_url}
+              score={isCharacter ? undefined : mediaItem.score}
+              episodes={isCharacter ? undefined : ("episodes" in mediaItem ? mediaItem.episodes : mediaItem.volumes)}
+              type={isCharacter ? undefined : mediaItem.type}
+              genres={isCharacter ? [] : mediaItem.genres}
+              members={isCharacter ? mediaItem.favorites : mediaItem.members}
+              rank={isCharacter ? index + 1 : mediaItem.rank}
+              nicknames={isCharacter ? mediaItem.nicknames : undefined}
+              isCharacter={isCharacter}
+            />
+          );
+        })}
       </div>
     </section>
   );

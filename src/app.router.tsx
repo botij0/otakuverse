@@ -3,12 +3,18 @@ import { createBrowserRouter } from "react-router";
 import { HomePage } from "./pages/HomePage";
 import { MainLayout } from "@/layouts/MainLayout";
 import { SearchPage } from "./pages/search/SearchPage";
+
 import { AnimeTopPage } from "./pages/anime/AnimeTopPage";
-import { AnimeDetailsPage } from "./pages/anime/AnimeDetailsPage";
-import { MangaDetailsPage } from "./pages/manga/MangaDetailsPage";
 import { SearchAnimePage } from "./pages/anime/AnimeSearchPage";
-import { SearchMangaPage } from "./pages/manga/MangaSearchPage";
+import { AnimeDetailsPage } from "./pages/anime/AnimeDetailsPage";
+
 import { MangaTopPage } from "./pages/manga/MangaTopPage";
+import { SearchMangaPage } from "./pages/manga/MangaSearchPage";
+import { MangaDetailsPage } from "./pages/manga/MangaDetailsPage";
+
+import { CharacterTopPage } from "./pages/characters/CharacterTopPage";
+import { CharacterSearchPage } from "./pages/characters/CharacterSearchPage";
+import { CharacterDetailsPage } from "./pages/characters/CharacterDetailsPage";
 
 export const appRouter = createBrowserRouter([
   // Main routes
@@ -51,6 +57,20 @@ export const appRouter = createBrowserRouter([
       {
         path: "manga/top",
         element: <MangaTopPage />,
+      },
+
+      // Characters
+      {
+        path: "character/:id",
+        element: <CharacterDetailsPage />,
+      },
+      {
+        path: "character/search",
+        element: <CharacterSearchPage />,
+      },
+      {
+        path: "character/top",
+        element: <CharacterTopPage />,
       },
     ],
   },
