@@ -38,7 +38,7 @@ export const getSearchMangaAction = async (
 ): Promise<MangaListResponse> => {
   const { query, page, limit, genres } = options;
 
-  if (!query || !genres) return emptyMediaResponse as MangaListResponse;
+  if (!query && !genres) return emptyMediaResponse as MangaListResponse;
 
   const genreIds = genres ? getGenresIdsByGenresString(genres) : null;
 
