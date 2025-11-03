@@ -46,13 +46,16 @@ export const MobileMenuCustom = ({ inputRef, handleSearch }: MobileMenuCustomPro
               </Link>
             </li>
             <li>
-              <Link to="#" className="block hover:text-primary transition-colors py-1">
+              <Link
+                to="/anime/seasonal"
+                className="block hover:text-primary transition-colors py-1"
+              >
                 Seasonal Animes
               </Link>
             </li>
             <li>
               <Link
-                to="#"
+                to="/anime/search"
                 className="block text-sm hover:text-primary transition-colors py-1"
               >
                 Search Anime
@@ -60,7 +63,7 @@ export const MobileMenuCustom = ({ inputRef, handleSearch }: MobileMenuCustomPro
             </li>
             <li>
               <Link
-                to="#"
+                to="/anime/recomendations"
                 className="block text-sm hover:text-primary transition-colors py-1"
               >
                 Recomendations
@@ -85,7 +88,7 @@ export const MobileMenuCustom = ({ inputRef, handleSearch }: MobileMenuCustomPro
             </li>
             <li>
               <Link
-                to="#"
+                to="/manga/search"
                 className="block text-sm hover:text-primary transition-colors py-1"
               >
                 Search Manga
@@ -93,7 +96,7 @@ export const MobileMenuCustom = ({ inputRef, handleSearch }: MobileMenuCustomPro
             </li>
             <li>
               <Link
-                to="#"
+                to="/manga/recomendations"
                 className="block text-sm hover:text-primary transition-colors py-1"
               >
                 Recomendations
@@ -109,13 +112,16 @@ export const MobileMenuCustom = ({ inputRef, handleSearch }: MobileMenuCustomPro
           <hr />
           <ul className="pl-5 space-y-2 text-foreground">
             <li>
-              <Link to="#" className="block hover:text-primary transition-colors py-1">
+              <Link
+                to="/character/top"
+                className="block hover:text-primary transition-colors py-1"
+              >
                 Top Characters
               </Link>
             </li>
             <li>
               <Link
-                to="#"
+                to="/character/search"
                 className="block text-sm hover:text-primary transition-colors py-1"
               >
                 Search Characters
