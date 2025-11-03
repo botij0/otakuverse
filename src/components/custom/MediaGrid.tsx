@@ -1,4 +1,5 @@
-import { Loader2 } from "lucide-react";
+import { Link } from "react-router";
+import { ArrowRight, Loader2 } from "lucide-react";
 
 import MediaCard from "@/components/custom/MediaCard";
 import type { Anime } from "@/interfaces/anime.list.response";
@@ -9,9 +10,11 @@ interface MediaGridProps {
   media?: Anime[] | Manga[] | Character[];
   loading?: boolean;
   title?: string;
+  seeMore?: boolean;
+  seeMoreLink?: string;
 }
 
-const MediaGrid = ({ media, loading, title }: MediaGridProps) => {
+const MediaGrid = ({ media, loading, title, seeMore, seeMoreLink }: MediaGridProps) => {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-20">
@@ -35,11 +38,21 @@ const MediaGrid = ({ media, loading, title }: MediaGridProps) => {
 
   return (
     <section className="py-12">
-      {title && (
-        <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent font-title">
-          {title}
-        </h2>
-      )}
+      <div className="flex justify-between items-center">
+        {title && (
+          <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent font-title">
+            {title}
+          </h2>
+        )}
+        {seeMore && seeMoreLink && (
+          <Link
+            to={seeMoreLink}
+            className="group flex text-primary text-lg gap-3 items-center hover:scale-105 transition-all duration-300 ease-in-out"
+          >
+            See More <ArrowRight />
+          </Link>
+        )}
+      </div>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 animate-fade-in">
         {media.map((mediaItem: Anime | Manga | Character, index: number) => {
           const isCharacter = "name" in mediaItem;
@@ -48,9 +61,19 @@ const MediaGrid = ({ media, loading, title }: MediaGridProps) => {
               key={mediaItem.mal_id}
               id={mediaItem.mal_id}
               title={isCharacter ? mediaItem.name : mediaItem.title}
-              imageUrl={isCharacter ? mediaItem.images.webp.image_url : mediaItem.images.webp.large_image_url}
+              imageUrl={
+                isCharacter
+                  ? mediaItem.images.webp.image_url
+                  : mediaItem.images.webp.large_image_url
+              }
               score={isCharacter ? undefined : mediaItem.score}
-              episodes={isCharacter ? undefined : ("episodes" in mediaItem ? mediaItem.episodes : mediaItem.volumes)}
+              episodes={
+                isCharacter
+                  ? undefined
+                  : "episodes" in mediaItem
+                  ? mediaItem.episodes
+                  : mediaItem.volumes
+              }
               type={isCharacter ? undefined : mediaItem.type}
               genres={isCharacter ? [] : mediaItem.genres}
               members={isCharacter ? mediaItem.favorites : mediaItem.members}

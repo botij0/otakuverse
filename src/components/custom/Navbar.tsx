@@ -35,10 +35,9 @@ const Navbar = () => {
           {/* Logo */}
           <div className="flex items-center me-4">
             <div className="text-lg lg:text-2xl font-title bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              AnimeVerse
+              OtakuVerse
             </div>
           </div>
-
           {/* Desktop Nav Links */}
           <div className="hidden md:flex">
             <NavMenuCustom />

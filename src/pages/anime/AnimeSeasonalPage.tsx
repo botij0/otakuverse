@@ -15,7 +15,7 @@ export const SeasonalAnimePage = () => {
     isLoading: isLoadingAnime,
     error: errorAnime,
   } = useQuery({
-    queryKey: ["animeTop", { page }],
+    queryKey: ["seasonalAnime", { page }],
     queryFn: () =>
       getAnimeSeasonalAction({
         page,
