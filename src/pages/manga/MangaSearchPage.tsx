@@ -12,18 +12,6 @@ export const SearchMangaPage = () => {
   const query = searchParams.get("query") || null;
   const genres = searchParams.get("genres") || null;
 
-  if (isLoading) {
-    return (
-      <>
-        <Hero showSearchBar={true} />
-
-        <main className="container mx-auto px-4">
-          <MediaGrid loading={true} />
-        </main>
-      </>
-    );
-  }
-
   const mangaList = mangaData && !error ? mangaData.data : [];
 
   return (
@@ -33,8 +21,14 @@ export const SearchMangaPage = () => {
       <main className="container mx-auto px-4">
         {(query || genres) && (
           <>
-            <MediaGrid media={mangaList} loading={false} title={"Manga Search Results"} />
-            <CustomPagination totalPages={mangaData!.pagination.last_visible_page} />
+            <MediaGrid
+              media={mangaList}
+              loading={isLoading}
+              title={"Manga Search Results"}
+            />
+            {mangaData && (
+              <CustomPagination totalPages={mangaData!.pagination.last_visible_page} />
+            )}
           </>
         )}
       </main>

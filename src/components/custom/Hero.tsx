@@ -9,9 +9,10 @@ import { GenresToggleGroup } from "./GenresToggleGroup";
 
 interface HeroProps {
   showSearchBar?: boolean;
+  hideGenres?: boolean;
 }
 
-const Hero = ({ showSearchBar = false }: HeroProps) => {
+const Hero = ({ showSearchBar = false, hideGenres = false }: HeroProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -93,40 +94,11 @@ const Hero = ({ showSearchBar = false }: HeroProps) => {
                 </Button>
               </div>
             </div>
-            {/* Quick Links */}
-            {/* <div className="flex flex-wrap justify-center gap-4 mt-8 animate-fade-in">
-              <Button
-                variant="secondary"
-                className="bg-secondary/80 hover:bg-secondary backdrop-blur"
-                onClick={() => handleSearch("action")}
-              >
-                Action
-              </Button>
-              <Button
-                variant="secondary"
-                className="bg-secondary/80 hover:bg-secondary backdrop-blur"
-                onClick={() => handleSearch("romance")}
-              >
-                Romance
-              </Button>
-              <Button
-                variant="secondary"
-                className="bg-secondary/80 hover:bg-secondary backdrop-blur"
-                onClick={() => handleSearch("fantasy")}
-              >
-                Fantasy
-              </Button>
-              <Button
-                variant="secondary"
-                className="bg-secondary/80 hover:bg-secondary backdrop-blur"
-                onClick={() => handleSearch("comedy")}
-              >
-                Comedy
-              </Button>
-            </div> */}
-            <div className="mt-3">
-              <GenresToggleGroup />
-            </div>
+            {!hideGenres && (
+              <div className="mt-3">
+                <GenresToggleGroup />
+              </div>
+            )}
           </>
         )}
       </div>

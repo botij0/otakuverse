@@ -12,18 +12,6 @@ export const SearchAnimePage = () => {
   const query = searchParams.get("query") || null;
   const genres = searchParams.get("genres") || null;
 
-  if (isLoadingAnime) {
-    return (
-      <>
-        <Hero showSearchBar={true} />
-
-        <main className="container mx-auto px-4">
-          <MediaGrid loading={true} />
-        </main>
-      </>
-    );
-  }
-
   const animesList = animeData && !error ? animeData.data : [];
 
   return (
@@ -35,10 +23,12 @@ export const SearchAnimePage = () => {
           <>
             <MediaGrid
               media={animesList}
-              loading={false}
+              loading={isLoadingAnime}
               title={"Anime Search Results"}
             />
-            <CustomPagination totalPages={animeData!.pagination.last_visible_page} />
+            {animeData && (
+              <CustomPagination totalPages={animeData!.pagination.last_visible_page} />
+            )}
           </>
         )}
       </main>
