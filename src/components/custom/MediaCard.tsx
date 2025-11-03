@@ -3,7 +3,7 @@ import { Award, Star, User } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import type { Demographic, MediaType } from "@/interfaces/media.list.response";
-import { useNavigate } from "react-router";
+import { useNavigate, useSearchParams } from "react-router";
 
 interface MediaCardProps {
   id: number;
@@ -43,6 +43,11 @@ const MediaCard = ({
   isCharacter,
 }: MediaCardProps) => {
   const navigate = useNavigate();
+
+  const [searchParams] = useSearchParams();
+  const page = Number(searchParams.get("page")) || 1;
+
+  const characterRank = !rank ? undefined : rank + (page - 1) * 25;
 
   let epsLabel = "eps";
   let statusLabel = "Airing";
@@ -93,7 +98,11 @@ const MediaCard = ({
         {rank && (
           <div className="absolute top-2 left-2 flex items-center gap-1 bg-background/80 backdrop-blur px-2 py-1 rounded-md">
             <Award className="h-4 w-4 fill-accent text-accent" />
-            <span className="text-sm font-semibold">{rank.toLocaleString("en-US")}</span>
+            <span className="text-sm font-semibold">
+              {isCharacter
+                ? characterRank?.toLocaleString("en-US")
+                : rank.toLocaleString("en-US")}
+            </span>
           </div>
         )}
       </div>
