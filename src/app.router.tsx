@@ -16,6 +16,7 @@ import { CharacterTopPage } from "./pages/characters/CharacterTopPage";
 import { CharacterSearchPage } from "./pages/characters/CharacterSearchPage";
 import { CharacterDetailsPage } from "./pages/characters/CharacterDetailsPage";
 import { SeasonalAnimePage } from "./pages/anime/AnimeSeasonalPage";
+import { AnimeRecomendationsPage } from "./pages/anime/AnimeRecomendationsPage";
 
 export const appRouter = createBrowserRouter([
   // Main routes
@@ -48,6 +49,10 @@ export const appRouter = createBrowserRouter([
       {
         path: "anime/seasonal",
         element: <SeasonalAnimePage />,
+      },
+      {
+        path: "anime/recommendations",
+        element: <AnimeRecomendationsPage />,
       },
 
       // Manga

@@ -58,7 +58,7 @@ export function NavMenuCustom() {
               <li>
                 <NavigationMenuLink asChild>
                   <Link
-                    to="/anime/recomendations"
+                    to="/anime/recommendations"
                     className="flex-row items-center gap-2"
                   >
                     <Users />
