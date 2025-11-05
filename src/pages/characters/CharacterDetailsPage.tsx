@@ -5,8 +5,10 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { useQuery } from "@tanstack/react-query";
 import { ArrowLeft, Star } from "lucide-react";
 import { useNavigate, useParams } from "react-router";
+import { useState } from "react";
 
 export const CharacterDetailsPage = () => {
+  const [showFullAbout, setShowFullAbout] = useState(false);
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
 
@@ -99,9 +101,31 @@ export const CharacterDetailsPage = () => {
 
           <div className="space-y-2">
             <h2 className="text-2xl font-semibold">About</h2>
-            <p className="text-muted-foreground leading-relaxed">
-              {character.about || "No info available."}
-            </p>
+            <div className="text-muted-foreground leading-relaxed">
+              {character.about ? (
+                <>
+                  <p>
+                    {showFullAbout
+                      ? character.about
+                      : character.about.length > 400
+                        ? `${character.about.substring(0, 400)}...`
+                        : character.about
+                    }
+                  </p>
+                  {character.about.length > 400 && (
+                    <Button
+                      variant="link"
+                      className="p-0 h-auto text-accent hover:text-accent/80"
+                      onClick={() => setShowFullAbout(!showFullAbout)}
+                    >
+                      {showFullAbout ? "See less" : "See more"}
+                    </Button>
+                  )}
+                </>
+              ) : (
+                <p>No info available.</p>
+              )}
+            </div>
           </div>
 
           <div className="grid grid-cols-2 gap-4 bg-card border border-border rounded-lg p-4"></div>
