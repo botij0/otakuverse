@@ -13,6 +13,7 @@ export interface CharacterDetails {
   anime: AnimeElement[];
   manga: Manga[];
   voices: Voice[];
+  personalData: PersonalData;
 }
 
 export interface AnimeElement {
@@ -67,4 +68,13 @@ export interface Person {
 
 export interface PersonImages {
   jpg: Jpg;
+}
+
+export interface PersonalData {
+  age: number | null;
+  birthDate: string | null;
+  height: number | null; // en cm
+  weight: number | null; // en kg
+  bloodType: string | null;
+  occupation: string | null;
 }

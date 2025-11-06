@@ -3,7 +3,17 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useQuery } from "@tanstack/react-query";
-import { ArrowLeft, Star } from "lucide-react";
+import {
+  ArrowLeft,
+  Briefcase,
+  Cake,
+  CircleQuestionMark,
+  Contact,
+  Droplet,
+  Ruler,
+  Star,
+  Weight,
+} from "lucide-react";
 import { useNavigate, useParams } from "react-router";
 import { useState } from "react";
 
@@ -63,7 +73,7 @@ export const CharacterDetailsPage = () => {
 
       <div className="grid md:grid-cols-4 gap-y-8 md:gap-x-24">
         <div className="space-y-4">
-          <div className="overflow-hidden rounded-lg border shadow">
+          <div className="overflow-hidden rounded-lg border shadow h-3/5">
             <img
               src={character.images.webp.image_url}
               alt={character.name}
@@ -73,9 +83,68 @@ export const CharacterDetailsPage = () => {
 
           <div className="space-y-3 bg-card border border-border rounded-lg p-4">
             <div className="flex items-center gap-2">
-              <Star className="h-4 w-4 fill-accent text-accent" />
-              <span className="font-semibold text-lg">{character.favorites}</span>
-              <span className="text-sm text-muted-foreground">users</span>
+              <Star className="h-5 w-5 fill-accent text-accent" />
+              <span className="font-semibold text-md">{character.favorites} Users</span>
+            </div>
+            <div className="flex items-center gap-2 text-sm">
+              <Contact className="h-5 w-5 text-accent" />
+              <span className="flex items-center">
+                {character.personalData.age ? (
+                  `${character.personalData.age} years`
+                ) : (
+                  <CircleQuestionMark className="me-1 h-4 w-4" />
+                )}
+              </span>
+            </div>
+            <div className="flex items-center gap-2 text-sm">
+              <Cake className="h-5 w-5 text-accent" />
+              <span className="flex items-center">
+                {character.personalData.birthDate ? (
+                  character.personalData.birthDate
+                ) : (
+                  <CircleQuestionMark className="me-1 h-4 w-4" />
+                )}
+              </span>
+            </div>
+            <div className="flex items-center gap-2 text-sm">
+              <Ruler className="h-5 w-5 text-accent" />
+              <span>
+                {character.personalData.height ? (
+                  `${character.personalData.height} cm`
+                ) : (
+                  <CircleQuestionMark className="me-2 h-4 w-4" />
+                )}
+              </span>
+            </div>
+            <div className="flex items-center gap-2 text-sm">
+              <Weight className="h-5 w-5 text-accent" />
+              <span className="flex items-center">
+                {character.personalData.weight ? (
+                  `${character.personalData.weight} Kg`
+                ) : (
+                  <CircleQuestionMark className="me-2 h-4 w-4" />
+                )}
+              </span>
+            </div>
+            <div className="flex items-center gap-2 text-sm">
+              <Droplet className="h-5 w-5 text-accent" />
+              <span className="flex items-center">
+                {character.personalData.bloodType ? (
+                  `${character.personalData.bloodType} type`
+                ) : (
+                  <CircleQuestionMark className="me-2 h-4 w-4" />
+                )}
+              </span>
+            </div>{" "}
+            <div className="flex items-center gap-2 text-sm">
+              <Briefcase className="h-5 w-5 text-accent" />
+              <span className="flex items-center">
+                {character.personalData.occupation ? (
+                  `${character.personalData.occupation}`
+                ) : (
+                  <CircleQuestionMark className="me-2 h-4 w-4" />
+                )}
+              </span>
             </div>
           </div>
         </div>
@@ -108,9 +177,8 @@ export const CharacterDetailsPage = () => {
                     {showFullAbout
                       ? character.about
                       : character.about.length > 400
-                        ? `${character.about.substring(0, 400)}...`
-                        : character.about
-                    }
+                      ? `${character.about.substring(0, 400)}...`
+                      : character.about}
                   </p>
                   {character.about.length > 400 && (
                     <Button
