@@ -1,8 +1,6 @@
-import { getCharacterDetailsAction } from "@/actions/get-character-details.action";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Skeleton } from "@/components/ui/skeleton";
 import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
+import { useNavigate, useParams } from "react-router";
 import {
   ArrowLeft,
   Briefcase,
@@ -14,9 +12,10 @@ import {
   Star,
   Weight,
 } from "lucide-react";
-import { useNavigate, useParams } from "react-router";
-import { useState } from "react";
 
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
@@ -25,6 +24,8 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+
+import { getCharacterDetailsAction } from "@/actions/get-character-details.action";
 
 export const CharacterDetailsPage = () => {
   const [showFullAbout, setShowFullAbout] = useState(false);
