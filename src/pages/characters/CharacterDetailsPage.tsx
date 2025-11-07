@@ -17,6 +17,15 @@ import {
 import { useNavigate, useParams } from "react-router";
 import { useState } from "react";
 
+import { Card, CardContent } from "@/components/ui/card";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+
 export const CharacterDetailsPage = () => {
   const [showFullAbout, setShowFullAbout] = useState(false);
   const { id } = useParams<{ id: string }>();
@@ -72,7 +81,7 @@ export const CharacterDetailsPage = () => {
       </Button>
 
       <div className="grid md:grid-cols-4 gap-y-8 md:gap-x-24">
-        <div className="space-y-4">
+        <div className="space-y-4 max-h-[600px]">
           <div className="overflow-hidden rounded-lg border shadow h-3/5">
             <img
               src={character.images.webp.image_url}
@@ -170,7 +179,7 @@ export const CharacterDetailsPage = () => {
 
           <div className="space-y-2">
             <h2 className="text-2xl font-semibold">About</h2>
-            <div className="text-muted-foreground leading-relaxed">
+            <div className="text-muted-foreground leading-relaxed max-h-[200px] overflow-y-auto">
               {character.about ? (
                 <>
                   <div>
@@ -199,8 +208,87 @@ export const CharacterDetailsPage = () => {
               )}
             </div>
           </div>
+          <div className="space-y-2">
+            <h2 className="text-2xl font-semibold mb-4">Animes</h2>
 
-          <div className="grid grid-cols-2 gap-4 bg-card border border-border rounded-lg p-4"></div>
+            <Carousel
+              opts={{
+                align: "start",
+              }}
+              className="mx-10 max-w-5xl"
+            >
+              <CarouselContent>
+                {character.anime.map((anime, index) => (
+                  <CarouselItem
+                    key={index}
+                    className="md:basis-1/2 lg:basis-1/3 xl:basis-1/4"
+                    onClick={() => navigate(`/anime/${anime.anime.mal_id}`)}
+                  >
+                    <div className="p-1">
+                      <Card className="group overflow-hidden border-border bg-card hover:border-primary transition-all duration-300 hover:shadow-primary cursor-pointer">
+                        <div className="relative aspect-[3/4] overflow-hidden">
+                          <img
+                            src={anime.anime.images.webp.image_url}
+                            alt={anime.anime.title}
+                            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        </div>
+                        <CardContent className="flex items-center justify-center py-5">
+                          <h3 className="font-semibold text-foreground line-clamp-2 group-hover:text-primary transition-colors">
+                            {anime.anime.title}
+                          </h3>
+                        </CardContent>
+                      </Card>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
+          </div>
+
+          <div className="space-y-2">
+            <h2 className="text-2xl font-semibold mb-4">Mangas</h2>
+
+            <Carousel
+              opts={{
+                align: "start",
+              }}
+              className="mx-10 max-w-5xl"
+            >
+              <CarouselContent>
+                {character.manga.map((manga, index) => (
+                  <CarouselItem
+                    key={index}
+                    className="md:basis-1/2 lg:basis-1/3 xl:basis-1/4"
+                    onClick={() => navigate(`/anime/${manga.manga.mal_id}`)}
+                  >
+                    <div className="p-1">
+                      <Card className="group overflow-hidden border-border bg-card hover:border-primary transition-all duration-300 hover:shadow-primary cursor-pointer">
+                        <div className="relative aspect-[3/4] overflow-hidden">
+                          <img
+                            src={manga.manga.images.webp.image_url}
+                            alt={manga.manga.title}
+                            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        </div>
+                        <CardContent className="flex items-center justify-center py-5">
+                          <h3 className="font-semibold text-foreground line-clamp-2 group-hover:text-primary transition-colors">
+                            {manga.manga.title}
+                          </h3>
+                        </CardContent>
+                      </Card>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
+          </div>
         </div>
       </div>
     </main>
@@ -216,7 +304,7 @@ const splitIntoParagarphs = (text: string): string[] => {
 
   const paragraphs: string[] = [];
   for (let i = 0; i < sentences.length; i += 4) {
-    const group = sentences.slice(i, i + 4).join('. ');
+    const group = sentences.slice(i, i + 4).join(". ");
     paragraphs.push(group);
   }
 
