@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useQuery } from "@tanstack/react-query";
 import { getAnimeDetailsAction } from "@/actions/get-anime-details.action";
+import { splitIntoParagarphs } from "@/lib/utils";
 
 export const AnimeDetailsPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -58,17 +59,17 @@ export const AnimeDetailsPage = () => {
         Back
       </Button>
 
-      <div className="grid md:grid-cols-4 gap-y-8 md:gap-x-24">
-        <div className="space-y-4">
+      <div className="grid lg:grid-cols-4 gap-y-8 lg:gap-x-24">
+        <div className="space-y-4 grid grid-cols-2 lg:grid-cols-1 gap-x-24 col-span-3 lg:col-span-1">
           <div className="overflow-hidden rounded-lg border shadow">
             <img
-              src={anime.images.webp.large_image_url}
+              src={anime.images.webp.image_url}
               alt={anime.title}
-              className="h-full w-full object-cover"
+              className="w-full h-full object-cover"
             />
           </div>
 
-          <div className="space-y-3 bg-card border border-border rounded-lg p-4">
+          <div className="space-y-3 bg-card border border-border rounded-lg p-4 max-h-[220px]">
             <div className="flex items-center gap-2">
               <Star className="h-4 w-4 fill-accent text-accent" />
               <span className="font-semibold text-lg">
@@ -120,7 +121,11 @@ export const AnimeDetailsPage = () => {
           <div className="space-y-2">
             <h2 className="text-2xl font-semibold">Synopsis</h2>
             <p className="text-muted-foreground leading-relaxed">
-              {anime.synopsis || "No synopsis available."}
+              {splitIntoParagarphs(anime.synopsis).map((p, i) => (
+                <p key={i} className="mb-3">
+                  {p}
+                </p>
+              ))}
             </p>
           </div>
           <div className="flex flex-wrap gap-2">
