@@ -15,8 +15,9 @@ interface MediaCardProps {
   genres: Demographic[];
   members?: number;
   rank?: number;
-  nicknames?: string[];
+  nicknames: string[];
   isCharacter?: boolean;
+  kanjiName?: string;
 }
 
 const mangaTypes = [
@@ -41,6 +42,7 @@ const MediaCard = ({
   rank,
   nicknames,
   isCharacter,
+  kanjiName,
 }: MediaCardProps) => {
   const navigate = useNavigate();
 
@@ -107,11 +109,11 @@ const MediaCard = ({
         )}
       </div>
 
-      <CardContent className="p-4">
+      <CardContent className="p-4 flex flex-col h-auto min-h-[140px]">
         <h3 className="font-semibold text-foreground line-clamp-2 mb-2 group-hover:text-primary transition-colors">
           {title}
         </h3>
-        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+        <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
           {type && <span className="capitalize">{type}</span>}
           {type && episodes !== undefined && <span>•</span>}
           {episodes !== undefined &&
@@ -122,9 +124,11 @@ const MediaCard = ({
             ) : (
               <span>{statusLabel}</span>
             ))}
+          {kanjiName && <span>{kanjiName}</span>}
         </div>
 
-        <div className="flex items-center gap-2 text-sm text-muted-foreground mt-4">
+        {/* Badges */}
+        <div className="flex items-center gap-2 text-sm text-muted-foreground mt-auto">
           {isCharacter ? (
             <>
               {nicknames[0] && <Badge>{nicknames[0]}</Badge>}

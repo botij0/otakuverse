@@ -67,6 +67,7 @@ const MediaGrid = ({ media, loading, title, seeMore, seeMoreLink }: MediaGridPro
                   : mediaItem.images.webp.large_image_url
               }
               score={isCharacter ? undefined : mediaItem.score}
+              kanjiName={isCharacter ? mediaItem.name_kanji : undefined}
               episodes={
                 isCharacter
                   ? undefined
