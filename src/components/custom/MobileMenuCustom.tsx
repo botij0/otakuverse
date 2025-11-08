@@ -96,7 +96,7 @@ export const MobileMenuCustom = ({ inputRef, handleSearch }: MobileMenuCustomPro
             </li>
             <li>
               <Link
-                to="/manga/recomendations"
+                to="/manga/recommendations"
                 className="block text-sm hover:text-primary transition-colors py-1"
               >
                 Recomendations
