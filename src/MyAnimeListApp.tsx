@@ -8,7 +8,7 @@ const queryClient = new QueryClient();
 function MyAnimeListApp() {
   return (
     <QueryClientProvider client={queryClient}>
-      <RouterProvider router={appRouter} />;
+      <RouterProvider router={appRouter} />
     </QueryClientProvider>
   );
 }

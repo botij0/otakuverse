@@ -19,7 +19,7 @@ export const SearchAnimePage = () => {
     <>
       <Hero showSearchBar={true} img={animeBanner} />
 
-      <main className="container mx-auto px-4">
+      <main className="container mx-auto px-4 min-h-[calc(100vh-600px)]">
         {(query || genres) && (
           <>
             <MediaGrid
@@ -31,6 +31,16 @@ export const SearchAnimePage = () => {
               <CustomPagination totalPages={animeData!.pagination.last_visible_page} />
             )}
           </>
+        )}
+        {!query && (
+          <div className="text-center py-20">
+            <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent font-title">
+              Anime Search Page
+            </h2>
+            <p className="text-muted-foreground text-lg">
+              Search for an anime by name!
+            </p>
+          </div>
         )}
       </main>
     </>
