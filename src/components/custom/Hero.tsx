@@ -8,11 +8,22 @@ import heroBanner from "@/assets/hero-banner.jpg";
 import { GenresToggleGroup } from "./GenresToggleGroup";
 
 interface HeroProps {
+  title?: string;
+  subtitle?: string;
+  description?: string;
   showSearchBar?: boolean;
   hideGenres?: boolean;
+  img?: string;
 }
 
-const Hero = ({ showSearchBar = false, hideGenres = false }: HeroProps) => {
+const Hero = ({
+  showSearchBar = false,
+  hideGenres = false,
+  img = heroBanner,
+  title,
+  subtitle,
+  description,
+}: HeroProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -41,7 +52,7 @@ const Hero = ({ showSearchBar = false, hideGenres = false }: HeroProps) => {
       {/* Background Image with Overlay */}
       <div
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${heroBanner})` }}
+        style={{ backgroundImage: `url(${img})` }}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background"></div>
       </div>
@@ -50,20 +61,23 @@ const Hero = ({ showSearchBar = false, hideGenres = false }: HeroProps) => {
       <div className="relative z-10 container mx-auto px-4 py-20 text-center">
         {!showSearchBar && (
           <>
-            <h1 className="text-3xl md:text-5xl font-bold mb-6 animate-fade-in font-title">
-              <span className="bg-gradient-to-r from-primary via-primary-glow to-accent bg-clip-text text-transparent">
-                Discover Your Next
-              </span>
-              <br />
-              <span className="text-foreground text-2xl md:text-4xl">
-                Otaku Adventure
-              </span>
-            </h1>
+            {title && (
+              <h1 className="text-3xl md:text-5xl font-bold mb-6 animate-fade-in font-title">
+                <span className="bg-gradient-to-r from-primary via-primary-glow to-accent bg-clip-text text-transparent">
+                  {title}
+                </span>
+                <br />
+                {subtitle && (
+                  <span className="text-foreground text-2xl md:text-4xl">{subtitle}</span>
+                )}
+              </h1>
+            )}
 
-            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto animate-fade-in text-pretty">
-              Search through thousands of anime and manga titles. Find your next
-              obsession.
-            </p>
+            {description && (
+              <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto animate-fade-in text-pretty">
+                {description}
+              </p>
+            )}
           </>
         )}
 

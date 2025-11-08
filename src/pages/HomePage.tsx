@@ -39,7 +39,11 @@ export const HomePage = () => {
 
   return (
     <>
-      <Hero />
+      <Hero
+        title="Discover Your Next"
+        subtitle="Otaku Adventure"
+        description="Search through thousands of anime and manga titles. Find your next obsession."
+      />
 
       <main className="container mx-auto px-4">
         <MediaGrid

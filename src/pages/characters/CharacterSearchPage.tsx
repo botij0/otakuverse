@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router";
 
 import Hero from "@/components/custom/Hero";
 import MediaGrid from "@/components/custom/MediaGrid";
+import characterBanner from "@/assets/characters_banner.webp";
 import { CustomPagination } from "@/components/custom/CustomPagination";
 import { getSearchCharacterAction } from "@/actions/get-search-media.action";
 
@@ -26,7 +27,7 @@ export const CharacterSearchPage = () => {
 
   return (
     <>
-      <Hero showSearchBar={true} hideGenres={true} />
+      <Hero showSearchBar={true} hideGenres={true} img={characterBanner} />
 
       <main className="container mx-auto px-4">
         {query && (

@@ -1,9 +1,11 @@
 import { useSearchParams } from "react-router";
 import { useQuery } from "@tanstack/react-query";
 
-import { getAnimeSeasonalAction } from "@/actions/get-anime-seasonal.action";
+import Hero from "@/components/custom/Hero";
 import MediaGrid from "@/components/custom/MediaGrid";
+import animeBanner from "@/assets/anime_banner.webp";
 import { CustomPagination } from "@/components/custom/CustomPagination";
+import { getAnimeSeasonalAction } from "@/actions/get-anime-seasonal.action";
 
 export const SeasonalAnimePage = () => {
   const [searchParams] = useSearchParams();
@@ -26,11 +28,18 @@ export const SeasonalAnimePage = () => {
   const animeList = animeData && !errorAnime ? animeData.data : [];
 
   return (
-    <main className="container mx-auto px-4">
-      <MediaGrid media={animeList} loading={isLoadingAnime} title={"Seasonal Anime"} />
-      {animeData && (
-        <CustomPagination totalPages={animeData!.pagination.last_visible_page} />
-      )}
-    </main>
+    <>
+      <Hero
+        title="Seasonal Animes"
+        description="Anime currently airing"
+        img={animeBanner}
+      />
+      <main className="container mx-auto px-4">
+        <MediaGrid media={animeList} loading={isLoadingAnime} />
+        {animeData && (
+          <CustomPagination totalPages={animeData!.pagination.last_visible_page} />
+        )}
+      </main>
+    </>
   );
 };

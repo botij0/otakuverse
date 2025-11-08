@@ -2,6 +2,7 @@ import { useSearchParams } from "react-router";
 
 import Hero from "@/components/custom/Hero";
 import MediaGrid from "@/components/custom/MediaGrid";
+import mangaBanner from "@/assets/manga_banner.webp";
 import { useSearchManga } from "@/hooks/useSearchManga";
 import { CustomPagination } from "@/components/custom/CustomPagination";
 
@@ -16,7 +17,7 @@ export const SearchMangaPage = () => {
 
   return (
     <>
-      <Hero showSearchBar={true} />
+      <Hero showSearchBar={true} img={mangaBanner} />
 
       <main className="container mx-auto px-4">
         {(query || genres) && (

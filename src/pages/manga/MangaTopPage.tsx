@@ -1,7 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { useSearchParams } from "react-router";
 
+import Hero from "@/components/custom/Hero";
 import MediaGrid from "@/components/custom/MediaGrid";
+import mangaBanner from "@/assets/manga_banner.webp";
 import { CustomPagination } from "@/components/custom/CustomPagination";
 import { getMangaTopAction } from "@/actions/get-manga-top.action";
 
@@ -26,11 +28,18 @@ export const MangaTopPage = () => {
   const mangaList = mangaData && !error ? mangaData.data : [];
 
   return (
-    <main className="container mx-auto px-4">
-      <MediaGrid media={mangaList} loading={isLoading} title={"Top Manga"} />
-      {mangaData && (
-        <CustomPagination totalPages={mangaData!.pagination.last_visible_page} />
-      )}
-    </main>
+    <>
+      <Hero
+        title="Top manga"
+        description="Updated manga top from myanimelist"
+        img={mangaBanner}
+      />
+      <main className="container mx-auto px-4">
+        <MediaGrid media={mangaList} loading={isLoading} />
+        {mangaData && (
+          <CustomPagination totalPages={mangaData!.pagination.last_visible_page} />
+        )}
+      </main>
+    </>
   );
 };

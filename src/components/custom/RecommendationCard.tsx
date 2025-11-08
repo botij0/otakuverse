@@ -50,12 +50,6 @@ export const RecommendationCard = ({
           </div>
         </div>
 
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
-          <div className="bg-primary rounded-full p-2 shadow-glow">
-            <ArrowRight className="h-5 w-5 text-primary-foreground" />
-          </div>
-        </div>
-
         <div className="p-4 bg-card/50">
           <p className="text-sm text-muted-foreground line-clamp-3">{content}</p>
         </div>
