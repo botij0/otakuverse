@@ -19,7 +19,7 @@ import { EmptyDetails } from "@/components/custom/EmptyDetails";
 import { SkeletonDetails } from "@/components/custom/SkeletonDetails";
 import { Card, CardContent } from "@/components/ui/card";
 import { splitIntoParagarphs } from "@/lib/utils";
-import { getCharacterDetailsAction } from "@/actions/get-character-details.action";
+import { getCharacterDetailsAction } from "@/actions/get-character.actions";
 import {
   Carousel,
   CarouselContent,

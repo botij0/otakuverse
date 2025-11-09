@@ -1,9 +1,10 @@
-import Hero from "@/components/custom/Hero";
-import { RecommendationsGrid } from "@/components/custom/RecommendationsGrid";
 import { useQuery } from "@tanstack/react-query";
 import { useSearchParams } from "react-router";
+
+import Hero from "@/components/custom/Hero";
 import mangaBanner from "@/assets/manga_banner.webp";
-import { getMangaRecommendationsAction } from "@/actions/get-manga-recommendations";
+import { RecommendationsGrid } from "@/components/custom/RecommendationsGrid";
+import { getMangaRecommendationsAction } from "@/actions/get-manga.actions";
 
 export const MangaRecomendationsPage = () => {
   const [searchParams] = useSearchParams();

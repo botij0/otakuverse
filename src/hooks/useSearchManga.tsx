@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useSearchParams } from "react-router";
 
-import { getSearchMangaAction } from "@/actions/get-search-media.action";
+import { getSearchMangaAction } from "@/actions/get-manga.actions";
 
 export const useSearchManga = () => {
   const [searchParams] = useSearchParams();

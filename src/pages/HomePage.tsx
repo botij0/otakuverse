@@ -2,8 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 
 import Hero from "@/components/custom/Hero";
 import MediaGrid from "@/components/custom/MediaGrid";
-import { getAnimeTopAction } from "@/actions/get-anime-top.action";
-import { getMangaTopAction } from "@/actions/get-manga-top.action";
+import { getAnimeTopAction } from "@/actions/get-anime.actions";
+import { getMangaTopAction } from "@/actions/get-manga.actions";
 
 export const HomePage = () => {
   const page = 1;

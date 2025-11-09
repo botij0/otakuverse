@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { EmptyDetails } from "@/components/custom/EmptyDetails";
 import { SkeletonDetails } from "@/components/custom/SkeletonDetails";
 import { splitIntoParagarphs } from "@/lib/utils";
-import { getAnimeDetailsAction } from "@/actions/get-anime-details.action";
+import { getAnimeDetailsAction } from "@/actions/get-anime.actions";
 
 export const AnimeDetailsPage = () => {
   const { id } = useParams<{ id: string }>();

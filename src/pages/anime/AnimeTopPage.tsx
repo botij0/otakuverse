@@ -5,7 +5,7 @@ import Hero from "@/components/custom/Hero";
 import MediaGrid from "@/components/custom/MediaGrid";
 import animeBanner from "@/assets/anime_banner.webp";
 import { CustomPagination } from "@/components/custom/CustomPagination";
-import { getAnimeTopAction } from "@/actions/get-anime-top.action";
+import { getAnimeTopAction } from "@/actions/get-anime.actions";
 
 export const AnimeTopPage = () => {
   const [searchParams] = useSearchParams();

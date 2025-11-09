@@ -1,9 +1,49 @@
 import { jikanApi } from "@/api/jikanApi";
+import type { CharacterListResponse } from "@/interfaces/character.list.response";
 import type {
   CharacterDetails,
   CharacterDetailsResponse,
   PersonalData,
 } from "@/interfaces/character.details.response";
+
+interface Options {
+  page: number;
+}
+
+interface SearchOptions {
+  query?: string;
+  page: number;
+}
+export const getCharacterTopAction = async (
+  options: Options
+): Promise<CharacterListResponse> => {
+  const { page } = options;
+
+  const { data } = await jikanApi.get<CharacterListResponse>("/top/characters", {
+    params: {
+      page: page,
+    },
+  });
+
+  return data;
+};
+
+export const getSearchCharacterAction = async (
+  options: SearchOptions
+): Promise<CharacterListResponse> => {
+  const { query, page } = options;
+
+  if (!query) return {} as CharacterListResponse;
+
+  const { data } = await jikanApi.get<CharacterListResponse>("/characters", {
+    params: {
+      q: query,
+      page: page,
+    },
+  });
+
+  return data;
+};
 
 export const getCharacterDetailsAction = async (
   id: string

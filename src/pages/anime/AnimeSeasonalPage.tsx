@@ -5,7 +5,7 @@ import Hero from "@/components/custom/Hero";
 import MediaGrid from "@/components/custom/MediaGrid";
 import animeBanner from "@/assets/anime_banner.webp";
 import { CustomPagination } from "@/components/custom/CustomPagination";
-import { getAnimeSeasonalAction } from "@/actions/get-anime-seasonal.action";
+import { getAnimeSeasonalAction } from "@/actions/get-anime.actions";
 
 export const SeasonalAnimePage = () => {
   const [searchParams] = useSearchParams();

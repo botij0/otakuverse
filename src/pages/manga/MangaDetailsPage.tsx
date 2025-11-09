@@ -13,7 +13,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { EmptyDetails } from "@/components/custom/EmptyDetails";
 import { SkeletonDetails } from "@/components/custom/SkeletonDetails";
-import { getMangaDetailsAction } from "@/actions/get-manga-details.action";
+import { getMangaDetailsAction } from "@/actions/get-manga.actions";
 
 export const MangaDetailsPage = () => {
   const { id } = useParams<{ id: string }>();

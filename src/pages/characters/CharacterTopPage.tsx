@@ -5,7 +5,7 @@ import Hero from "@/components/custom/Hero";
 import MediaGrid from "@/components/custom/MediaGrid";
 import characterBanner from "@/assets/characters_banner.webp";
 import { CustomPagination } from "@/components/custom/CustomPagination";
-import { getCharacterTopAction } from "@/actions/get-character-top.action";
+import { getCharacterTopAction } from "@/actions/get-character.actions";
 
 export const CharacterTopPage = () => {
   const [searchParams] = useSearchParams();

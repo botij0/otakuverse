@@ -5,7 +5,7 @@ import Hero from "@/components/custom/Hero";
 import MediaGrid from "@/components/custom/MediaGrid";
 import characterBanner from "@/assets/characters_banner.webp";
 import { CustomPagination } from "@/components/custom/CustomPagination";
-import { getSearchCharacterAction } from "@/actions/get-search-media.action";
+import { getSearchCharacterAction } from "@/actions/get-character.actions";
 
 export const CharacterSearchPage = () => {
   const [searchParams] = useSearchParams();
@@ -46,7 +46,7 @@ export const CharacterSearchPage = () => {
               Character Search Page
             </h2>
             <p className="text-muted-foreground text-lg">
-             Search for a character by name!
+              Search for a character by name!
             </p>
           </div>
         )}

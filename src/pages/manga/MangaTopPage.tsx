@@ -5,7 +5,7 @@ import Hero from "@/components/custom/Hero";
 import MediaGrid from "@/components/custom/MediaGrid";
 import mangaBanner from "@/assets/manga_banner.webp";
 import { CustomPagination } from "@/components/custom/CustomPagination";
-import { getMangaTopAction } from "@/actions/get-manga-top.action";
+import { getMangaTopAction } from "@/actions/get-manga.actions";
 
 export const MangaTopPage = () => {
   const [searchParams] = useSearchParams();
