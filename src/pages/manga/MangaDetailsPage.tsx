@@ -1,3 +1,4 @@
+import { useQuery } from "@tanstack/react-query";
 import { useNavigate, useParams } from "react-router";
 import {
   ArrowLeft,
@@ -10,8 +11,8 @@ import {
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Skeleton } from "@/components/ui/skeleton";
-import { useQuery } from "@tanstack/react-query";
+import { EmptyDetails } from "@/components/custom/EmptyDetails";
+import { SkeletonDetails } from "@/components/custom/SkeletonDetails";
 import { getMangaDetailsAction } from "@/actions/get-manga-details.action";
 
 export const MangaDetailsPage = () => {
@@ -29,33 +30,11 @@ export const MangaDetailsPage = () => {
   });
 
   if (isLoading) {
-    return (
-      <div className="min-h-screen bg-background">
-        <main className="container mx-auto px-4 py-8">
-          <Skeleton className="h-8 w-32 mb-8" />
-          <div className="grid md:grid-cols-3 gap-8">
-            <Skeleton className="h-[500px]" />
-            <div className="md:col-span-2 space-y-4">
-              <Skeleton className="h-12 w-3/4" />
-              <Skeleton className="h-32 w-full" />
-            </div>
-          </div>
-        </main>
-      </div>
-    );
+    return <SkeletonDetails />;
   }
 
   if (error || !manga) {
-    return (
-      <div className="min-h-screen bg-background">
-        <main className="container mx-auto px-4 py-20 text-center">
-          <p className="text-muted-foreground text-lg">Failed to load manga details.</p>
-          <Button onClick={() => navigate("/")} className="mt-4">
-            Go Back Home
-          </Button>
-        </main>
-      </div>
-    );
+    return <EmptyDetails />;
   }
 
   return (

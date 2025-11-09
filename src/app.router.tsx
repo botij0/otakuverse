@@ -7,17 +7,17 @@ import { SearchPage } from "./pages/search/SearchPage";
 import { AnimeTopPage } from "./pages/anime/AnimeTopPage";
 import { SearchAnimePage } from "./pages/anime/AnimeSearchPage";
 import { AnimeDetailsPage } from "./pages/anime/AnimeDetailsPage";
+import { SeasonalAnimePage } from "./pages/anime/AnimeSeasonalPage";
+import { AnimeRecomendationsPage } from "./pages/anime/AnimeRecomendationsPage";
 
 import { MangaTopPage } from "./pages/manga/MangaTopPage";
 import { SearchMangaPage } from "./pages/manga/MangaSearchPage";
 import { MangaDetailsPage } from "./pages/manga/MangaDetailsPage";
+import { MangaRecomendationsPage } from "./pages/manga/MangaRecomendationsPage";
 
 import { CharacterTopPage } from "./pages/characters/CharacterTopPage";
 import { CharacterSearchPage } from "./pages/characters/CharacterSearchPage";
 import { CharacterDetailsPage } from "./pages/characters/CharacterDetailsPage";
-import { SeasonalAnimePage } from "./pages/anime/AnimeSeasonalPage";
-import { AnimeRecomendationsPage } from "./pages/anime/AnimeRecomendationsPage";
-import { MangaRecomendationsPage } from "./pages/manga/MangaRecomendationsPage";
 
 export const appRouter = createBrowserRouter([
   // Main routes

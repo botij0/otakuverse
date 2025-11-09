@@ -15,8 +15,11 @@ import {
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Skeleton } from "@/components/ui/skeleton";
+import { EmptyDetails } from "@/components/custom/EmptyDetails";
+import { SkeletonDetails } from "@/components/custom/SkeletonDetails";
 import { Card, CardContent } from "@/components/ui/card";
+import { splitIntoParagarphs } from "@/lib/utils";
+import { getCharacterDetailsAction } from "@/actions/get-character-details.action";
 import {
   Carousel,
   CarouselContent,
@@ -24,9 +27,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-
-import { splitIntoParagarphs } from "@/lib/utils";
-import { getCharacterDetailsAction } from "@/actions/get-character-details.action";
 
 export const CharacterDetailsPage = () => {
   const [showFullAbout, setShowFullAbout] = useState(false);
@@ -44,35 +44,11 @@ export const CharacterDetailsPage = () => {
   });
 
   if (isLoading) {
-    return (
-      <div className="min-h-screen bg-background">
-        <main className="container mx-auto px-4 py-8">
-          <Skeleton className="h-8 w-32 mb-8" />
-          <div className="grid md:grid-cols-3 gap-8">
-            <Skeleton className="h-[500px]" />
-            <div className="md:col-span-2 space-y-4">
-              <Skeleton className="h-12 w-3/4" />
-              <Skeleton className="h-32 w-full" />
-            </div>
-          </div>
-        </main>
-      </div>
-    );
+    return <SkeletonDetails />;
   }
 
   if (error || !character) {
-    return (
-      <div className="min-h-screen bg-background">
-        <main className="container mx-auto px-4 py-20 text-center">
-          <p className="text-muted-foreground text-lg">
-            Failed to load character details.
-          </p>
-          <Button onClick={() => navigate(-1)} className="mt-4">
-            Go Back
-          </Button>
-        </main>
-      </div>
-    );
+    return <EmptyDetails />;
   }
 
   return (
