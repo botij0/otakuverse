@@ -4,6 +4,10 @@ export interface AnimeListResponse extends TopMediaResponse {
   data: Anime[];
 }
 
+export interface AnimeDetailsResponse {
+  data: Anime;
+}
+
 export interface Anime extends Media {
   source: string;
   episodes: number;

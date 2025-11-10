@@ -1,4 +1,4 @@
-import { jikanApi } from "@/api/jikanApi";
+import { jikanApi } from "@/api/jikan.api";
 import type { CharacterListResponse } from "@/interfaces/character";
 import type {
   CharacterDetails,

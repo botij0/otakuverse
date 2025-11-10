@@ -1,4 +1,4 @@
-import { jikanApi } from "@/api/jikanApi";
+import { jikanApi } from "@/api/jikan.api";
 import { getGenresIdsByGenresString } from "@/interfaces/genres";
 import type { RecomendationsResponse } from "@/interfaces/recomendations";
 import type { Manga, MangaListResponse } from "@/interfaces/manga";
