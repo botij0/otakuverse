@@ -6,7 +6,7 @@ export interface TopMediaResponse {
 export interface Media {
   mal_id: number;
   url: string;
-  images: { [key: string]: Image };
+  images: Images;
   title: string;
   title_english: null | string;
   title_japanese: string;
@@ -31,7 +31,18 @@ export interface Demographic {
   url: string;
 }
 
-export interface Image {
+export interface Images {
+  jpg: Jpg;
+  webp: Webp;
+}
+
+export interface Jpg {
+  image_url: string;
+  small_image_url: string;
+  large_image_url: string;
+}
+
+export interface Webp {
   image_url: string;
   small_image_url: string;
   large_image_url: string;
@@ -78,3 +89,9 @@ export const emptyMediaResponse: TopMediaResponse = {
     },
   },
 };
+
+export interface MediaLittle {
+  mal_id: number;
+  images: Images;
+  title: string;
+}

@@ -2,7 +2,7 @@ import { Award, Star, User } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import type { Demographic, MediaType } from "@/interfaces/media.list.response";
+import type { Demographic, MediaType } from "@/interfaces/media";
 import { useNavigate, useSearchParams } from "react-router";
 
 interface MediaCardProps {

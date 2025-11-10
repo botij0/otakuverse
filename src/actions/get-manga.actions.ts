@@ -1,7 +1,7 @@
 import { jikanApi } from "@/api/jikanApi";
 import { getGenresIdsByGenresString } from "@/interfaces/genres";
-import type { RecomendationsResponse } from "@/interfaces/recomendations.response";
-import type { Manga, MangaListResponse } from "@/interfaces/manga.list.response";
+import type { RecomendationsResponse } from "@/interfaces/recomendations";
+import type { Manga, MangaListResponse } from "@/interfaces/manga";
 
 interface Options {
   page: number;

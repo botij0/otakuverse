@@ -1,6 +1,6 @@
 import { Skeleton } from "../ui/skeleton";
 import { RecommendationCard } from "./RecommendationCard";
-import type { Recomendation } from "@/interfaces/recomendations.response";
+import type { Recomendation } from "@/interfaces/recomendations";
 
 interface RecommendationsGridProps {
   isLoading: boolean;

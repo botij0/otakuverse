@@ -2,9 +2,9 @@ import { Link } from "react-router";
 import { ArrowRight, Loader2 } from "lucide-react";
 
 import MediaCard from "@/components/custom/MediaCard";
-import type { Anime } from "@/interfaces/anime.list.response";
-import type { Manga } from "@/interfaces/manga.list.response";
-import type { Character } from "@/interfaces/character.list.response";
+import type { Anime } from "@/interfaces/anime";
+import type { Manga } from "@/interfaces/manga";
+import type { Character } from "@/interfaces/character";
 
 interface MediaGridProps {
   media?: Anime[] | Manga[] | Character[];

@@ -1,15 +1,25 @@
+import type { Images, Jpg, MediaLittle, Pagination } from "./media";
+
+export interface CharacterListResponse {
+  pagination: Pagination;
+  data: Character[];
+}
+
 export interface CharacterDetailsResponse {
   data: CharacterDetails;
 }
 
-export interface CharacterDetails {
+export interface Character {
   mal_id: number;
-  images: DataImages;
+  images: Images;
   name: string;
   name_kanji: string;
   nicknames: string[];
   favorites: number;
   about: string;
+}
+
+export interface CharacterDetails extends Character {
   anime: AnimeElement[];
   manga: Manga[];
   voices: Voice[];
@@ -18,41 +28,12 @@ export interface CharacterDetails {
 
 export interface AnimeElement {
   role: string;
-  anime: MediaClass;
+  anime: MediaLittle;
 }
 
 export interface Manga {
   role: string;
-  manga: MediaClass;
-}
-
-export interface MediaClass {
-  mal_id: number;
-  images: DataImages;
-  title: string;
-}
-
-export interface Image {
-  image_url: string;
-  small_image_url: string;
-  large_image_url: string;
-}
-
-export interface DataImages {
-  jpg: Jpg;
-  webp: Webp;
-}
-
-export interface Jpg {
-  image_url: string;
-  small_image_url: string;
-  large_image_url: string;
-}
-
-export interface Webp {
-  image_url: string;
-  small_image_url: string;
-  large_image_url: string;
+  manga: MediaLittle;
 }
 
 export interface Voice {

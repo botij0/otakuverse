@@ -1,10 +1,10 @@
 import { jikanApi } from "@/api/jikanApi";
-import type { CharacterListResponse } from "@/interfaces/character.list.response";
+import type { CharacterListResponse } from "@/interfaces/character";
 import type {
   CharacterDetails,
   CharacterDetailsResponse,
   PersonalData,
-} from "@/interfaces/character.details.response";
+} from "@/interfaces/character";
 
 interface Options {
   page: number;

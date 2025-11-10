@@ -2,7 +2,7 @@ import { ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router";
 
 import { Card, CardContent } from "@/components/ui/card";
-import type { RecomendationEntry } from "@/interfaces/recomendations.response";
+import type { RecomendationEntry } from "@/interfaces/recomendations";
 
 interface RecommendationCardProps {
   anime1: RecomendationEntry;
