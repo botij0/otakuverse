@@ -39,7 +39,7 @@ export const CharacterDetailsPage = () => {
     error,
   } = useQuery({
     queryKey: ["characterDetails", id],
-    queryFn: () => getCharacterDetailsAction(id!),
+    queryFn: () => getCharacterDetailsAction(+id!),
     enabled: !!id,
   });
 

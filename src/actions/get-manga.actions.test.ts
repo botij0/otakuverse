@@ -18,8 +18,8 @@ describe("Get Manga Actions", () => {
 
   describe("Get Manga Details", () => {
     test("Should return empty data if id is not a number", async () => {
-      const animeDetails = await getMangaDetailsAction(+"aaaa");
-      expect(animeDetails).toStrictEqual({});
+      const mangaDetails = await getMangaDetailsAction(+"aaaa");
+      expect(mangaDetails).toStrictEqual({});
     });
   });
 
@@ -29,8 +29,8 @@ describe("Get Manga Actions", () => {
         page: 1,
         limit: 1,
       };
-      const animeSearch = await getSearchMangaAction(options);
-      expect(animeSearch).toStrictEqual({});
+      const mangaSearch = await getSearchMangaAction(options);
+      expect(mangaSearch).toStrictEqual({});
     });
 
     test("should have been called with the correct params", async () => {

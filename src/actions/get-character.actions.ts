@@ -17,7 +17,11 @@ interface SearchOptions {
 export const getCharacterTopAction = async (
   options: Options
 ): Promise<CharacterListResponse> => {
-  const { page } = options;
+  let { page } = options;
+
+  if (isNaN(page)) {
+    page = 1;
+  }
 
   const { data } = await jikanApi.get<CharacterListResponse>("/top/characters", {
     params: {
@@ -31,7 +35,12 @@ export const getCharacterTopAction = async (
 export const getSearchCharacterAction = async (
   options: SearchOptions
 ): Promise<CharacterListResponse> => {
-  const { query, page } = options;
+  const { query } = options;
+  let { page } = options;
+
+  if (isNaN(page)) {
+    page = 1;
+  }
 
   if (!query) return {} as CharacterListResponse;
 
@@ -46,9 +55,12 @@ export const getSearchCharacterAction = async (
 };
 
 export const getCharacterDetailsAction = async (
-  id: string
+  id: number
 ): Promise<CharacterDetails> => {
+  if (isNaN(id)) return {} as CharacterDetails;
+
   const { data } = await jikanApi.get<CharacterDetailsResponse>(`/characters/${id}/full`);
+
   data.data.personalData = parseCharacterInfo(data.data.about);
   data.data.about = extractDescription(data.data.about);
   return data.data;
