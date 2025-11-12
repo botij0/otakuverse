@@ -14,13 +14,18 @@ interface SearchOptions {
   limit: number;
 }
 
-export const getMangaDetailsAction = async (id: string): Promise<Manga> => {
+export const getMangaDetailsAction = async (id: number): Promise<Manga> => {
+  if (isNaN(id)) return {} as Manga;
   const { data } = await jikanApi.get(`/manga/${id}`);
   return data.data;
 };
 
 export const getMangaTopAction = async (options: Options): Promise<MangaListResponse> => {
-  const { page } = options;
+  let { page } = options;
+
+  if (isNaN(page)) {
+    page = 1;
+  }
 
   const { data } = await jikanApi.get<MangaListResponse>("/top/manga", {
     params: {
@@ -34,7 +39,11 @@ export const getMangaTopAction = async (options: Options): Promise<MangaListResp
 export const getMangaRecommendationsAction = async (
   options: Options
 ): Promise<RecomendationsResponse> => {
-  const { page } = options;
+  let { page } = options;
+
+  if (isNaN(page)) {
+    page = 1;
+  }
 
   const { data } = await jikanApi.get<RecomendationsResponse>("/recommendations/manga", {
     params: {
@@ -48,7 +57,12 @@ export const getMangaRecommendationsAction = async (
 export const getSearchMangaAction = async (
   options: SearchOptions
 ): Promise<MangaListResponse> => {
-  const { query, page, limit, genres } = options;
+  const { query, limit, genres } = options;
+  let { page } = options;
+
+  if (isNaN(page)) {
+    page = 1;
+  }
 
   if (!query && !genres) return {} as MangaListResponse;
 

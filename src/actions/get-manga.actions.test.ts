@@ -3,46 +3,45 @@ import AxiosMockAdapter from "axios-mock-adapter";
 
 import { jikanApi } from "@/api/jikan.api";
 import {
-  getAnimeDetailsAction,
-  getAnimeRecommendationsAction,
-  getAnimeSeasonalAction,
-  getAnimeTopAction,
-  getSearchAnimeAction,
-} from "./get-anime.actions";
+  getMangaDetailsAction,
+  getMangaRecommendationsAction,
+  getMangaTopAction,
+  getSearchMangaAction,
+} from "./get-manga.actions";
 
-describe("Get Anime Actions", () => {
+describe("Get Manga Actions", () => {
   const jikanMock = new AxiosMockAdapter(jikanApi);
 
   beforeEach(() => {
     jikanMock.reset();
   });
 
-  describe("Get Anime Details", () => {
+  describe("Get Manga Details", () => {
     test("Should return empty data if id is not a number", async () => {
-      const animeDetails = await getAnimeDetailsAction(+"aaaa");
+      const animeDetails = await getMangaDetailsAction(+"aaaa");
       expect(animeDetails).toStrictEqual({});
     });
   });
 
-  describe("Get Search Anime", () => {
+  describe("Get Search Manga", () => {
     test("Should return empty data if not query and genres provided", async () => {
       const options = {
         page: 1,
         limit: 1,
       };
-      const animeSearch = await getSearchAnimeAction(options);
+      const animeSearch = await getSearchMangaAction(options);
       expect(animeSearch).toStrictEqual({});
     });
 
     test("should have been called with the correct params", async () => {
-      jikanMock.onGet("/anime").reply(200, { data: [] });
+      jikanMock.onGet("/manga").reply(200, { data: [] });
       const options = {
         page: 1,
         limit: 1,
         genres: "romance,drama,action",
         query: "naruto",
       };
-      await getSearchAnimeAction(options);
+      await getSearchMangaAction(options);
       const params = jikanMock.history.get[0].params;
       expect(params).toStrictEqual({
         page: 1,
@@ -54,13 +53,13 @@ describe("Get Anime Actions", () => {
     });
   });
 
-  describe("Get Anime Top", () => {
+  describe("Get Manga Top", () => {
     test("should have been called with the correct params", async () => {
-      jikanMock.onGet("/top/anime").reply(200, { data: [] });
+      jikanMock.onGet("/top/manga").reply(200, { data: [] });
       const options = {
         page: +"asdfasdf",
       };
-      await getAnimeTopAction(options);
+      await getMangaTopAction(options);
       const params = jikanMock.history.get[0].params;
       expect(params).toStrictEqual({
         page: 1,
@@ -68,27 +67,13 @@ describe("Get Anime Actions", () => {
     });
   });
 
-  describe("Get Anime Seasonal", () => {
+  describe("Get Manga Recommendations", () => {
     test("should have been called with the correct params", async () => {
-      jikanMock.onGet("/seasons/now").reply(200, { data: [] });
+      jikanMock.onGet("/recommendations/manga").reply(200, { data: [] });
       const options = {
         page: +"asdfasdf",
       };
-      await getAnimeSeasonalAction(options);
-      const params = jikanMock.history.get[0].params;
-      expect(params).toStrictEqual({
-        page: 1,
-      });
-    });
-  });
-
-  describe("Get Anime Recommendations", () => {
-    test("should have been called with the correct params", async () => {
-      jikanMock.onGet("/recommendations/anime").reply(200, { data: [] });
-      const options = {
-        page: +"asdfasdf",
-      };
-      await getAnimeRecommendationsAction(options);
+      await getMangaRecommendationsAction(options);
       const params = jikanMock.history.get[0].params;
       expect(params).toStrictEqual({
         page: 1,

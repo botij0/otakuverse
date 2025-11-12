@@ -25,7 +25,7 @@ export const MangaDetailsPage = () => {
     error,
   } = useQuery({
     queryKey: ["mangaDetails", id],
-    queryFn: () => getMangaDetailsAction(id!),
+    queryFn: () => getMangaDetailsAction(+id!),
     enabled: !!id,
   });
 
