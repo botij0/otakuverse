@@ -20,7 +20,7 @@ export const AnimeDetailsPage = () => {
     error,
   } = useQuery({
     queryKey: ["animeDetails", id],
-    queryFn: () => getAnimeDetailsAction(id!),
+    queryFn: () => getAnimeDetailsAction(+id!),
     enabled: !!id,
   });
 

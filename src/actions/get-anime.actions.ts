@@ -14,7 +14,8 @@ interface SearchOptions {
   limit: number;
 }
 
-export const getAnimeDetailsAction = async (id: string): Promise<Anime> => {
+export const getAnimeDetailsAction = async (id: number): Promise<Anime> => {
+  if (isNaN(id)) return {} as Anime;
   const { data } = await jikanApi.get<AnimeDetailsResponse>(`/anime/${id}`);
   return data.data;
 };
