@@ -47,9 +47,9 @@ const MediaGrid = ({ media, loading, title, seeMore, seeMoreLink }: MediaGridPro
         {seeMore && seeMoreLink && (
           <Link
             to={seeMoreLink}
-            className="group flex text-accent text-lg gap-3 items-center hover:scale-105 transition-all duration-300 ease-in-out"
+            className="group flex bg-gradient-to-r from-primary via-primary-glow to-accent bg-clip-text text-transparent text-lg gap-3 items-center hover:scale-105 transition-all duration-300 ease-in-out"
           >
-            See More <ArrowRight />
+            See More <ArrowRight className="text-fuchsia-500/70" />
           </Link>
         )}
       </div>
