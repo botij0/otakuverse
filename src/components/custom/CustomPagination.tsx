@@ -70,6 +70,7 @@ export const CustomPagination = ({ totalPages }: Props) => {
   return (
     <div className="flex items-center justify-center space-x-2 text-primary-foreground">
       <Button
+        title="Previous page"
         variant="outline"
         size="sm"
         disabled={page === 1}
@@ -100,6 +101,7 @@ export const CustomPagination = ({ totalPages }: Props) => {
       })}
 
       <Button
+        title="Next page"
         variant="outline"
         size="sm"
         disabled={page === totalPages}

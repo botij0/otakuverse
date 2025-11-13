@@ -20,6 +20,7 @@ export const GenresToggleGroup = () => {
 
     setSearchParams(newSearchParams);
   };
+
   return (
     <ToggleGroup
       type="multiple"

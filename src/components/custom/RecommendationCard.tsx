@@ -1,4 +1,3 @@
-import { ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router";
 
 import { Card, CardContent } from "@/components/ui/card";
