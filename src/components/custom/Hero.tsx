@@ -53,6 +53,7 @@ const Hero = ({
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url(${img})` }}
+        data-testid="backgroundImg"
       >
         <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background"></div>
       </div>
