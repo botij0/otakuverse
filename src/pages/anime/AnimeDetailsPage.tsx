@@ -9,6 +9,7 @@ import { EmptyDetails } from "@/components/custom/EmptyDetails";
 import { SkeletonDetails } from "@/components/custom/SkeletonDetails";
 import { splitIntoParagarphs } from "@/lib/utils";
 import { getAnimeDetailsAction } from "@/actions/get-anime.actions";
+import type { Demographic } from "@/interfaces/media";
 
 export const AnimeDetailsPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -109,12 +110,12 @@ export const AnimeDetailsPage = () => {
             </p>
           </div>
           <div className="flex flex-wrap gap-2">
-            {anime.genres?.map((genre: any) => (
+            {anime.genres?.map((genre: Demographic) => (
               <Badge key={genre.mal_id} variant="default">
                 {genre.name}
               </Badge>
             ))}
-            {anime.themes?.map((theme: any) => (
+            {anime.themes?.map((theme: Demographic) => (
               <Badge key={theme.mal_id} variant="secondary">
                 {theme.name}
               </Badge>

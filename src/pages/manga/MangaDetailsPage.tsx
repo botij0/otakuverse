@@ -14,6 +14,7 @@ import { Button } from "@/components/ui/button";
 import { EmptyDetails } from "@/components/custom/EmptyDetails";
 import { SkeletonDetails } from "@/components/custom/SkeletonDetails";
 import { getMangaDetailsAction } from "@/actions/get-manga.actions";
+import type { Demographic } from "@/interfaces/media";
 
 export const MangaDetailsPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -111,12 +112,12 @@ export const MangaDetailsPage = () => {
           </div>
 
           <div className="flex flex-wrap gap-2">
-            {manga.genres?.map((genre: any) => (
+            {manga.genres?.map((genre: Demographic) => (
               <Badge key={genre.mal_id} variant="default">
                 {genre.name}
               </Badge>
             ))}
-            {manga.themes?.map((theme: any) => (
+            {manga.themes?.map((theme: Demographic) => (
               <Badge key={theme.mal_id} variant="secondary">
                 {theme.name}
               </Badge>
