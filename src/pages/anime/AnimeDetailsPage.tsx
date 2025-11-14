@@ -1,26 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate, useParams } from "react-router";
-import {
-  ArrowLeft,
-  Star,
-  Calendar,
-  Tv,
-  Users,
-  Clock,
-  Music,
-  Music2,
-  MonitorPlay,
-} from "lucide-react";
+import { ArrowLeft, Star, Calendar, Tv, Users, Clock, Music, Music2 } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
 import { EmptyDetails } from "@/components/custom/EmptyDetails";
+import type { Platform } from "@/interfaces/anime";
 import { SkeletonDetails } from "@/components/custom/SkeletonDetails";
+import type { Demographic } from "@/interfaces/media";
 import { splitIntoParagarphs } from "@/lib/utils";
 import { getAnimeDetailsAction } from "@/actions/get-anime.actions";
-import type { Demographic } from "@/interfaces/media";
-import type { Platform } from "@/interfaces/anime";
 
 export const AnimeDetailsPage = () => {
   const { id } = useParams<{ id: string }>();

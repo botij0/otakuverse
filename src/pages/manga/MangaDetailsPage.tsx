@@ -13,8 +13,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { EmptyDetails } from "@/components/custom/EmptyDetails";
 import { SkeletonDetails } from "@/components/custom/SkeletonDetails";
-import { getMangaDetailsAction } from "@/actions/get-manga.actions";
 import type { Demographic } from "@/interfaces/media";
+import { splitIntoParagarphs } from "@/lib/utils";
+import { getMangaDetailsAction } from "@/actions/get-manga.actions";
 
 export const MangaDetailsPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -46,8 +47,8 @@ export const MangaDetailsPage = () => {
       </Button>
 
       <div className="grid md:grid-cols-4 gap-y-8 md:gap-x-24">
-        <div className="space-y-4 grid grid-cols-2 lg:grid-cols-1 gap-x-24 col-span-3 lg:col-span-1">
-          <div className="overflow-hidden rounded-lg border shadow">
+        <div className="space-y-4 max-h-[600px]">
+          <div className="overflow-hidden rounded-lg border shadow h-3/5">
             <img
               src={manga.images.webp.large_image_url}
               alt={manga.title}
@@ -107,7 +108,11 @@ export const MangaDetailsPage = () => {
           <div className="space-y-2">
             <h2 className="text-2xl font-semibold">Synopsis</h2>
             <p className="text-muted-foreground leading-relaxed">
-              {manga.synopsis || "No synopsis available."}
+              {splitIntoParagarphs(manga.synopsis).map((p, i) => (
+                <p key={i} className="mb-3">
+                  {p}
+                </p>
+              ))}
             </p>
           </div>
 
@@ -124,7 +129,7 @@ export const MangaDetailsPage = () => {
             ))}
           </div>
 
-          <div className="grid grid-cols-2 gap-4 bg-card border border-border rounded-lg p-4">
+          <div className="flex flex-wrap gap-20 bg-card border border-border rounded-lg p-4 w-fit">
             <div>
               <p className="text-sm text-muted-foreground">Status</p>
               <p className="font-semibold">{manga.status}</p>
@@ -141,6 +146,23 @@ export const MangaDetailsPage = () => {
                 <p className="font-semibold">{manga.authors[0].name}</p>
               </div>
             )}
+            {manga.demographics?.length > 0 && (
+              <div>
+                <p className="text-sm text-muted-foreground">Demographic</p>
+                <p className="font-semibold">{manga.demographics[0].name}</p>
+              </div>
+            )}
+          </div>
+
+          <div className="space-y-2">
+            <h2 className="text-2xl font-semibold">Background</h2>
+            <p className="text-muted-foreground leading-relaxed">
+              {splitIntoParagarphs(manga.background, 2).map((p, i) => (
+                <p key={i} className="mb-3">
+                  {p}
+                </p>
+              ))}
+            </p>
           </div>
         </div>
       </div>

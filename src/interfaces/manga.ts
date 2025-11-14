@@ -11,6 +11,7 @@ export interface Manga extends Media {
   publishing: boolean;
   published: Published;
   authors: Author[];
+  background: string;
 }
 
 export interface Author {
