@@ -47,8 +47,8 @@ export const MangaDetailsPage = () => {
       </Button>
 
       <div className="grid md:grid-cols-4 gap-y-8 md:gap-x-24">
-        <div className="space-y-4 max-h-[600px]">
-          <div className="overflow-hidden rounded-lg border shadow h-3/5">
+        <div className="space-y-4">
+          <div className="overflow-hidden rounded-lg border shadow h-[400px]">
             <img
               src={manga.images.webp.large_image_url}
               alt={manga.title}

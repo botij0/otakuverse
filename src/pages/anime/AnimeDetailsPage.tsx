@@ -42,8 +42,8 @@ export const AnimeDetailsPage = () => {
       </Button>
 
       <div className="grid lg:grid-cols-4 gap-y-8 lg:gap-x-24">
-        <div className="space-y-4 max-h-[600px]">
-          <div className="overflow-hidden rounded-lg border shadow h-3/5">
+        <div className="space-y-4">
+          <div className="overflow-hidden rounded-lg border shadow h-[400px]">
             <img
               src={anime.images.webp.large_image_url}
               alt={anime.title}
