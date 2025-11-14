@@ -1,6 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate, useParams } from "react-router";
-import { ArrowLeft, Star, Calendar, Tv, Users, Clock } from "lucide-react";
+import {
+  ArrowLeft,
+  Star,
+  Calendar,
+  Tv,
+  Users,
+  Clock,
+  Music,
+  Music2,
+  MonitorPlay,
+} from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -10,6 +20,7 @@ import { SkeletonDetails } from "@/components/custom/SkeletonDetails";
 import { splitIntoParagarphs } from "@/lib/utils";
 import { getAnimeDetailsAction } from "@/actions/get-anime.actions";
 import type { Demographic } from "@/interfaces/media";
+import type { Platform } from "@/interfaces/anime";
 
 export const AnimeDetailsPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -41,10 +52,10 @@ export const AnimeDetailsPage = () => {
       </Button>
 
       <div className="grid lg:grid-cols-4 gap-y-8 lg:gap-x-24">
-        <div className="space-y-4 grid grid-cols-2 lg:grid-cols-1 gap-x-24 col-span-3 lg:col-span-1">
-          <div className="overflow-hidden rounded-lg border shadow">
+        <div className="space-y-4 max-h-[600px]">
+          <div className="overflow-hidden rounded-lg border shadow h-3/5">
             <img
-              src={anime.images.webp.image_url}
+              src={anime.images.webp.large_image_url}
               alt={anime.title}
               className="w-full h-full object-cover"
             />
@@ -85,6 +96,24 @@ export const AnimeDetailsPage = () => {
               <span>{anime.members?.toLocaleString()} members</span>
             </div>
           </div>
+          {anime.streaming.length > 0 && (
+            <div className="space-y-2">
+              <h3 className="text-xl font-semibold">Avialable on</h3>
+              <div className="flex flex-wrap gap-2">
+                {anime.streaming.map((platform: Platform) => (
+                  <>
+                    <Badge
+                      key={platform.url}
+                      variant="default"
+                      className="flex gap-x-2 bg-pink-900 border-pink-500 hover:bg-cyan-950"
+                    >
+                      {platform.name}
+                    </Badge>
+                  </>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
 
         <div className="md:col-span-3 space-y-6">
@@ -122,7 +151,7 @@ export const AnimeDetailsPage = () => {
             ))}
           </div>
 
-          <div className="grid grid-cols-2 gap-4 bg-card border border-border rounded-lg p-4">
+          <div className="flex flex-wrap gap-20 bg-card border border-border rounded-lg p-4 w-fit">
             <div>
               <p className="text-sm text-muted-foreground">Status</p>
               <p className="font-semibold">{anime.status}</p>
@@ -147,6 +176,32 @@ export const AnimeDetailsPage = () => {
                 <p className="font-semibold">{anime.studios[0].name}</p>
               </div>
             )}
+          </div>
+
+          <div className="grid grid-cols-2 gap-4 bg-card border border-border rounded-lg p-4 max-h-[400px] overflow-auto">
+            <div>
+              <p className="text-md text-accent flex gap-x-2 py-1">
+                <Music />
+                Openings
+              </p>
+              <ul className="text-sm">
+                {anime.theme.openings.map((op) => (
+                  <li className="my-2">{op}</li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <p className="text-md text-accent flex gap-x-2 py-1">
+                <Music2 />
+                Endings
+              </p>
+              <ul className="text-sm">
+                {anime.theme.endings.map((ed) => (
+                  <li className="my-2">{ed}</li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </div>

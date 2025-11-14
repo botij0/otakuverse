@@ -16,7 +16,7 @@ interface SearchOptions {
 
 export const getAnimeDetailsAction = async (id: number): Promise<Anime> => {
   if (isNaN(id)) return {} as Anime;
-  const { data } = await jikanApi.get<AnimeDetailsResponse>(`/anime/${id}`);
+  const { data } = await jikanApi.get<AnimeDetailsResponse>(`/anime/${id}/full`);
   return data.data;
 };
 

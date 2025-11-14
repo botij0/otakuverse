@@ -13,8 +13,8 @@ export const splitIntoParagarphs = (text: string): string[] => {
     .filter((s) => s.length > 0);
 
   const paragraphs: string[] = [];
-  for (let i = 0; i < sentences.length; i += 4) {
-    const group = sentences.slice(i, i + 4).join(". ");
+  for (let i = 0; i < sentences.length; i += 3) {
+    const group = sentences.slice(i, i + 3).join(" ");
     paragraphs.push(group);
   }
 
