@@ -68,7 +68,11 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <MobileMenuCustom inputRef={inputRef} handleSearch={handleSearch} />
+          <MobileMenuCustom
+            inputRef={inputRef}
+            handleSearch={handleSearch}
+            onClose={() => setIsMenuOpen(false)}
+          />
         )}
       </div>
     </nav>

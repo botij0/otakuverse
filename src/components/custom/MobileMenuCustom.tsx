@@ -6,9 +6,10 @@ import { Search } from "lucide-react";
 interface MobileMenuCustomProps {
   inputRef: RefObject<HTMLInputElement | null>;
   handleSearch: (event: KeyboardEvent<HTMLInputElement>) => void;
+  onClose: () => void;
 }
 
-export const MobileMenuCustom = ({ inputRef, handleSearch }: MobileMenuCustomProps) => {
+export const MobileMenuCustom = ({ inputRef, handleSearch, onClose }: MobileMenuCustomProps) => {
   return (
     <div className="md:hidden py-4 space-y-4 animate-fade-in">
       <div className="w-full">
@@ -26,6 +27,7 @@ export const MobileMenuCustom = ({ inputRef, handleSearch }: MobileMenuCustomPro
       <div className="flex flex-col gap-3">
         <Link
           to="/"
+          onClick={onClose}
           className="text-foreground hover:text-primary transition-colors py-2"
         >
           Home
@@ -40,6 +42,7 @@ export const MobileMenuCustom = ({ inputRef, handleSearch }: MobileMenuCustomPro
             <li>
               <Link
                 to="/anime/top"
+                onClick={onClose}
                 className="block hover:text-primary transition-colors py-1"
               >
                 Top Anime
@@ -48,6 +51,7 @@ export const MobileMenuCustom = ({ inputRef, handleSearch }: MobileMenuCustomPro
             <li>
               <Link
                 to="/anime/seasonal"
+                onClick={onClose}
                 className="block hover:text-primary transition-colors py-1"
               >
                 Seasonal Animes
@@ -56,6 +60,7 @@ export const MobileMenuCustom = ({ inputRef, handleSearch }: MobileMenuCustomPro
             <li>
               <Link
                 to="/anime/search"
+                onClick={onClose}
                 className="block text-sm hover:text-primary transition-colors py-1"
               >
                 Search Anime
@@ -64,6 +69,7 @@ export const MobileMenuCustom = ({ inputRef, handleSearch }: MobileMenuCustomPro
             <li>
               <Link
                 to="/anime/recommendations"
+                onClick={onClose}
                 className="block text-sm hover:text-primary transition-colors py-1"
               >
                 Recomendations
@@ -81,6 +87,7 @@ export const MobileMenuCustom = ({ inputRef, handleSearch }: MobileMenuCustomPro
             <li>
               <Link
                 to="/manga/top"
+                onClick={onClose}
                 className="block hover:text-primary transition-colors py-1"
               >
                 Top Mangas
@@ -89,6 +96,7 @@ export const MobileMenuCustom = ({ inputRef, handleSearch }: MobileMenuCustomPro
             <li>
               <Link
                 to="/manga/search"
+                onClick={onClose}
                 className="block text-sm hover:text-primary transition-colors py-1"
               >
                 Search Manga
@@ -97,6 +105,7 @@ export const MobileMenuCustom = ({ inputRef, handleSearch }: MobileMenuCustomPro
             <li>
               <Link
                 to="/manga/recommendations"
+                onClick={onClose}
                 className="block text-sm hover:text-primary transition-colors py-1"
               >
                 Recomendations
@@ -114,6 +123,7 @@ export const MobileMenuCustom = ({ inputRef, handleSearch }: MobileMenuCustomPro
             <li>
               <Link
                 to="/character/top"
+                onClick={onClose}
                 className="block hover:text-primary transition-colors py-1"
               >
                 Top Characters
@@ -122,6 +132,7 @@ export const MobileMenuCustom = ({ inputRef, handleSearch }: MobileMenuCustomPro
             <li>
               <Link
                 to="/character/search"
+                onClick={onClose}
                 className="block text-sm hover:text-primary transition-colors py-1"
               >
                 Search Characters
