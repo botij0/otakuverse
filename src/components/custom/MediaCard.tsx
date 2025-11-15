@@ -11,11 +11,11 @@ interface MediaCardProps {
   imageUrl: string;
   score?: number;
   episodes?: number | null;
-  type: MediaType;
+  type?: MediaType;
   genres: Demographic[];
   members?: number;
   rank?: number;
-  nicknames: string[];
+  nicknames?: string[];
   isCharacter?: boolean;
   kanjiName?: string;
 }
@@ -53,7 +53,7 @@ const MediaCard = ({
 
   let epsLabel = "eps";
   let statusLabel = "Airing";
-  if (mangaTypes.includes(type)) {
+  if (type && mangaTypes.includes(type)) {
     epsLabel = "vols";
     statusLabel = "Publishing";
   }
@@ -131,8 +131,8 @@ const MediaCard = ({
         <div className="flex items-center gap-2 text-sm text-muted-foreground mt-auto">
           {isCharacter ? (
             <>
-              {nicknames[0] && <Badge>{nicknames[0]}</Badge>}
-              {nicknames[1] && <Badge variant={"secondary"}>{nicknames[1]}</Badge>}
+              {nicknames && nicknames[0] && <Badge>{nicknames[0]}</Badge>}
+              {nicknames && nicknames[1] && <Badge variant={"secondary"}>{nicknames[1]}</Badge>}
             </>
           ) : (
             <>
