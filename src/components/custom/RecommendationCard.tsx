@@ -2,6 +2,7 @@ import { useNavigate } from "react-router";
 
 import { Card, CardContent } from "@/components/ui/card";
 import type { RecomendationEntry } from "@/interfaces/recomendations";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "../ui/hover-card";
 
 interface RecommendationCardProps {
   anime1: RecomendationEntry;
@@ -25,7 +26,7 @@ export const RecommendationCard = ({
             className="relative aspect-[3/4] overflow-hidden cursor-pointer hover:opacity-80 transition-opacity"
           >
             <img
-              src={anime1.images.jpg.large_image_url}
+              src={anime1.images.jpg.image_url}
               alt={anime1.title}
               className="h-full w-full object-cover"
             />
@@ -39,7 +40,7 @@ export const RecommendationCard = ({
             className="relative aspect-[3/4] overflow-hidden cursor-pointer hover:opacity-80 transition-opacity"
           >
             <img
-              src={anime2.images.jpg.large_image_url}
+              src={anime2.images.jpg.image_url}
               alt={anime2.title}
               className="h-full w-full object-cover"
             />
@@ -49,8 +50,15 @@ export const RecommendationCard = ({
           </div>
         </div>
 
-        <div className="p-4 bg-card/50">
-          <p className="text-sm text-muted-foreground line-clamp-3">{content}</p>
+        <div className="p-4 bg-card/50 relative">
+          <HoverCard>
+            <HoverCardTrigger className="text-sm text-muted-foreground line-clamp-3">
+              {content}
+            </HoverCardTrigger>
+            <HoverCardContent className="text-muted-foreground w-96">
+              {content}
+            </HoverCardContent>
+          </HoverCard>
         </div>
       </CardContent>
     </Card>

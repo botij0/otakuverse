@@ -20,8 +20,8 @@ export const RecommendationsGrid = ({
           ))}
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {recommendationList?.map((rec: Recomendation, index: number) => (
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+          {recommendationList?.slice(0, 18).map((rec: Recomendation, index: number) => (
             <RecommendationCard
               key={`${rec.entry[0].mal_id}-${rec.entry[1].mal_id}-${index}`}
               anime1={rec.entry[0]}
