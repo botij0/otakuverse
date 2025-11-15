@@ -58,9 +58,9 @@ export const CharacterDetailsPage = () => {
         Back
       </Button>
 
-      <div className="grid md:grid-cols-4 gap-y-8 md:gap-x-24">
-        <div className="space-y-4 max-h-[600px]">
-          <div className="overflow-hidden rounded-lg border shadow h-3/5">
+      <div className="grid lg:grid-cols-4 gap-y-8 gap-x-10 xl:gap-x-24">
+        <div className="space-y-4 grid sm:grid-cols-2 lg:grid-cols-1 gap-x-10 max-h-[700px] w-fit">
+          <div className="overflow-hidden rounded-lg border shadow h-[400px] sm:col-span-1">
             <img
               src={character.images.webp.image_url}
               alt={character.name}
@@ -68,7 +68,7 @@ export const CharacterDetailsPage = () => {
             />
           </div>
 
-          <div className="space-y-3 bg-card border border-border rounded-lg p-4">
+          <div className="space-y-3 bg-card border border-border rounded-lg p-4 max-h-[300px]">
             <div className="flex items-center gap-2">
               <Star className="h-5 w-5 fill-accent text-accent" />
               <span className="font-semibold text-md">{character.favorites} Users</span>
@@ -136,7 +136,7 @@ export const CharacterDetailsPage = () => {
           </div>
         </div>
 
-        <div className="md:col-span-3 space-y-6">
+        <div className="lg:col-span-3 space-y-6">
           <div>
             <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent font-title">
               {character.name}
@@ -186,6 +186,7 @@ export const CharacterDetailsPage = () => {
               )}
             </div>
           </div>
+
           <div className="space-y-2">
             <h2 className="text-2xl font-semibold mb-4">Animes</h2>
 
@@ -193,13 +194,13 @@ export const CharacterDetailsPage = () => {
               opts={{
                 align: "start",
               }}
-              className="mx-10 max-w-5xl"
+              className="mx-10 max-w-[220px] xs:max-w-xs sm:max-w-lg md:max-w-xl lg:max-w-5xl"
             >
               <CarouselContent>
                 {character.anime.map((anime, index) => (
                   <CarouselItem
                     key={index}
-                    className="md:basis-1/2 lg:basis-1/3 xl:basis-1/4"
+                    className="xs:basis-1/2 sm:basis-1/3 xl:basis-1/5"
                     onClick={() => navigate(`/anime/${anime.anime.mal_id}`)}
                   >
                     <div className="p-1">
@@ -208,11 +209,11 @@ export const CharacterDetailsPage = () => {
                           <img
                             src={anime.anime.images.webp.image_url}
                             alt={anime.anime.title}
-                            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                         </div>
-                        <CardContent className="flex items-center justify-center py-5">
+                        <CardContent className="flex items-center justify-center py-5 min-h-[88px]">
                           <h3 className="font-semibold text-foreground line-clamp-2 group-hover:text-primary transition-colors">
                             {anime.anime.title}
                           </h3>
@@ -234,13 +235,13 @@ export const CharacterDetailsPage = () => {
               opts={{
                 align: "start",
               }}
-              className="mx-10 max-w-5xl"
+              className="mx-10 max-w-[220px] xs:max-w-xs sm:max-w-lg md:max-w-xl lg:max-w-5xl"
             >
               <CarouselContent>
                 {character.manga.map((manga, index) => (
                   <CarouselItem
                     key={index}
-                    className="md:basis-1/2 lg:basis-1/3 xl:basis-1/4"
+                    className="xs:basis-1/2 sm:basis-1/3 xl:basis-1/5"
                     onClick={() => navigate(`/anime/${manga.manga.mal_id}`)}
                   >
                     <div className="p-1">
@@ -253,7 +254,7 @@ export const CharacterDetailsPage = () => {
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                         </div>
-                        <CardContent className="flex items-center justify-center py-5">
+                        <CardContent className="flex items-center justify-center py-5 min-h-[88px]">
                           <h3 className="font-semibold text-foreground line-clamp-2 group-hover:text-primary transition-colors">
                             {manga.manga.title}
                           </h3>

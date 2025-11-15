@@ -46,9 +46,9 @@ export const MangaDetailsPage = () => {
         Back
       </Button>
 
-      <div className="grid md:grid-cols-4 gap-y-8 md:gap-x-24">
-        <div className="space-y-4">
-          <div className="overflow-hidden rounded-lg border shadow h-[400px]">
+      <div className="grid md:grid-cols-4 gap-y-8 gap-x-1 xl:gap-x-24">
+        <div className="space-y-4 grid sm:grid-cols-2 lg:grid-cols-1 col-span-4 lg:col-span-1 gap-x-5 h-fit">
+          <div className="overflow-hidden rounded-lg border shadow col-span-4 sm:col-span-3 lg:col-span-1">
             <img
               src={manga.images.webp.large_image_url}
               alt={manga.title}
@@ -56,7 +56,7 @@ export const MangaDetailsPage = () => {
             />
           </div>
 
-          <div className="space-y-3 bg-card border border-border rounded-lg p-4 max-h-[220px]">
+          <div className="space-y-3 bg-card border border-border rounded-lg p-4 col-span-4 sm:col-span-1">
             <div className="flex items-center gap-2">
               <Star className="h-4 w-4 fill-accent text-accent" />
               <span className="font-semibold text-lg">
@@ -129,15 +129,15 @@ export const MangaDetailsPage = () => {
             ))}
           </div>
 
-          <div className="flex flex-wrap gap-20 bg-card border border-border rounded-lg p-4 w-fit">
+          <div className="flex flex-wrap gap-y-5 gap-x-10 lg:gap-x-20 bg-card border border-border rounded-lg p-4 w-fit">
             <div>
               <p className="text-sm text-muted-foreground">Status</p>
               <p className="font-semibold">{manga.status}</p>
             </div>
-            {manga.published?.string && (
+            {manga.demographics?.length > 0 && (
               <div>
-                <p className="text-sm text-muted-foreground">Published</p>
-                <p className="font-semibold">{manga.published.string}</p>
+                <p className="text-sm text-muted-foreground">Demographic</p>
+                <p className="font-semibold">{manga.demographics[0].name}</p>
               </div>
             )}
             {manga.authors?.length > 0 && (
@@ -146,10 +146,10 @@ export const MangaDetailsPage = () => {
                 <p className="font-semibold">{manga.authors[0].name}</p>
               </div>
             )}
-            {manga.demographics?.length > 0 && (
+            {manga.published?.string && (
               <div>
-                <p className="text-sm text-muted-foreground">Demographic</p>
-                <p className="font-semibold">{manga.demographics[0].name}</p>
+                <p className="text-sm text-muted-foreground">Published</p>
+                <p className="font-semibold">{manga.published.string}</p>
               </div>
             )}
           </div>

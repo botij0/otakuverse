@@ -41,9 +41,9 @@ export const AnimeDetailsPage = () => {
         Back
       </Button>
 
-      <div className="grid lg:grid-cols-4 gap-y-8 lg:gap-x-24">
-        <div className="space-y-4">
-          <div className="overflow-hidden rounded-lg border shadow h-[400px]">
+      <div className="grid lg:grid-cols-4 gap-y-0 gap-x-8 xl:gap-x-24">
+        <div className="space-y-4 grid sm:grid-cols-2 lg:grid-cols-1 col-span-4 lg:col-span-1 gap-x-5 h-fit">
+          <div className="overflow-hidden rounded-lg border shadow col-span-4 sm:col-span-3 lg:col-span-1">
             <img
               src={anime.images.webp.large_image_url}
               alt={anime.title}
@@ -51,7 +51,7 @@ export const AnimeDetailsPage = () => {
             />
           </div>
 
-          <div className="space-y-3 bg-card border border-border rounded-lg p-4 max-h-[220px]">
+          <div className="space-y-3 bg-card border border-border rounded-lg p-4 col-span-4 sm:col-span-1">
             <div className="flex items-center gap-2">
               <Star className="h-4 w-4 fill-accent text-accent" />
               <span className="font-semibold text-lg">
@@ -87,7 +87,7 @@ export const AnimeDetailsPage = () => {
             </div>
           </div>
           {anime.streaming.length > 0 && (
-            <div className="space-y-2">
+            <div className="space-y-2 col-span-4 lg:col-span-1 mb-5">
               <h3 className="text-xl font-semibold">Avialable on</h3>
               <div className="flex flex-wrap gap-2">
                 {anime.streaming.map((platform: Platform) => (
@@ -106,7 +106,7 @@ export const AnimeDetailsPage = () => {
           )}
         </div>
 
-        <div className="md:col-span-3 space-y-6">
+        <div className="col-span-4 lg:col-span-3 space-y-6">
           <div>
             <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent font-title">
               {anime.title}
@@ -141,17 +141,11 @@ export const AnimeDetailsPage = () => {
             ))}
           </div>
 
-          <div className="flex flex-wrap gap-20 bg-card border border-border rounded-lg p-4 w-fit">
+          <div className="flex flex-wrap gap-y-5 gap-x-20 bg-card border border-border rounded-lg p-4 w-fit">
             <div>
               <p className="text-sm text-muted-foreground">Status</p>
               <p className="font-semibold">{anime.status}</p>
             </div>
-            {anime.aired?.string && (
-              <div>
-                <p className="text-sm text-muted-foreground">Aired</p>
-                <p className="font-semibold">{anime.aired.string}</p>
-              </div>
-            )}
             {anime.season && (
               <div>
                 <p className="text-sm text-muted-foreground">Season</p>
@@ -164,6 +158,12 @@ export const AnimeDetailsPage = () => {
               <div>
                 <p className="text-sm text-muted-foreground">Studio</p>
                 <p className="font-semibold">{anime.studios[0].name}</p>
+              </div>
+            )}
+            {anime.aired?.string && (
+              <div>
+                <p className="text-sm text-muted-foreground">Aired</p>
+                <p className="font-semibold">{anime.aired.string}</p>
               </div>
             )}
           </div>
