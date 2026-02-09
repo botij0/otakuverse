@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router";
+import { createBrowserRouter, Navigate } from "react-router";
 
 import { HomePage } from "./pages/HomePage";
 import { MainLayout } from "@/layouts/MainLayout";
@@ -88,5 +88,9 @@ export const appRouter = createBrowserRouter([
         element: <CharacterTopPage />,
       },
     ],
+  },
+  {
+    path: "*",
+    element: <Navigate to="/" />,
   },
 ]);
