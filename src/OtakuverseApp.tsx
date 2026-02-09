@@ -5,7 +5,7 @@ import { appRouter } from "@/app.router";
 
 const queryClient = new QueryClient();
 
-function MyAnimeListApp() {
+function OtakuverseApp() {
   return (
     <QueryClientProvider client={queryClient}>
       <RouterProvider router={appRouter} />
@@ -13,4 +13,4 @@ function MyAnimeListApp() {
   );
 }
 
-export default MyAnimeListApp;
+export default OtakuverseApp;
