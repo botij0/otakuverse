@@ -20,8 +20,8 @@ export const SearchPage = () => {
 
   const query = searchParams.get("query") || null;
 
-  const animesList = animeData && !errorAnime ? animeData.data : [];
-  const mangaList = mangaData && !errorManga ? mangaData.data : [];
+  const animesList = (animeData && !errorAnime) ? animeData.data : null;
+  const mangaList = (mangaData && !errorManga) ? mangaData.data : null;
 
   return (
     <>
@@ -31,7 +31,7 @@ export const SearchPage = () => {
         {query && (
           <>
             <MediaGrid
-              media={animesList.slice(0, 10)}
+              media={animesList?.slice(0, 10)}
               loading={isLoadingAnime}
               title={`Anime ('${query}')`}
             />
@@ -41,7 +41,7 @@ export const SearchPage = () => {
         {query && (
           <>
             <MediaGrid
-              media={mangaList.slice(0, 10)}
+              media={mangaList?.slice(0, 10)}
               loading={isLoadingManga}
               title={`Manga ('${query}')`}
             />

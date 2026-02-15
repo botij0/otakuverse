@@ -23,7 +23,7 @@ export const CharacterSearchPage = () => {
     staleTime: 1000 * 60 * 5,
   });
 
-  const mangaList = data && !error ? data.data : [];
+  const mangaList = (data && !error) ? data.data : [];
 
   return (
     <>
@@ -37,12 +37,12 @@ export const CharacterSearchPage = () => {
               loading={isLoading}
               title={"Character Search Results"}
             />
-            {data && <CustomPagination totalPages={data!.pagination.last_visible_page} />}
+            {data?.pagination && <CustomPagination totalPages={data!.pagination.last_visible_page} />}
           </>
         )}
         {!query && (
           <div className="text-center py-20">
-            <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent font-title">
+            <h2 className="text-3xl font-bold mb-8 bg-linear-to-r from-primary to-accent bg-clip-text text-transparent font-title">
               Character Search Page
             </h2>
             <p className="text-muted-foreground text-lg">

@@ -34,8 +34,8 @@ export const HomePage = () => {
     staleTime: 1000 * 60 * 5,
   });
 
-  const mangaList = mangaData && !error ? mangaData.data : [];
-  const animeList = animeData && !errorAnime ? animeData.data : [];
+  const mangaList = (mangaData && !error) ? mangaData.data : null;
+  const animeList = (animeData && !errorAnime) ? animeData.data : null;
 
   return (
     <>
@@ -47,7 +47,7 @@ export const HomePage = () => {
 
       <main className="container mx-auto px-4">
         <MediaGrid
-          media={animeList.slice(0, 10) || []}
+          media={animeList?.slice(0, 10) ?? []}
           loading={isLoadingAnime}
           title={"Top 10 Anime"}
           seeMore={true}
@@ -55,7 +55,7 @@ export const HomePage = () => {
         />
 
         <MediaGrid
-          media={mangaList.slice(0, 10) || []}
+          media={mangaList?.slice(0, 10) ?? []}
           loading={isLoadingManga}
           title={"Top 10 Manga"}
           seeMore={true}

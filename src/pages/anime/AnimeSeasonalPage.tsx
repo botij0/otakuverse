@@ -25,7 +25,7 @@ export const SeasonalAnimePage = () => {
     staleTime: 1000 * 60 * 5,
   });
 
-  const animeList = animeData && !errorAnime ? animeData.data : [];
+  const animeList = (animeData && !errorAnime) ? animeData.data : [];
 
   return (
     <>
@@ -36,7 +36,7 @@ export const SeasonalAnimePage = () => {
       />
       <main className="container mx-auto px-4">
         <MediaGrid media={animeList} loading={isLoadingAnime} />
-        {animeData && (
+        {animeData?.pagination && (
           <CustomPagination totalPages={animeData!.pagination.last_visible_page} />
         )}
       </main>

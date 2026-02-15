@@ -20,7 +20,7 @@ export const AnimeRecomendationsPage = () => {
     staleTime: 1000 * 60 * 5,
   });
 
-  const animeRecommendationsList = data && !error ? data.data : [];
+  const animeRecommendationsList = (data && !error) ? data.data : [];
 
   return (
     <>

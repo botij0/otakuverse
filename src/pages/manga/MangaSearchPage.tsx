@@ -13,7 +13,7 @@ export const SearchMangaPage = () => {
   const query = searchParams.get("query") || null;
   const genres = searchParams.get("genres") || null;
 
-  const mangaList = mangaData && !error ? mangaData.data : [];
+  const mangaList = (mangaData && !error) ? mangaData.data : [];
 
   return (
     <>
@@ -27,14 +27,14 @@ export const SearchMangaPage = () => {
               loading={isLoading}
               title={"Manga Search Results"}
             />
-            {mangaData && (
+            {mangaData?.pagination && (
               <CustomPagination totalPages={mangaData!.pagination.last_visible_page} />
             )}
           </>
         )}
         {!query && (
           <div className="text-center py-20">
-            <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent font-title">
+            <h2 className="text-3xl font-bold mb-8 bg-linear-to-r from-primary to-accent bg-clip-text text-transparent font-title">
               Manga Search Page
             </h2>
             <p className="text-muted-foreground text-lg">

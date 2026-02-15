@@ -27,14 +27,14 @@ export const SearchAnimePage = () => {
               loading={isLoadingAnime}
               title={"Anime Search Results"}
             />
-            {animeData && (
+            {animeData?.pagination && (
               <CustomPagination totalPages={animeData!.pagination.last_visible_page} />
             )}
           </>
         )}
         {!query && (
           <div className="text-center py-20">
-            <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent font-title">
+            <h2 className="text-3xl font-bold mb-8 bg-linear-to-r from-primary to-accent bg-clip-text text-transparent font-title">
               Anime Search Page
             </h2>
             <p className="text-muted-foreground text-lg">

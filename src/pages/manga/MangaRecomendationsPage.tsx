@@ -20,7 +20,7 @@ export const MangaRecomendationsPage = () => {
     staleTime: 1000 * 60 * 5,
   });
 
-  const mangaRecommendationsList = data && !error ? data.data : [];
+  const mangaRecommendationsList = (data && !error) ? data.data : [];
 
   return (
     <>

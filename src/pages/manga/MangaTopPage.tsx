@@ -25,7 +25,7 @@ export const MangaTopPage = () => {
     staleTime: 1000 * 60 * 5,
   });
 
-  const mangaList = mangaData && !error ? mangaData.data : [];
+  const mangaList = (mangaData && !error) ? mangaData.data : null;
 
   return (
     <>
@@ -35,8 +35,8 @@ export const MangaTopPage = () => {
         img={mangaBanner}
       />
       <main className="container mx-auto px-4">
-        <MediaGrid media={mangaList} loading={isLoading} />
-        {mangaData && (
+        <MediaGrid media={mangaList ?? []} loading={isLoading} />
+        {mangaData?.pagination && (
           <CustomPagination totalPages={mangaData!.pagination.last_visible_page} />
         )}
       </main>

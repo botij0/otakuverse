@@ -21,7 +21,7 @@ export const CharacterTopPage = () => {
     staleTime: 1000 * 60 * 5,
   });
 
-  const characterList = data && !error ? data.data : [];
+  const characterList = (data && !error) ? data.data : [];
 
   return (
     <>
@@ -32,7 +32,7 @@ export const CharacterTopPage = () => {
       />
       <main className="container mx-auto px-4">
         <MediaGrid media={characterList} loading={isLoading} />
-        {data && <CustomPagination totalPages={data.pagination.last_visible_page} />}
+        {data?.pagination && <CustomPagination totalPages={data.pagination.last_visible_page} />}
       </main>
     </>
   );
