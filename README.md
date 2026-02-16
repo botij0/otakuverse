@@ -18,4 +18,46 @@ Website with content related to anime and manga. Information obtained from myani
 
 1. [Execution](#execution)
     - [Environment Variables](#environment-variables)
-    - [Run App](#run-app)
+    - [Run App Locally](#run-app-locally)
+    - [Run App Docker](#run-app-docker)
+
+## Execution
+
+This section contains how to execute the application once you have cloned the repository.
+
+### Environment variables
+
+1. Copy the enviroment template:
+```
+cp .env.template .env
+```
+> [!NOTE]
+> In the `template_secrets.env` file you can find the following variable:
+>
+> - `VITE_API_URL=https://api.jikan.moe/v4`
+>
+> Althoug it is a public api and does not need an `api_key`, the environment configuration is used in case it changes in the future.
+
+### Run app locally
+
+For this project, I used the package manager of `pnpm` avilable on: [Pnpm](https://pnpm.io/)
+
+1. Install dependencies:
+```
+pnpm install
+```
+2. Run app:
+```
+pnpm run dev
+```
+
+### Run app docker
+1. Build the image:
+```
+docker build -t otakuverse .
+```
+2. Run the container:
+```
+docker run -d -p 3333:80 otakuverse:latest
+```
+
