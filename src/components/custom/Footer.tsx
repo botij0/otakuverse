@@ -47,6 +47,14 @@ const Footer = () => {
                   Recommendations
                 </a>
               </li>
+              <li>
+                <a
+                  href="/anime/build-your-top"
+                  className="hover:text-primary transition-colors"
+                >
+                  Build Your Top
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -117,12 +125,9 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="mt-8 pt-5 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground">
             © 2025 Botij0. All rights reserved.
-          </p>
-          <p className="text-sm text-muted-foreground flex items-center gap-1">
-            Made with <Heart className="h-4 w-4 fill-accent text-accent" /> for anime fans
           </p>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import { AwardIcon, Search, SunSnow, Users } from "lucide-react";
+import { AwardIcon, Blocks, Search, SunSnow, Users } from "lucide-react";
 
 import { useIsMobile } from "@/hooks/useIsMobile";
 
@@ -63,6 +63,17 @@ export function NavMenuCustom() {
                   >
                     <Users />
                     Recomendations
+                  </Link>
+                </NavigationMenuLink>
+              </li>
+              <li>
+                <NavigationMenuLink asChild>
+                  <Link
+                    to="/anime/build-your-top"
+                    className="flex-row items-center gap-2"
+                  >
+                    <Blocks />
+                    Build Your Top
                   </Link>
                 </NavigationMenuLink>
               </li>
