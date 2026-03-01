@@ -1,11 +1,12 @@
 import { Search } from "lucide-react";
 import { useSearchParams } from "react-router";
-import { useRef, type KeyboardEvent } from "react";
+import { useEffect, useRef, useState, type KeyboardEvent } from "react";
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import heroBanner from "@/assets/hero-banner.jpg";
 import { GenresToggleGroup } from "./GenresToggleGroup";
+import { useDebounce } from "@/hooks/useDebounce";
 
 interface HeroProps {
   title?: string;
@@ -25,26 +26,41 @@ const Hero = ({
   description,
 }: HeroProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const inputRef = useRef<HTMLInputElement>(null);
+  const initialQuery = searchParams.get("query") || "";
+  const [inputValue, setInputValue] = useState(initialQuery);
+  const debouncedSearchQuery = useDebounce(inputValue, 500);
+  const isFirstRender = useRef(true);
 
-  const query = searchParams.get("query") || "";
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
 
-  const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
-    if (event.key !== "Enter") return;
-    handleSearch();
-  };
+    const currentQuery = searchParams.get("query") || "";
+
+    if (debouncedSearchQuery !== currentQuery) {
+      const newSearchParams = new URLSearchParams(searchParams);
+      if (!debouncedSearchQuery) {
+        newSearchParams.delete("query");
+      } else {
+        newSearchParams.set("query", debouncedSearchQuery);
+      }
+      setSearchParams(newSearchParams);
+    }
+  }, [debouncedSearchQuery, searchParams, setSearchParams]);
 
   const handleSearch = () => {
-    const query = inputRef.current?.value;
-
-    const newSearchParams = new URLSearchParams();
-
-    if (!query) {
-      newSearchParams.delete("query");
-    } else {
-      newSearchParams.set("query", inputRef.current!.value);
+    const currentQuery = searchParams.get("query") || "";
+    if (inputValue !== currentQuery) {
+      const newSearchParams = new URLSearchParams(searchParams);
+      if (!inputValue) {
+        newSearchParams.delete("query");
+      } else {
+        newSearchParams.set("query", inputValue);
+      }
+      setSearchParams(newSearchParams);
     }
-    setSearchParams(newSearchParams);
   };
 
   return (
@@ -92,9 +108,8 @@ const Hero = ({
                   <Input
                     type="text"
                     placeholder="Search for anime or manga..."
-                    ref={inputRef}
-                    onKeyDown={handleKeyDown}
-                    defaultValue={query}
+                    value={inputValue}
+                    onChange={(e) => setInputValue(e.target.value)}
                     className="h-14 pl-12 bg-card border-primary-on focus:ring-2 focus:ring-primary shadow-lg text-primary-foreground font-bold"
                   />
                 </div>
