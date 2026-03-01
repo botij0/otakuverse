@@ -1,5 +1,6 @@
 import { Link } from "react-router";
-import { ArrowRight, Loader2 } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import MediaCardSkeleton from "@/components/custom/MediaCardSkeleton";
 
 import MediaCard from "@/components/custom/MediaCard";
 import type { Anime } from "@/interfaces/anime";
@@ -14,12 +15,27 @@ interface MediaGridProps {
   seeMoreLink?: string;
 }
 
-const MediaGrid = ({ media, loading, title, seeMore, seeMoreLink }: MediaGridProps) => {
+const MediaGrid = ({
+  media,
+  loading,
+  title,
+  seeMore,
+  seeMoreLink,
+}: MediaGridProps) => {
   if (loading) {
     return (
-      <div className="flex items-center justify-center py-20">
-        <Loader2 className="h-8 w-8 animate-spin text-primary" />
-      </div>
+      <section className="py-12">
+        <div className="flex justify-between items-center mb-8">
+          {title && (
+            <div className="h-9 w-64 bg-primary/10 animate-pulse rounded-md" />
+          )}
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10">
+          {Array.from({ length: 10 }).map((_, i) => (
+            <MediaCardSkeleton key={i} />
+          ))}
+        </div>
+      </section>
     );
   }
 
@@ -72,8 +88,8 @@ const MediaGrid = ({ media, loading, title, seeMore, seeMoreLink }: MediaGridPro
                 isCharacter
                   ? undefined
                   : "episodes" in mediaItem
-                  ? mediaItem.episodes
-                  : mediaItem.volumes
+                    ? mediaItem.episodes
+                    : mediaItem.volumes
               }
               type={isCharacter ? undefined : mediaItem.type}
               genres={isCharacter ? [] : mediaItem.genres}
