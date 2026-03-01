@@ -15,18 +15,9 @@ const Navbar = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const initialQuery = searchParams.get("query") || "";
-  const [inputValue, setInputValue] = useState(initialQuery);
+  const [inputValue, setInputValue] = useState("");
   const debouncedSearchQuery = useDebounce(inputValue, 500);
   const [showDropdown, setShowDropdown] = useState(false);
-
-  // Sync state if url changes externally
-  useEffect(() => {
-    const currentQuery = searchParams.get("query") || "";
-    if (currentQuery !== inputValue && currentQuery !== debouncedSearchQuery) {
-      setInputValue(currentQuery);
-    }
-  }, [searchParams.get("query")]);
 
   useEffect(() => {
     if (debouncedSearchQuery.length >= 3) {
