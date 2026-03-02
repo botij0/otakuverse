@@ -55,13 +55,14 @@ export const GenresToggleGroup = () => {
       size="lg"
       value={currentGenres}
       onValueChange={handleGenresChange}
+      className="flex-wrap"
     >
       {genreItems.map((genre) => {
         return (
           <ToggleGroupItem
             value={genre.name}
             aria-label={`Toggle ${genre.name}`}
-            className="data-[state=on]:bg-primary-on data-[state=on]:*:[svg]:fill-accent data-[state=on]:*:[svg]:stroke-white data-[state=off]:text-white/40"
+            className="data-[state=on]:bg-primary-on data-[state=on]:*:[svg]:fill-accent data-[state=on]:*:[svg]:stroke-white data-[state=off]:text-white/40 px-5"
           >
             {genre.icon}
             {capitalize(genre.name)}

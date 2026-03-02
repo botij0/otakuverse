@@ -1,6 +1,6 @@
 import { Search } from "lucide-react";
 import { useSearchParams } from "react-router";
-import { useEffect, useRef, useState, type KeyboardEvent } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -71,7 +71,7 @@ const Hero = ({
         style={{ backgroundImage: `url(${img})` }}
         data-testid="backgroundImg"
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background"></div>
+        <div className="absolute inset-0 bg-linear-to-b from-background/60 via-background/80 to-background"></div>
       </div>
 
       {/* Content */}
@@ -80,7 +80,7 @@ const Hero = ({
           <>
             {title && (
               <h1 className="text-3xl md:text-5xl font-bold mb-6 animate-fade-in font-title">
-                <span className="bg-gradient-to-r from-primary via-primary-glow to-accent bg-clip-text text-transparent">
+                <span className="bg-linear-to-r from-primary via-primary-glow to-accent bg-clip-text text-transparent">
                   {title}
                 </span>
                 <br />
@@ -117,7 +117,7 @@ const Hero = ({
                   variant="default"
                   size="lg"
                   onClick={handleSearch}
-                  className="h-14 px-8 bg-gradient-to-br from-primary/90 to-fuchsia-900/90
+                  className="h-14 px-8 bg-linear-to-br from-primary/90 to-fuchsia-900/90
                   transition-opacity text-lg font-semibold"
                 >
                   Search

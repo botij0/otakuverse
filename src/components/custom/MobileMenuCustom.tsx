@@ -1,58 +1,23 @@
-import type { KeyboardEvent } from "react";
+import type { Dispatch, SetStateAction } from "react";
 import { Link } from "react-router";
-import { Input } from "../ui/input";
-import { Search } from "lucide-react";
+import { InputSearchMedia } from "./InputSearchMedia";
 
 interface MobileMenuCustomProps {
-  inputValue: string;
-  setInputValue: (value: string) => void;
-  handleSearch: (event: KeyboardEvent<HTMLInputElement>) => void;
-  onClose: () => void;
-  renderDropdownContent: () => React.ReactNode;
-  showDropdown: boolean;
-  setShowDropdown: (show: boolean) => void;
-  debouncedSearchQuery: string;
+  setIsMenuOpen: Dispatch<SetStateAction<boolean>>;
 }
 
 export const MobileMenuCustom = ({
-  inputValue,
-  setInputValue,
-  handleSearch,
-  onClose,
-  renderDropdownContent,
-  showDropdown,
-  setShowDropdown,
-  debouncedSearchQuery,
+  setIsMenuOpen,
 }: MobileMenuCustomProps) => {
+
+  const onClose = () => {
+    setIsMenuOpen(false);
+  }
+
   return (
     <div className="md:hidden py-4 space-y-4 animate-fade-in relative">
       <div className="w-full relative">
-        <div className="relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-          <Input
-            type="text"
-            placeholder="Search anime or manga..."
-            value={inputValue}
-            onChange={(e) => {
-              setInputValue(e.target.value);
-              if (e.target.value.length < 3) setShowDropdown(false);
-            }}
-            onKeyDown={handleSearch}
-            onFocus={() => {
-              if (debouncedSearchQuery.length >= 3) setShowDropdown(true);
-            }}
-            onBlur={() => {
-              setTimeout(() => setShowDropdown(false), 200);
-            }}
-            className="pl-10 bg-muted border-border focus:ring-2 focus:ring-primary text-primary-foreground"
-          />
-        </div>
-
-        {showDropdown && (
-          <div className="absolute top-full left-0 right-0 mt-2 bg-card border rounded-md shadow-lg z-50 overflow-hidden">
-            {renderDropdownContent()}
-          </div>
-        )}
+        <InputSearchMedia setIsMenuOpen={setIsMenuOpen} />
       </div>
       <div className="flex flex-col gap-3">
         <Link

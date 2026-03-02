@@ -42,7 +42,7 @@ const MediaGrid = ({
   if (!media || media.length === 0) {
     return (
       <div className="text-center py-20">
-        <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent font-title">
+        <h2 className="text-3xl font-bold mb-8 bg-linear-to-r from-primary to-accent bg-clip-text text-transparent font-title">
           {title}
         </h2>
         <p className="text-muted-foreground text-lg">
@@ -56,14 +56,14 @@ const MediaGrid = ({
     <section className="py-12">
       <div className="flex justify-between items-center">
         {title && (
-          <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent font-title">
+          <h2 className="text-3xl font-bold mb-8 bg-linear-to-r from-primary to-accent bg-clip-text text-transparent font-title">
             {title}
           </h2>
         )}
         {seeMore && seeMoreLink && (
           <Link
             to={seeMoreLink}
-            className="group flex bg-gradient-to-r from-primary via-primary-glow to-accent bg-clip-text text-transparent text-lg gap-3 items-center hover:scale-105 transition-all duration-300 ease-in-out"
+            className="group flex bg-linear-to-r from-primary via-primary-glow to-accent bg-clip-text text-transparent text-lg gap-3 items-center hover:scale-105 transition-all duration-300 ease-in-out"
           >
             See More <ArrowRight className="text-fuchsia-500/70" />
           </Link>
