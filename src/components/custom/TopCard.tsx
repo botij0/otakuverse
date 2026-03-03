@@ -56,8 +56,8 @@ export const TopCard = ({ position }: Props) => {
               alt={topList[position].title}
               className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
             />
-            <div className="absolute bottom-0 left-0 right-0 bg-black/80 backdrop-blur-sm p-3 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-              <span className="text-white text-xs sm:text-sm font-semibold text-center line-clamp-2 block">
+            <div className="absolute bottom-0 left-0 right-0 bg-primary/50 backdrop-blur-sm py-2 h-12 flex justify-center items-center group-hover:bg-accent/50">
+              <span className="text-white text-sm sm:text-md font-semibold text-center line-clamp-2 block text-pretty">
                 {topList[position].title}
               </span>
             </div>
