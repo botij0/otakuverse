@@ -1,8 +1,8 @@
-import { useState } from 'react'
+import { useState, use } from 'react';
 import { Card, CardContent } from '../ui/card';
 import { Plus } from 'lucide-react';
-import type { Anime } from '@/interfaces/anime';
 import { TopCardSearch } from './TopCardSearch';
+import { BuildYourTopContext } from '@/context/BuildYourTopContext';
 
 type Props = {
   position: number;
@@ -10,7 +10,8 @@ type Props = {
 
 export const TopCard = ({ position }: Props) => {
   const [activeSearchPosition, setActiveSearchPosition] = useState<number | null>(null);
-  const [topList, setTopList] = useState<Record<number, Anime>>({});
+  const { topList, addAnimeToTopList } = use(BuildYourTopContext);
+
   const [searchQuery, setSearchQuery] = useState('');
 
   const handleCardClick = () => {
@@ -47,7 +48,7 @@ export const TopCard = ({ position }: Props) => {
             searchQuery={searchQuery}
             setSearchQuery={setSearchQuery}
             setActiveSearchPosition={setActiveSearchPosition}
-            setTopList={setTopList}
+            addAnimeToTopList={addAnimeToTopList}
           />
         ) : topList[position] ? (
           <div className="absolute inset-0 z-0">

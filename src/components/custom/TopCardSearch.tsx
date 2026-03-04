@@ -10,7 +10,7 @@ import { useSearchAnime } from '@/hooks/useSearchAnime';
 type Props = {
   position: number;
   searchQuery: string;
-  setTopList: Dispatch<SetStateAction<Record<number, Anime>>>;
+  addAnimeToTopList: (position: number, anime: Anime) => void;
   setActiveSearchPosition: Dispatch<SetStateAction<number | null>>;
   setSearchQuery: Dispatch<SetStateAction<string>>;
 }
@@ -19,13 +19,13 @@ export const TopCardSearch = (
   {
     position,
     searchQuery,
-    setTopList,
+    addAnimeToTopList,
     setActiveSearchPosition,
     setSearchQuery
   }: Props) => {
 
   const handleSelectAnime = (position: number, anime: Anime) => {
-    setTopList(prev => ({ ...prev, [position]: anime }));
+    addAnimeToTopList(position, anime);
     setActiveSearchPosition(null);
     setSearchQuery('');
   };
