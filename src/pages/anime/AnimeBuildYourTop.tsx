@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, use } from 'react';
 import * as htmlToImage from 'html-to-image';
 import { Download, Share2, Twitter } from 'lucide-react';
 
@@ -6,6 +6,7 @@ import Hero from '@/components/custom/Hero'
 import { Button } from '@/components/ui/button';
 import animeBanner from "@/assets/anime_banner.webp";
 import { TopCard } from '@/components/custom/TopCard';
+import { BuildYourTopContext } from '@/context/BuildYourTopContext';
 import {
   Dialog,
   DialogContent,
@@ -21,14 +22,17 @@ export const AnimeBuildYourTop = () => {
   const [isShareDialogOpen, setIsShareDialogOpen] = useState(false);
   const [shareImage, setShareImage] = useState<string | null>(null);
   const gridRef = useRef<HTMLDivElement>(null);
+  const shareGridRef = useRef<HTMLDivElement>(null);
+  const { topList } = use(BuildYourTopContext);
 
   const handleShare = async () => {
-    if (!gridRef.current) return;
+    if (!shareGridRef.current) return;
     try {
-      const dataUrl = await htmlToImage.toPng(gridRef.current, {
+      const dataUrl = await htmlToImage.toPng(shareGridRef.current, {
         quality: 0.95,
-        backgroundColor: '#0a0a0a',
+        backgroundColor: '#050816',
         style: { padding: '1rem', margin: '0' },
+        cacheBust: true,
       });
       setShareImage(dataUrl);
       setIsShareDialogOpen(true);
@@ -100,6 +104,72 @@ export const AnimeBuildYourTop = () => {
       </div>
 
     </main>
+
+    {/* Off-screen share layout used only for image generation */}
+    <div className="fixed -left-[9999px] top-0">
+      <div
+        ref={shareGridRef}
+        className="w-[1200px] max-w-none bg-[#050816] text-white rounded-2xl p-8 shadow-2xl border border-white/5"
+      >
+        <div className="flex items-center justify-between mb-6 gap-4">
+          <div>
+            <p className="text-sm uppercase tracking-[0.25em] text-white/60">
+              Otakuverse
+            </p>
+            <h1 className="text-3xl font-extrabold mt-1">
+              My Anime Top {listSize}
+            </h1>
+          </div>
+          <img
+            src={animeBanner}
+            alt="Otakuverse"
+            className="h-16 w-32 object-cover rounded-lg border border-white/10"
+          />
+        </div>
+
+        <div className="grid grid-cols-5 gap-4">
+          {Array.from({ length: listSize }, (_, i) => i + 1).map((position) => {
+            const anime = topList[position];
+            return (
+              <div
+                key={position}
+                className="relative flex flex-col justify-between rounded-xl bg-gradient-to-br from-zinc-900/80 to-zinc-800/80 border border-white/5 p-3 min-h-[140px]"
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-white text-xs font-extrabold text-black shadow-md">
+                    {position}
+                  </span>
+                  {anime ? (
+                    <span className="text-[10px] uppercase tracking-wide text-emerald-300/90 font-semibold">
+                      Picked
+                    </span>
+                  ) : (
+                    <span className="text-[10px] uppercase tracking-wide text-white/30">
+                      Empty
+                    </span>
+                  )}
+                </div>
+                <div className="flex-1 flex items-center">
+                  {anime ? (
+                    <p className="text-xs font-semibold leading-snug line-clamp-3">
+                      {anime.title}
+                    </p>
+                  ) : (
+                    <p className="text-[11px] text-white/40 italic">
+                      Choose an anime in the app to fill this slot.
+                    </p>
+                  )}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        <p className="mt-6 text-[10px] text-white/40 text-right">
+          Built with otakuverse.app
+        </p>
+      </div>
+    </div>
 
     <Dialog open={isShareDialogOpen} onOpenChange={setIsShareDialogOpen}>
       <DialogContent className="max-w-4xl">
