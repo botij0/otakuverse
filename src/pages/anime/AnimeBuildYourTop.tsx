@@ -1,4 +1,5 @@
 import { useState, useRef, use } from 'react';
+import { flushSync } from 'react-dom';
 import * as htmlToImage from 'html-to-image';
 import { Download, Share2, Twitter } from 'lucide-react';
 
@@ -17,10 +18,33 @@ import {
 
 const listOptions = [5, 10, 15, 20];
 
+function getProxiedImageUrl(url: string): string {
+  try {
+    const parsed = new URL(url);
+    if (parsed.hostname === 'myanimelist.net')
+      return `/mal-image${parsed.pathname}`;
+    if (parsed.hostname === 'cdn.myanimelist.net')
+      return `/mal-cdn-image${parsed.pathname}`;
+  } catch { /* return original url */ }
+  return url;
+}
+
+async function fetchImageAsDataUrl(url: string): Promise<string> {
+  const response = await fetch(getProxiedImageUrl(url));
+  const blob = await response.blob();
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onloadend = () => resolve(reader.result as string);
+    reader.onerror = reject;
+    reader.readAsDataURL(blob);
+  });
+}
+
 export const AnimeBuildYourTop = () => {
   const [listSize, setListSize] = useState<number>(10);
   const [isShareDialogOpen, setIsShareDialogOpen] = useState(false);
   const [shareImage, setShareImage] = useState<string | null>(null);
+  const [imageDataUrls, setImageDataUrls] = useState<Record<number, string>>({});
   const gridRef = useRef<HTMLDivElement>(null);
   const shareGridRef = useRef<HTMLDivElement>(null);
   const { topList } = use(BuildYourTopContext);
@@ -28,11 +52,37 @@ export const AnimeBuildYourTop = () => {
   const handleShare = async () => {
     if (!shareGridRef.current) return;
     try {
+      const dataUrlMap: Record<number, string> = {};
+      await Promise.all(
+        Object.entries(topList).map(async ([pos, anime]) => {
+          try {
+            dataUrlMap[Number(pos)] = await fetchImageAsDataUrl(anime.images.webp.image_url);
+          } catch {
+            // Skip images that fail to fetch (CORS or network error)
+          }
+        })
+      );
+
+      flushSync(() => {
+        setImageDataUrls(dataUrlMap);
+      });
+
+      // Wait for all images in the share grid to finish decoding
+      const images = shareGridRef.current.querySelectorAll('img');
+      await Promise.all(
+        Array.from(images).map(img => {
+          if (img.complete) return Promise.resolve();
+          return new Promise<void>(resolve => {
+            img.onload = () => resolve();
+            img.onerror = () => resolve();
+          });
+        })
+      );
+
       const dataUrl = await htmlToImage.toPng(shareGridRef.current, {
         quality: 0.95,
         backgroundColor: '#050816',
         style: { padding: '1rem', margin: '0' },
-        cacheBust: true,
       });
       setShareImage(dataUrl);
       setIsShareDialogOpen(true);
@@ -133,9 +183,16 @@ export const AnimeBuildYourTop = () => {
             return (
               <div
                 key={position}
-                className="relative flex flex-col justify-between rounded-xl bg-gradient-to-br from-zinc-900/80 to-zinc-800/80 border border-white/5 p-3 min-h-[140px]"
+                className="relative flex flex-col rounded-xl overflow-hidden bg-gradient-to-br from-zinc-900/80 to-zinc-800/80 border border-white/5 min-h-[200px]"
               >
-                <div className="flex items-center justify-between mb-2">
+                {anime && imageDataUrls[position] && (
+                  <img
+                    src={imageDataUrls[position]}
+                    alt={anime.title}
+                    className="absolute inset-0 w-full h-full object-cover opacity-70"
+                  />
+                )}
+                <div className="relative z-10 flex items-center justify-between p-3">
                   <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-white text-xs font-extrabold text-black shadow-md">
                     {position}
                   </span>
@@ -149,9 +206,9 @@ export const AnimeBuildYourTop = () => {
                     </span>
                   )}
                 </div>
-                <div className="flex-1 flex items-center">
+                <div className="relative z-10 flex-1 flex items-end p-3">
                   {anime ? (
-                    <p className="text-xs font-semibold leading-snug line-clamp-3">
+                    <p className="text-xs font-semibold leading-snug line-clamp-3 bg-black/60 px-2 py-1 rounded">
                       {anime.title}
                     </p>
                   ) : (
