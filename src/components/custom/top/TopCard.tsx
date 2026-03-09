@@ -1,7 +1,8 @@
 import { useState, use } from 'react';
-import { Card, CardContent } from '../ui/card';
 import { Plus } from 'lucide-react';
+
 import { TopCardSearch } from './TopCardSearch';
+import { Card, CardContent } from '@/components/ui/card';
 import { BuildYourTopContext } from '@/context/BuildYourTopContext';
 
 type Props = {

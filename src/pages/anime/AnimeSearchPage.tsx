@@ -1,7 +1,7 @@
 import { useSearchParams } from "react-router";
 
 import Hero from "@/components/custom/Hero";
-import MediaGrid from "@/components/custom/MediaGrid";
+import MediaGrid from "@/components/custom/media/MediaGrid";
 import animeBanner from "@/assets/anime_banner.webp";
 import { useSearchAnime } from "@/hooks/useSearchAnime";
 import { CustomPagination } from "@/components/custom/CustomPagination";

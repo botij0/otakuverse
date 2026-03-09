@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import { NavMenuCustom } from "./NavMenuCustom";
 import { MobileMenuCustom } from "./MobileMenuCustom";
-import { InputSearchMedia } from "./InputSearchMedia";
+import { InputSearchMedia } from "@/components/custom/media/InputSearchMedia";
 
 const Navbar = () => {
   const navigate = useNavigate();

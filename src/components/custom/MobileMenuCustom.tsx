@@ -1,6 +1,7 @@
-import type { Dispatch, SetStateAction } from "react";
 import { Link } from "react-router";
-import { InputSearchMedia } from "./InputSearchMedia";
+import type { Dispatch, SetStateAction } from "react";
+
+import { InputSearchMedia } from "./media/InputSearchMedia";
 
 interface MobileMenuCustomProps {
   setIsMenuOpen: Dispatch<SetStateAction<boolean>>;

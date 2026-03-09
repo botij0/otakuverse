@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 
 import Hero from "@/components/custom/Hero";
-import MediaGrid from "@/components/custom/MediaGrid";
+import MediaGrid from "@/components/custom/media/MediaGrid";
 import { getAnimeTopAction } from "@/actions/get-anime.actions";
 import { getMangaTopAction } from "@/actions/get-manga.actions";
 

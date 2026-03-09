@@ -3,7 +3,7 @@ import { useSearchParams } from "react-router";
 
 import Hero from "@/components/custom/Hero";
 import mangaBanner from "@/assets/manga_banner.webp";
-import { RecommendationsGrid } from "@/components/custom/RecommendationsGrid";
+import { RecommendationsGrid } from "@/components/custom/recommendations/RecommendationsGrid";
 import { getMangaRecommendationsAction } from "@/actions/get-manga.actions";
 
 export const MangaRecomendationsPage = () => {

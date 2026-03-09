@@ -1,4 +1,4 @@
-import { Skeleton } from "../ui/skeleton";
+import { Skeleton } from "../../ui/skeleton";
 import { RecommendationCard } from "./RecommendationCard";
 import type { Recomendation } from "@/interfaces/recomendations";
 

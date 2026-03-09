@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import heroBanner from "@/assets/hero-banner.jpg";
-import { GenresToggleGroup } from "./GenresToggleGroup";
+import { GenresToggleGroup } from "./media/GenresToggleGroup";
 import { useDebounce } from "@/hooks/useDebounce";
 
 interface HeroProps {

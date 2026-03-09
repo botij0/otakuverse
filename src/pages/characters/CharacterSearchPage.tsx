@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useSearchParams } from "react-router";
 
 import Hero from "@/components/custom/Hero";
-import MediaGrid from "@/components/custom/MediaGrid";
+import MediaGrid from "@/components/custom/media/MediaGrid";
 import characterBanner from "@/assets/characters_banner.webp";
 import { CustomPagination } from "@/components/custom/CustomPagination";
 import { getSearchCharacterAction } from "@/actions/get-character.actions";

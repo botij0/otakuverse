@@ -3,7 +3,7 @@ import { useSearchParams } from "react-router";
 
 import Hero from "@/components/custom/Hero";
 import animeBanner from "@/assets/anime_banner.webp";
-import { RecommendationsGrid } from "@/components/custom/RecommendationsGrid";
+import { RecommendationsGrid } from "@/components/custom/recommendations/RecommendationsGrid";
 import { getAnimeRecommendationsAction } from "@/actions/get-anime.actions";
 
 export const AnimeRecomendationsPage = () => {

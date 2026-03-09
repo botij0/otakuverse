@@ -1,8 +1,8 @@
 import { Link } from "react-router";
 import { ArrowRight } from "lucide-react";
-import MediaCardSkeleton from "@/components/custom/MediaCardSkeleton";
+import MediaCardSkeleton from "@/components/custom/media/MediaCardSkeleton";
 
-import MediaCard from "@/components/custom/MediaCard";
+import MediaCard from "@/components/custom/media/MediaCard";
 import type { Anime } from "@/interfaces/anime";
 import type { Manga } from "@/interfaces/manga";
 import type { Character } from "@/interfaces/character";

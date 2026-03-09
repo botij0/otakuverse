@@ -2,7 +2,7 @@ import { useSearchParams } from "react-router";
 import { useQuery } from "@tanstack/react-query";
 
 import Hero from "@/components/custom/Hero";
-import MediaGrid from "@/components/custom/MediaGrid";
+import MediaGrid from "@/components/custom/media/MediaGrid";
 import animeBanner from "@/assets/anime_banner.webp";
 import { CustomPagination } from "@/components/custom/CustomPagination";
 import { getAnimeSeasonalAction } from "@/actions/get-anime.actions";

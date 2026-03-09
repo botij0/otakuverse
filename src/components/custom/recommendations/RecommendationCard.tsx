@@ -2,7 +2,7 @@ import { useNavigate } from "react-router";
 
 import { Card, CardContent } from "@/components/ui/card";
 import type { RecomendationEntry } from "@/interfaces/recomendations";
-import { HoverCard, HoverCardContent, HoverCardTrigger } from "../ui/hover-card";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 
 interface RecommendationCardProps {
   anime1: RecomendationEntry;
@@ -22,30 +22,34 @@ export const RecommendationCard = ({
       <CardContent className="p-0">
         <div className="grid grid-cols-2 gap-0">
           <div
+            className="relative aspect-3/4 overflow-hidden cursor-pointer hover:opacity-80 transition-opacity"
             onClick={() => navigate(`/anime/${anime1.mal_id}`)}
-            className="relative aspect-[3/4] overflow-hidden cursor-pointer hover:opacity-80 transition-opacity"
           >
             <img
               src={anime1.images.jpg.image_url}
               alt={anime1.title}
               className="h-full w-full object-cover"
             />
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background/90 to-transparent p-3">
-              <h3 className="font-semibold text-sm line-clamp-2">{anime1.title}</h3>
+            <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-background/90 to-transparent p-3">
+              <h3 className="font-semibold text-sm line-clamp-2">
+                {anime1.title}
+              </h3>
             </div>
           </div>
 
           <div
+            className="relative aspect-3/4 overflow-hidden cursor-pointer hover:opacity-80 transition-opacity"
             onClick={() => navigate(`/anime/${anime2.mal_id}`)}
-            className="relative aspect-[3/4] overflow-hidden cursor-pointer hover:opacity-80 transition-opacity"
           >
             <img
+              className="h-full w-full object-cover"
               src={anime2.images.jpg.image_url}
               alt={anime2.title}
-              className="h-full w-full object-cover"
             />
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background/90 to-transparent p-3">
-              <h3 className="font-semibold text-sm line-clamp-2">{anime2.title}</h3>
+            <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-background/90 to-transparent p-3">
+              <h3 className="font-semibold text-sm line-clamp-2">
+                {anime2.title}
+              </h3>
             </div>
           </div>
         </div>

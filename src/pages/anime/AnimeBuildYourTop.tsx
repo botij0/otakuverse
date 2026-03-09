@@ -6,7 +6,7 @@ import { Download, Share2, Twitter } from 'lucide-react';
 import Hero from '@/components/custom/Hero'
 import { Button } from '@/components/ui/button';
 import animeBanner from "@/assets/anime_banner.webp";
-import { TopCard } from '@/components/custom/TopCard';
+import { TopCard } from '@/components/custom/top/TopCard';
 import { BuildYourTopContext } from '@/context/BuildYourTopContext';
 import {
   Dialog,
@@ -183,7 +183,7 @@ export const AnimeBuildYourTop = () => {
             return (
               <div
                 key={position}
-                className="relative flex flex-col rounded-xl overflow-hidden bg-gradient-to-br from-zinc-900/80 to-zinc-800/80 border border-white/5 min-h-[200px]"
+                className="relative flex flex-col rounded-xl overflow-hidden bg-linear-to-br from-zinc-900/80 to-zinc-800/80 border border-white/5 min-h-[200px]"
               >
                 {anime && imageDataUrls[position] && (
                   <img

@@ -1,7 +1,7 @@
 import { useSearchParams } from "react-router";
 
 import Hero from "@/components/custom/Hero";
-import MediaGrid from "@/components/custom/MediaGrid";
+import MediaGrid from "@/components/custom/media/MediaGrid";
 import { useSearchAnime } from "@/hooks/useSearchAnime";
 import { useSearchManga } from "@/hooks/useSearchManga";
 

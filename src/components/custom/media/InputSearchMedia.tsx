@@ -1,11 +1,12 @@
 import { Search } from "lucide-react";
-import { InputSearchMediaList } from "./InputSearchMediaList";
-import { Input } from "../ui/input";
-import { useEffect, useState, type Dispatch, type KeyboardEvent, type SetStateAction } from "react";
 import { useNavigate, useSearchParams } from "react-router";
+import { useEffect, useState, type Dispatch, type KeyboardEvent, type SetStateAction } from "react";
+
+import { Input } from "@/components/ui/input";
 import { useDebounce } from "@/hooks/useDebounce";
 import { useSearchAnime } from "@/hooks/useSearchAnime";
 import { useSearchManga } from "@/hooks/useSearchManga";
+import { InputSearchMediaList } from "./InputSearchMediaList";
 
 type Props = {
   setIsMenuOpen: Dispatch<SetStateAction<boolean>>;
