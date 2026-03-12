@@ -4,6 +4,7 @@ import { createContext, useEffect, useState } from "react";
 interface BuildYourTopContextProps {
   topList: Record<number, Anime>;
   addAnimeToTopList: (position: number, anime: Anime) => void;
+  removeAnimeFromTopList: (position: number) => void;
 }
 
 export const BuildYourTopContext = createContext<BuildYourTopContextProps>({} as BuildYourTopContextProps);
@@ -20,6 +21,14 @@ export const BuildYourTopProvider = ({ children }: { children: React.ReactNode }
     setTopList(prev => ({ ...prev, [position]: anime }));
   }
 
+  const removeAnimeFromTopList = (position: number) => {
+    setTopList(prev => {
+      const newTopList = { ...prev };
+      delete newTopList[position];
+      return newTopList;
+    });
+  }
+
   useEffect(() => {
     localStorage.setItem('animeTopList', JSON.stringify(topList));
   }, [topList]);
@@ -29,6 +38,7 @@ export const BuildYourTopProvider = ({ children }: { children: React.ReactNode }
       value={{
         topList,
         addAnimeToTopList,
+        removeAnimeFromTopList,
       }}>
       {children}
     </BuildYourTopContext.Provider>

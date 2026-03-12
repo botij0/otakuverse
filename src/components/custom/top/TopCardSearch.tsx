@@ -1,16 +1,16 @@
 import { Search } from 'lucide-react';
-import type { Dispatch, SetStateAction } from 'react';
+import { use, type Dispatch, type SetStateAction } from 'react';
 
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import type { Anime } from '@/interfaces/anime';
 import { useDebounce } from '@/hooks/useDebounce';
 import { useSearchAnime } from '@/hooks/useSearchAnime';
+import { BuildYourTopContext } from '@/context/BuildYourTopContext';
 
 type Props = {
   position: number;
   searchQuery: string;
-  addAnimeToTopList: (position: number, anime: Anime) => void;
   setActiveSearchPosition: Dispatch<SetStateAction<number | null>>;
   setSearchQuery: Dispatch<SetStateAction<string>>;
 }
@@ -19,13 +19,20 @@ export const TopCardSearch = (
   {
     position,
     searchQuery,
-    addAnimeToTopList,
     setActiveSearchPosition,
     setSearchQuery
   }: Props) => {
 
+  const { addAnimeToTopList, removeAnimeFromTopList } = use(BuildYourTopContext);
+
   const handleSelectAnime = (position: number, anime: Anime) => {
     addAnimeToTopList(position, anime);
+    setActiveSearchPosition(null);
+    setSearchQuery('');
+  };
+
+  const handleRemoveAnime = (position: number) => {
+    removeAnimeFromTopList(position);
     setActiveSearchPosition(null);
     setSearchQuery('');
   };
@@ -102,6 +109,14 @@ export const TopCardSearch = (
             onClick={(e) => { e.stopPropagation(); setActiveSearchPosition(null); }}
           >
             Cancel
+          </Button>
+          <Button
+            type="button"
+            variant="destructive"
+            size="sm"
+            onClick={(e) => { e.stopPropagation(); handleRemoveAnime(position); }}
+          >
+            Remove
           </Button>
         </div>
       </div>

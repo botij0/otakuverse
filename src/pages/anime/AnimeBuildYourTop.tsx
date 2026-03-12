@@ -7,6 +7,7 @@ import Hero from '@/components/custom/Hero'
 import { Button } from '@/components/ui/button';
 import animeBanner from "@/assets/anime_banner.webp";
 import { TopCard } from '@/components/custom/top/TopCard';
+import type { Anime } from '@/interfaces/anime';
 import { TopExportLayout } from '@/components/custom/top/TopExportLayout';
 import { TopExportDialog } from '@/components/custom/top/TopExportDialog';
 import { BuildYourTopContext } from '@/context/BuildYourTopContext';
@@ -35,14 +36,21 @@ async function fetchImageAsDataUrl(url: string): Promise<string> {
   });
 }
 
+const getInitialListSize = (topList: Record<number, Anime>) => {
+  const maxPosition = Math.max(...Object.keys(topList).map(Number));
+  if (maxPosition <= 10) return 10;
+  else if (maxPosition <= 15) return 15;
+  else return 20
+}
+
 export const AnimeBuildYourTop = () => {
-  const [listSize, setListSize] = useState<number>(10);
+  const { topList } = use(BuildYourTopContext);
+  const [listSize, setListSize] = useState<number>(getInitialListSize(topList));
   const [isShareDialogOpen, setIsShareDialogOpen] = useState(false);
   const [shareImage, setShareImage] = useState<string | null>(null);
   const [imageDataUrls, setImageDataUrls] = useState<Record<number, string>>({});
   const gridRef = useRef<HTMLDivElement>(null);
   const shareGridRef = useRef<HTMLDivElement>(null);
-  const { topList } = use(BuildYourTopContext);
 
   const handleShare = async () => {
     if (!shareGridRef.current) return;
