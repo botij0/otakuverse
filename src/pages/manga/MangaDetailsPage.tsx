@@ -14,7 +14,7 @@ import { Button } from "@/components/ui/button";
 import { EmptyDetails } from "@/components/custom/EmptyDetails";
 import { SkeletonDetails } from "@/components/custom/SkeletonDetails";
 import type { Demographic } from "@/interfaces/media";
-import { splitIntoParagarphs } from "@/lib/utils";
+import { splitIntoParagraphs } from "@/lib/utils";
 import { getMangaDetailsAction } from "@/actions/get-manga.actions";
 
 export const MangaDetailsPage = () => {
@@ -108,7 +108,7 @@ export const MangaDetailsPage = () => {
           <div className="space-y-2">
             <h2 className="text-2xl font-semibold">Synopsis</h2>
             <p className="text-muted-foreground leading-relaxed">
-              {splitIntoParagarphs(manga.synopsis).map((p, i) => (
+              {splitIntoParagraphs(manga.synopsis).map((p, i) => (
                 <p key={i} className="mb-3">
                   {p}
                 </p>
@@ -157,7 +157,7 @@ export const MangaDetailsPage = () => {
           <div className="space-y-2">
             <h2 className="text-2xl font-semibold">Background</h2>
             <p className="text-muted-foreground leading-relaxed">
-              {splitIntoParagarphs(manga.background, 2).map((p, i) => (
+              {splitIntoParagraphs(manga.background, 2).map((p, i) => (
                 <p key={i} className="mb-3">
                   {p}
                 </p>

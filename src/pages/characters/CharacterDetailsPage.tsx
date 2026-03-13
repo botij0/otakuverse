@@ -18,7 +18,7 @@ import { Button } from "@/components/ui/button";
 import { EmptyDetails } from "@/components/custom/EmptyDetails";
 import { SkeletonDetails } from "@/components/custom/SkeletonDetails";
 import { Card, CardContent } from "@/components/ui/card";
-import { splitIntoParagarphs } from "@/lib/utils";
+import { splitIntoParagraphs } from "@/lib/utils";
 import { getCharacterDetailsAction } from "@/actions/get-character.actions";
 import {
   Carousel,
@@ -162,14 +162,14 @@ export const CharacterDetailsPage = () => {
                 <>
                   <div>
                     {showFullAbout
-                      ? splitIntoParagarphs(character.about).map((p, i) => (
-                          <p key={i} className="mb-4">
-                            {p}
-                          </p>
-                        ))
+                      ? splitIntoParagraphs(character.about).map((p, i) => (
+                        <p key={i} className="mb-4">
+                          {p}
+                        </p>
+                      ))
                       : character.about.length > 400
-                      ? `${character.about.substring(0, 400)}...`
-                      : character.about}
+                        ? `${character.about.substring(0, 400)}...`
+                        : character.about}
                   </div>
                   {character.about.length > 400 && (
                     <Button

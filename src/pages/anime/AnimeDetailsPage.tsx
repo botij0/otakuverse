@@ -9,7 +9,7 @@ import { EmptyDetails } from "@/components/custom/EmptyDetails";
 import type { Platform } from "@/interfaces/anime";
 import { SkeletonDetails } from "@/components/custom/SkeletonDetails";
 import type { Demographic } from "@/interfaces/media";
-import { splitIntoParagarphs } from "@/lib/utils";
+import { splitIntoParagraphs } from "@/lib/utils";
 import { getAnimeDetailsAction } from "@/actions/get-anime.actions";
 
 export const AnimeDetailsPage = () => {
@@ -121,7 +121,7 @@ export const AnimeDetailsPage = () => {
           <div className="space-y-2">
             <h2 className="text-2xl font-semibold">Synopsis</h2>
             <p className="text-muted-foreground leading-relaxed">
-              {splitIntoParagarphs(anime.synopsis).map((p, i) => (
+              {splitIntoParagraphs(anime.synopsis).map((p, i) => (
                 <p key={i} className="mb-3">
                   {p}
                 </p>

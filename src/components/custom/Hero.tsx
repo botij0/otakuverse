@@ -91,7 +91,7 @@ const Hero = ({
             )}
 
             {description && (
-              <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto animate-fade-in text-pretty">
+              <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto animate-fade-in text-pretty">
                 {description}
               </p>
             )}

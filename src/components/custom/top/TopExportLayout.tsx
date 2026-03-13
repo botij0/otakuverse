@@ -12,7 +12,7 @@ type Props = {
 
 export const TopExportLayout = ({ listSize, imageDataUrls, shareGridRef }: Props) => {
 
-  const { topList } = use(BuildYourTopContext);
+  const { animeTopList } = use(BuildYourTopContext);
 
   const getPodiumCardStyles = (pos: number) => {
     if (pos === 1) return 'border-yellow-500 shadow-yellow-500/20';
@@ -46,7 +46,7 @@ export const TopExportLayout = ({ listSize, imageDataUrls, shareGridRef }: Props
 
         <div className="grid grid-cols-5 gap-4">
           {Array.from({ length: listSize }, (_, i) => i + 1).map((position) => {
-            const anime = topList[position];
+            const anime = animeTopList[position];
             return (
               <div
                 key={position}

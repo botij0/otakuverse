@@ -11,7 +11,7 @@ type Props = {
 
 export const TopCard = ({ position }: Props) => {
   const [activeSearchPosition, setActiveSearchPosition] = useState<number | null>(null);
-  const { topList } = use(BuildYourTopContext);
+  const { animeTopList } = use(BuildYourTopContext);
 
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -68,16 +68,16 @@ export const TopCard = ({ position }: Props) => {
             setSearchQuery={setSearchQuery}
             setActiveSearchPosition={setActiveSearchPosition}
           />
-        ) : topList[position] ? (
+        ) : animeTopList[position] ? (
           <div className="absolute inset-0 z-0">
             <img
-              src={topList[position].images.webp.image_url}
-              alt={topList[position].title}
+              src={animeTopList[position].images.webp.image_url}
+              alt={animeTopList[position].title}
               className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
             />
             <div className={`absolute bottom-0 left-0 ${getPodiumBadgeStyles(position)} right-0 backdrop-blur-md py-2 h-12 flex justify-center items-center `}>
               <span className="text-white text-sm sm:text-md font-semibold text-center line-clamp-2 block text-pretty">
-                {topList[position].title}
+                {animeTopList[position].title}
               </span>
             </div>
           </div>

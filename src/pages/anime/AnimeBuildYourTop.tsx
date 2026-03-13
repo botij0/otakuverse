@@ -1,51 +1,20 @@
-import { Share2 } from 'lucide-react';
 import { flushSync } from 'react-dom';
 import * as htmlToImage from 'html-to-image';
 import { useState, useRef, use } from 'react';
 
 import Hero from '@/components/custom/Hero'
-import { Button } from '@/components/ui/button';
 import animeBanner from "@/assets/anime_banner.webp";
 import { TopCard } from '@/components/custom/top/TopCard';
-import type { Anime } from '@/interfaces/anime';
+import { TopHeader } from '@/components/custom/top/TopHeader';
 import { TopExportLayout } from '@/components/custom/top/TopExportLayout';
 import { TopExportDialog } from '@/components/custom/top/TopExportDialog';
 import { BuildYourTopContext } from '@/context/BuildYourTopContext';
+import { fetchImageAsDataUrl, getInitialListSize } from '@/lib/utils';
 
-const listOptions = [5, 10, 15, 20];
-
-function getProxiedImageUrl(url: string): string {
-  try {
-    const parsed = new URL(url);
-    if (parsed.hostname === 'myanimelist.net')
-      return `/mal-image${parsed.pathname}`;
-    if (parsed.hostname === 'cdn.myanimelist.net')
-      return `/mal-cdn-image${parsed.pathname}`;
-  } catch { /* return original url */ }
-  return url;
-}
-
-async function fetchImageAsDataUrl(url: string): Promise<string> {
-  const response = await fetch(getProxiedImageUrl(url));
-  const blob = await response.blob();
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onloadend = () => resolve(reader.result as string);
-    reader.onerror = reject;
-    reader.readAsDataURL(blob);
-  });
-}
-
-const getInitialListSize = (topList: Record<number, Anime>) => {
-  const maxPosition = Math.max(...Object.keys(topList).map(Number));
-  if (maxPosition <= 10) return 10;
-  else if (maxPosition <= 15) return 15;
-  else return 20
-}
 
 export const AnimeBuildYourTop = () => {
-  const { topList } = use(BuildYourTopContext);
-  const [listSize, setListSize] = useState<number>(getInitialListSize(topList));
+  const { animeTopList } = use(BuildYourTopContext);
+  const [listSize, setListSize] = useState<number>(getInitialListSize(animeTopList));
   const [isShareDialogOpen, setIsShareDialogOpen] = useState(false);
   const [shareImage, setShareImage] = useState<string | null>(null);
   const [imageDataUrls, setImageDataUrls] = useState<Record<number, string>>({});
@@ -57,7 +26,7 @@ export const AnimeBuildYourTop = () => {
     try {
       const dataUrlMap: Record<number, string> = {};
       await Promise.all(
-        Object.entries(topList).map(async ([pos, anime]) => {
+        Object.entries(animeTopList).map(async ([pos, anime]) => {
           try {
             dataUrlMap[Number(pos)] = await fetchImageAsDataUrl(anime.images.webp.image_url);
           } catch {
@@ -97,39 +66,16 @@ export const AnimeBuildYourTop = () => {
   return (<>
     <Hero
       title="Build Your Top Anime"
-      description="Build your custom top anime list"
+      description="Create a top list with the size you want and share it in social media"
       img={animeBanner}
     />
 
     <main className="container mx-auto px-4 py-5">
-      <div className="flex flex-col md:flex-row items-center justify-between mb-8 pb-2 gap-4">
-
-        <div className="flex items-center gap-3 p-2 rounded-lg border border-border/50 bg-card">
-          <span className="text-sm font-medium px-2">Size:</span>
-
-          <div className="flex gap-2">
-            {listOptions.map((size) => (
-              <Button
-                key={size}
-                variant={listSize === size ? "default" : "outline"}
-                size="sm"
-                onClick={() => setListSize(size)}
-                className={`min-w-10 transition-all ${listSize === size ? 'shadow-md scale-105' : 'hover:bg-background'}`}
-              >
-                {size}
-              </Button>
-            ))}
-          </div>
-        </div>
-
-        <div className="flex items-center gap-3 p-2 rounded-lg border border-border/50 bg-card">
-          <Button onClick={handleShare} variant="default" className="gap-2">
-            <Share2 className="w-4 h-4" />
-            Share Top
-          </Button>
-        </div>
-
-      </div>
+      <TopHeader
+        listSize={listSize}
+        setListSize={setListSize}
+        handleShare={handleShare}
+      />
 
       <div
         ref={gridRef}
@@ -142,7 +88,6 @@ export const AnimeBuildYourTop = () => {
 
     </main>
 
-    {/* Off-screen share layout used only for image generation */}
     <TopExportLayout
       shareGridRef={shareGridRef}
       listSize={listSize}
