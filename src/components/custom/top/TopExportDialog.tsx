@@ -17,7 +17,13 @@ type Props = {
   setIsShareDialogOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-export const TopExportDialog = ({ listSize, shareImage, isShareDialogOpen, setIsShareDialogOpen }: Props) => {
+export const TopExportDialog = (
+  {
+    listSize,
+    shareImage,
+    isShareDialogOpen,
+    setIsShareDialogOpen
+  }: Props) => {
 
   const downloadImage = () => {
     if (!shareImage) return;

@@ -1,18 +1,18 @@
 
-import { use, type RefObject } from "react";
+import { type RefObject } from "react";
 
-import { BuildYourTopContext } from "@/context/BuildYourTopContext";
+import type { Anime } from "@/interfaces/anime";
+import type { Manga } from "@/interfaces/manga";
 
 
 type Props = {
   listSize: number;
   imageDataUrls: Record<number, string>
   shareGridRef: RefObject<HTMLDivElement | null>
+  mediaTopList: Record<number, Anime | Manga>
 }
 
-export const TopExportLayout = ({ listSize, imageDataUrls, shareGridRef }: Props) => {
-
-  const { animeTopList } = use(BuildYourTopContext);
+export const TopExportLayout = ({ listSize, imageDataUrls, shareGridRef, mediaTopList }: Props) => {
 
   const getPodiumCardStyles = (pos: number) => {
     if (pos === 1) return 'border-yellow-500 shadow-yellow-500/20';
@@ -46,17 +46,17 @@ export const TopExportLayout = ({ listSize, imageDataUrls, shareGridRef }: Props
 
         <div className="grid grid-cols-5 gap-4">
           {Array.from({ length: listSize }, (_, i) => i + 1).map((position) => {
-            const anime = animeTopList[position];
+            const media = mediaTopList[position];
             return (
               <div
                 key={position}
                 className={`relative flex flex-col rounded-xl overflow-hidden bg-linear-to-br
                   from-zinc-900/80 to-zinc-800/80 border min-h-[350px] shadow-sm ${getPodiumCardStyles(position)}`}
               >
-                {anime && imageDataUrls[position] && (
+                {media && imageDataUrls[position] && (
                   <img
                     src={imageDataUrls[position]}
-                    alt={anime.title}
+                    alt={media.title}
                     className="absolute inset-0 w-full h-full object-cover"
                   />
                 )}
@@ -66,15 +66,15 @@ export const TopExportLayout = ({ listSize, imageDataUrls, shareGridRef }: Props
                   </span>
                 </div>
                 <div className="relative z-10 flex-1 flex items-end p-3">
-                  {anime ? (
+                  {media ? (
                     <div className={`absolute bottom-0 left-0 ${getPodiumBadgeStyles(position)} right-0 backdrop-blur-md py-2 h-12 flex justify-center items-center `}>
                       <span className="text-white text-sm sm:text-md font-semibold text-center line-clamp-2 block text-pretty">
-                        {anime.title}
+                        {media.title}
                       </span>
                     </div>
                   ) : (
                     <p className="text-[11px] text-white/40 italic">
-                      Choose an anime in the app to fill this slot.
+                      Empty
                     </p>
                   )}
                 </div>

@@ -1,17 +1,18 @@
-import { useState, use } from 'react';
+import { useState } from 'react';
 import { Plus } from 'lucide-react';
 
+import type { Anime } from '@/interfaces/anime';
+import type { Manga } from '@/interfaces/manga';
 import { TopCardSearch } from './TopCardSearch';
 import { Card, CardContent } from '@/components/ui/card';
-import { BuildYourTopContext } from '@/context/BuildYourTopContext';
 
 type Props = {
   position: number;
+  mediaItem?: Anime | Manga;
 }
 
-export const TopCard = ({ position }: Props) => {
+export const TopCard = ({ position, mediaItem }: Props) => {
   const [activeSearchPosition, setActiveSearchPosition] = useState<number | null>(null);
-  const { animeTopList } = use(BuildYourTopContext);
 
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -68,16 +69,16 @@ export const TopCard = ({ position }: Props) => {
             setSearchQuery={setSearchQuery}
             setActiveSearchPosition={setActiveSearchPosition}
           />
-        ) : animeTopList[position] ? (
+        ) : mediaItem ? (
           <div className="absolute inset-0 z-0">
             <img
-              src={animeTopList[position].images.webp.image_url}
-              alt={animeTopList[position].title}
+              src={mediaItem.images.webp.image_url}
+              alt={mediaItem.title}
               className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
             />
             <div className={`absolute bottom-0 left-0 ${getPodiumBadgeStyles(position)} right-0 backdrop-blur-md py-2 h-12 flex justify-center items-center `}>
               <span className="text-white text-sm sm:text-md font-semibold text-center line-clamp-2 block text-pretty">
-                {animeTopList[position].title}
+                {mediaItem.title}
               </span>
             </div>
           </div>
@@ -85,7 +86,7 @@ export const TopCard = ({ position }: Props) => {
           <div className="flex flex-col items-center text-muted-foreground opacity-60 group-hover:opacity-100 group-hover:text-accent transition-all duration-300">
             <Plus className="h-10 w-10 mb-3" />
             <span className="font-medium">
-              Add Anime
+              Add
             </span>
           </div>
         )}
