@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, test, vi } from "vitest";
-import { GenresToggleGroup } from "./media/GenresToggleGroup";
+import { GenresToggleGroup } from "./GenresToggleGroup";
 import { MemoryRouter } from "react-router";
 import type { PropsWithChildren } from "react";
 

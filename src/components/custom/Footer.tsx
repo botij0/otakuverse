@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { Heart, Github, Linkedin } from "lucide-react";
+import { Github, Linkedin } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
           {/* Brand */}
           <div className="space-y-4">
-            <h3 className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+            <h3 className="text-xl font-bold bg-linear-to-r from-primary to-accent bg-clip-text text-transparent">
               OtakuVerse
             </h3>
             <p className="text-sm text-muted-foreground">
