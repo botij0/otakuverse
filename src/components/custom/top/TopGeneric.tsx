@@ -107,6 +107,7 @@ export const TopGeneric = ({ title, description, image, mediaTopList, mediaType 
       listSize={listSize}
       imageDataUrls={imageDataUrls}
       mediaTopList={mediaTopList}
+      mediaType={mediaType}
     />
 
     <TopExportDialog

@@ -41,6 +41,17 @@ export function NavMenuCustom() {
               </li>
               <li>
                 <NavigationMenuLink asChild>
+                  <Link
+                    to="/anime/build-your-top"
+                    className="flex-row items-center gap-2"
+                  >
+                    <Blocks />
+                    Build Your Top
+                  </Link>
+                </NavigationMenuLink>
+              </li>
+              <li>
+                <NavigationMenuLink asChild>
                   <Link to="/anime/seasonal" className="flex-row items-center gap-2">
                     <SunSnow />
                     Seasonal Animes
@@ -66,17 +77,6 @@ export function NavMenuCustom() {
                   </Link>
                 </NavigationMenuLink>
               </li>
-              <li>
-                <NavigationMenuLink asChild>
-                  <Link
-                    to="/anime/build-your-top"
-                    className="flex-row items-center gap-2"
-                  >
-                    <Blocks />
-                    Build Your Top
-                  </Link>
-                </NavigationMenuLink>
-              </li>
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
@@ -89,6 +89,17 @@ export function NavMenuCustom() {
                   <Link to="/manga/top" className="flex-row items-center gap-2">
                     <AwardIcon />
                     Top Manga
+                  </Link>
+                </NavigationMenuLink>
+              </li>
+              <li>
+                <NavigationMenuLink asChild>
+                  <Link
+                    to="/manga/build-your-top"
+                    className="flex-row items-center gap-2"
+                  >
+                    <Blocks />
+                    Build Your Top
                   </Link>
                 </NavigationMenuLink>
               </li>
@@ -108,17 +119,6 @@ export function NavMenuCustom() {
                   >
                     <Users />
                     Recommendations
-                  </Link>
-                </NavigationMenuLink>
-              </li>
-              <li>
-                <NavigationMenuLink asChild>
-                  <Link
-                    to="/manga/build-your-top"
-                    className="flex-row items-center gap-2"
-                  >
-                    <Blocks />
-                    Build Your Top
                   </Link>
                 </NavigationMenuLink>
               </li>

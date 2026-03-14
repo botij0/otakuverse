@@ -3,16 +3,25 @@ import { type RefObject } from "react";
 
 import type { Anime } from "@/interfaces/anime";
 import type { Manga } from "@/interfaces/manga";
+import type { MediaTypeSimple } from "@/interfaces/media";
 
 
 type Props = {
   listSize: number;
   imageDataUrls: Record<number, string>
-  shareGridRef: RefObject<HTMLDivElement | null>
-  mediaTopList: Record<number, Anime | Manga>
+  shareGridRef: RefObject<HTMLDivElement | null>;
+  mediaTopList: Record<number, Anime | Manga>;
+  mediaType: MediaTypeSimple;
 }
 
-export const TopExportLayout = ({ listSize, imageDataUrls, shareGridRef, mediaTopList }: Props) => {
+export const TopExportLayout = (
+  {
+    listSize,
+    imageDataUrls,
+    shareGridRef,
+    mediaTopList,
+    mediaType
+  }: Props) => {
 
   const getPodiumCardStyles = (pos: number) => {
     if (pos === 1) return 'border-yellow-500 shadow-yellow-500/20';
@@ -32,6 +41,8 @@ export const TopExportLayout = ({ listSize, imageDataUrls, shareGridRef, mediaTo
     return 'bg-gradient-to-br from-stone-600 to-stone-800 text-stone-300 shadow-stone-700/50 ring-2 ring-stone-600';
   };
 
+  const title = `My ${mediaType[0].toUpperCase() + mediaType.slice(1)} Top ${listSize}`
+
   return (
     <div className="fixed -left-[9999px] top-0">
       <div
@@ -40,7 +51,7 @@ export const TopExportLayout = ({ listSize, imageDataUrls, shareGridRef, mediaTo
       >
         <div className="flex items-center justify-between mb-6 px-2">
           <h1 className="text-3xl font-title bg-linear-to-r from-primary to-accent bg-clip-text text-transparent mt-1">
-            My Anime Top {listSize}
+            {title}
           </h1>
         </div>
 
