@@ -14,6 +14,7 @@ export const AnimeBuildYourTop = () => {
       description='Create a top list with the size you want and share it in social media'
       image={animeBanner}
       mediaTopList={animeTopList}
+      mediaType='anime'
     />
   );
 }

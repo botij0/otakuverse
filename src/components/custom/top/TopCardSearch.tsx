@@ -1,18 +1,23 @@
 import { Search } from 'lucide-react';
 import { use, type Dispatch, type SetStateAction } from 'react';
 
+import type { Anime } from '@/interfaces/anime';
+import type { Manga } from '@/interfaces/manga';
+import type { MediaTypeSimple } from '@/interfaces/media';
+
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import type { Anime } from '@/interfaces/anime';
 import { useDebounce } from '@/hooks/useDebounce';
-import { useSearchAnime } from '@/hooks/useSearchAnime';
 import { BuildYourTopContext } from '@/context/BuildYourTopContext';
+import { TopCardSearchListAnime } from './TopCardSearchListAnime';
+import { TopCardSearchListManga } from './TopCardSearchListManga';
 
 type Props = {
   position: number;
   searchQuery: string;
   setActiveSearchPosition: Dispatch<SetStateAction<number | null>>;
   setSearchQuery: Dispatch<SetStateAction<string>>;
+  mediaType: MediaTypeSimple;
 }
 
 export const TopCardSearch = (
@@ -20,30 +25,34 @@ export const TopCardSearch = (
     position,
     searchQuery,
     setActiveSearchPosition,
-    setSearchQuery
+    setSearchQuery,
+    mediaType
   }: Props) => {
 
-  const { addAnimeToTopList, removeAnimeFromTopList } = use(BuildYourTopContext);
+  const {
+    addAnimeToTopList,
+    addMangaToTopList,
+    removeAnimeFromTopList,
+    removeMangaFromTopList,
+  } = use(BuildYourTopContext);
 
-  const handleSelectAnime = (position: number, anime: Anime) => {
-    addAnimeToTopList(position, anime);
+  const handleSelectMedia = (position: number, media: Anime | Manga) => {
+    if (mediaType === "anime") addAnimeToTopList(position, media as Anime);
+    else addMangaToTopList(position, media as Manga);
+
     setActiveSearchPosition(null);
     setSearchQuery('');
   };
 
-  const handleRemoveAnime = (position: number) => {
-    removeAnimeFromTopList(position);
+  const handleRemoveMedia = (position: number) => {
+    if (mediaType === 'anime') removeAnimeFromTopList(position);
+    else removeMangaFromTopList(position);
+
     setActiveSearchPosition(null);
     setSearchQuery('');
   };
 
   const debouncedSearchQuery = useDebounce(searchQuery, 500);
-
-  const { data: searchResults, isLoading: isSearchLoading } = useSearchAnime({
-    query: debouncedSearchQuery,
-    limit: 10,
-    enabled: debouncedSearchQuery.length >= 3,
-  });
 
   return (
     <div
@@ -66,39 +75,19 @@ export const TopCardSearch = (
         </div>
 
         {debouncedSearchQuery.length >= 3 && (
-          <div className="absolute top-full left-0 right-0 mt-1 bg-card border rounded-md shadow-lg z-50 max-h-[200px] overflow-y-auto min-w-[200px]">
-            {isSearchLoading ? (
-              <div className="p-3 text-center text-sm text-muted-foreground">
-                Loading...
-              </div>
-            ) : searchResults?.data?.length ? (
-              <div className="flex flex-col">
-                {searchResults.data.map((anime) => (
-                  <div
-                    key={anime.mal_id}
-                    className="flex items-center gap-2 p-2 hover:bg-accent hover:text-accent-foreground cursor-pointer transition-colors"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleSelectAnime(position, anime);
-                    }}
-                  >
-                    <img
-                      src={anime.images.webp.image_url}
-                      alt={anime.title}
-                      className="w-8 h-8 object-cover rounded"
-                    />
-                    <span className="text-sm truncate">
-                      {anime.title}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className="p-3 text-center text-sm text-muted-foreground">
-                No results found
-              </div>
-            )}
-          </div>
+          mediaType === 'anime' ? (
+            <TopCardSearchListAnime
+              debouncedSearchQuery={debouncedSearchQuery}
+              handleSelectMedia={handleSelectMedia}
+              position={position}
+            />
+          ) : (
+            <TopCardSearchListManga
+              debouncedSearchQuery={debouncedSearchQuery}
+              handleSelectMedia={handleSelectMedia}
+              position={position}
+            />
+          )
         )}
 
         <div className="flex gap-2 flex-col mt-2">
@@ -114,7 +103,7 @@ export const TopCardSearch = (
             type="button"
             variant="destructive"
             size="sm"
-            onClick={(e) => { e.stopPropagation(); handleRemoveAnime(position); }}
+            onClick={(e) => { e.stopPropagation(); handleRemoveMedia(position); }}
           >
             Remove
           </Button>

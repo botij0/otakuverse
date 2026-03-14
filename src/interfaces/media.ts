@@ -50,6 +50,8 @@ export interface Webp {
 
 type Status = "Finished Airing" | "Airing" | "Finished" | "On Hiatus" | "Publishing";
 
+export type MediaTypeSimple = "anime" | "manga";
+
 export type MediaType =
   | "Movie"
   | "OVA"

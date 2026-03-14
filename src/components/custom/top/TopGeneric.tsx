@@ -10,15 +10,17 @@ import { TopExportDialog } from '@/components/custom/top/TopExportDialog';
 import { fetchImageAsDataUrl, getInitialListSize } from '@/lib/utils';
 import type { Anime } from '@/interfaces/anime';
 import type { Manga } from '@/interfaces/manga';
+import type { MediaTypeSimple } from '@/interfaces/media';
 
 type Props = {
   title: string;
   description: string;
   image: string;
   mediaTopList: Record<number, Anime | Manga>;
+  mediaType: MediaTypeSimple
 }
 
-export const TopGeneric = ({ title, description, image, mediaTopList }: Props) => {
+export const TopGeneric = ({ title, description, image, mediaTopList, mediaType }: Props) => {
   const [listSize, setListSize] = useState<number>(getInitialListSize(mediaTopList));
   const [isShareDialogOpen, setIsShareDialogOpen] = useState(false);
   const [shareImage, setShareImage] = useState<string | null>(null);
@@ -93,6 +95,7 @@ export const TopGeneric = ({ title, description, image, mediaTopList }: Props) =
             key={position}
             position={position}
             mediaItem={mediaTopList[position]}
+            mediaType={mediaType}
           />
         ))}
       </div>

@@ -62,7 +62,7 @@ export function NavMenuCustom() {
                     className="flex-row items-center gap-2"
                   >
                     <Users />
-                    Recomendations
+                    Recommendations
                   </Link>
                 </NavigationMenuLink>
               </li>
@@ -107,7 +107,18 @@ export function NavMenuCustom() {
                     className="flex-row items-center gap-2"
                   >
                     <Users />
-                    Recomendations
+                    Recommendations
+                  </Link>
+                </NavigationMenuLink>
+              </li>
+              <li>
+                <NavigationMenuLink asChild>
+                  <Link
+                    to="/manga/build-your-top"
+                    className="flex-row items-center gap-2"
+                  >
+                    <Blocks />
+                    Build Your Top
                   </Link>
                 </NavigationMenuLink>
               </li>

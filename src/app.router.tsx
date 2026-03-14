@@ -19,6 +19,7 @@ import { CharacterTopPage } from "./pages/characters/CharacterTopPage";
 import { CharacterSearchPage } from "./pages/characters/CharacterSearchPage";
 import { CharacterDetailsPage } from "./pages/characters/CharacterDetailsPage";
 import { AnimeBuildYourTop } from "./pages/anime/AnimeBuildYourTop";
+import { MangaBuildYourTop } from "./pages/manga/MangaBuildYourTop";
 
 export const appRouter = createBrowserRouter([
   // Main routes
@@ -77,6 +78,10 @@ export const appRouter = createBrowserRouter([
       {
         path: "manga/recommendations",
         element: <MangaRecomendationsPage />,
+      },
+      {
+        path: "manga/build-your-top",
+        element: <MangaBuildYourTop />
       },
 
       // Characters

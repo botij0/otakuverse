@@ -5,13 +5,15 @@ import type { Anime } from '@/interfaces/anime';
 import type { Manga } from '@/interfaces/manga';
 import { TopCardSearch } from './TopCardSearch';
 import { Card, CardContent } from '@/components/ui/card';
+import type { MediaTypeSimple } from '@/interfaces/media';
 
 type Props = {
   position: number;
   mediaItem?: Anime | Manga;
+  mediaType: MediaTypeSimple
 }
 
-export const TopCard = ({ position, mediaItem }: Props) => {
+export const TopCard = ({ position, mediaItem, mediaType }: Props) => {
   const [activeSearchPosition, setActiveSearchPosition] = useState<number | null>(null);
 
   const [searchQuery, setSearchQuery] = useState('');
@@ -68,6 +70,7 @@ export const TopCard = ({ position, mediaItem }: Props) => {
             searchQuery={searchQuery}
             setSearchQuery={setSearchQuery}
             setActiveSearchPosition={setActiveSearchPosition}
+            mediaType={mediaType}
           />
         ) : mediaItem ? (
           <div className="absolute inset-0 z-0">
