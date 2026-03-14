@@ -22,20 +22,19 @@ export const splitIntoParagraphs = (text: string, nParagraphs: number = 3): stri
   return paragraphs;
 };
 
-const getProxiedImageUrl = (url: string): string => {
+function getCorsImageUrl(url: string): string {
   try {
     const parsed = new URL(url);
-    if (parsed.hostname === "myanimelist.net") return `/mal-image${parsed.pathname}`;
-    if (parsed.hostname === "cdn.myanimelist.net")
-      return `/mal-cdn-image${parsed.pathname}`;
-  } catch {
-    /* return original url */
-  }
+    if (parsed.hostname === "myanimelist.net") {
+      parsed.hostname = "cdn.myanimelist.net";
+      return parsed.toString();
+    }
+  } catch { /* return original url */ }
   return url;
-};
+}
 
 export async function fetchImageAsDataUrl(url: string): Promise<string> {
-  const response = await fetch(getProxiedImageUrl(url));
+  const response = await fetch(getCorsImageUrl(url));
   const blob = await response.blob();
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
