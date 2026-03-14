@@ -4,6 +4,7 @@ import { type RefObject } from "react";
 import type { Anime } from "@/interfaces/anime";
 import type { Manga } from "@/interfaces/manga";
 import type { MediaTypeSimple } from "@/interfaces/media";
+import { getPodiumBadgeStyles, getPodiumCardStyles } from "@/lib/utils";
 
 
 type Props = {
@@ -22,24 +23,6 @@ export const TopExportLayout = (
     mediaTopList,
     mediaType
   }: Props) => {
-
-  const getPodiumCardStyles = (pos: number) => {
-    if (pos === 1) return 'border-yellow-500 shadow-yellow-500/20';
-    if (pos === 2) return 'border-slate-400 shadow-slate-400/20';
-    if (pos === 3) return 'border-amber-600 shadow-amber-600/20';
-    if (pos >= 4 && pos <= 10) return 'border-stone-500 shadow-stone-500/20';
-    if (pos >= 11 && pos <= 15) return 'border-stone-600 shadow-stone-600/20';
-    return 'border-white/5';
-  };
-
-  const getPodiumBadgeStyles = (pos: number) => {
-    if (pos === 1) return 'bg-gradient-to-br from-yellow-500 to-yellow-700 text-white shadow-yellow-500/50 ring-2 ring-yellow-400';
-    if (pos === 2) return 'bg-gradient-to-br from-slate-400 to-slate-600 text-white shadow-slate-400/50 ring-2 ring-slate-300';
-    if (pos === 3) return 'bg-gradient-to-br from-amber-500 to-amber-700 text-white shadow-amber-700/50 ring-2 ring-amber-500';
-    if (pos >= 4 && pos <= 10) return 'bg-gradient-to-br from-stone-400 to-stone-600 text-stone-200 shadow-stone-500/50 ring-2 ring-stone-400';
-    if (pos >= 11 && pos <= 15) return 'bg-gradient-to-br from-stone-500 to-stone-700 text-stone-200 shadow-stone-600/50 ring-2 ring-stone-500';
-    return 'bg-gradient-to-br from-stone-600 to-stone-800 text-stone-300 shadow-stone-700/50 ring-2 ring-stone-600';
-  };
 
   const title = `My ${mediaType[0].toUpperCase() + mediaType.slice(1)} Top ${listSize}`
 
