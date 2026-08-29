@@ -1,5 +1,8 @@
 # Stage 1: Build the application
-FROM node:20-alpine AS builder
+# pnpm 11+ needs Node >= 22.13 (uses the built-in node:sqlite module)
+FROM node:22-alpine AS builder
+
+ENV CI=true
 
 # Install pnpm
 RUN corepack enable && corepack prepare pnpm@latest --activate
@@ -8,7 +11,7 @@ RUN corepack enable && corepack prepare pnpm@latest --activate
 WORKDIR /app
 
 # Copy package files
-COPY package.json pnpm-lock.yaml* ./
+COPY package.json pnpm-lock.yaml* pnpm-workspace.yaml ./
 
 # Install dependencies
 RUN pnpm install --frozen-lockfile

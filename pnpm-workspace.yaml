@@ -1,0 +1,4 @@
+# Vite needs these packages' postinstall scripts (native binaries).
+allowBuilds:
+  '@swc/core': true
+  esbuild: true
