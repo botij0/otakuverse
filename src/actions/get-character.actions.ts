@@ -1,3 +1,4 @@
+import { createPaginatedAction, createSearchAction } from "@/actions/helpers";
 import { jikanApi } from "@/api/jikan.api";
 import type { CharacterListResponse } from "@/interfaces/character";
 import type {
@@ -6,53 +7,13 @@ import type {
   PersonalData,
 } from "@/interfaces/character";
 
-interface Options {
-  page: number;
-}
+/** GET /top/characters */
+export const getCharacterTopAction =
+  createPaginatedAction<CharacterListResponse>("/top/characters");
 
-interface SearchOptions {
-  query?: string;
-  page: number;
-}
-export const getCharacterTopAction = async (
-  options: Options
-): Promise<CharacterListResponse> => {
-  let { page } = options;
-
-  if (isNaN(page)) {
-    page = 1;
-  }
-
-  const { data } = await jikanApi.get<CharacterListResponse>("/top/characters", {
-    params: {
-      page: page,
-    },
-  });
-
-  return data;
-};
-
-export const getSearchCharacterAction = async (
-  options: SearchOptions
-): Promise<CharacterListResponse> => {
-  const { query } = options;
-  let { page } = options;
-
-  if (isNaN(page)) {
-    page = 1;
-  }
-
-  if (!query) return {} as CharacterListResponse;
-
-  const { data } = await jikanApi.get<CharacterListResponse>("/characters", {
-    params: {
-      q: query,
-      page: page,
-    },
-  });
-
-  return data;
-};
+/** GET /characters?q=... */
+export const getSearchCharacterAction =
+  createSearchAction<CharacterListResponse>("/characters");
 
 export const getCharacterDetailsAction = async (
   id: number
