@@ -11,7 +11,7 @@ vi.mock("../ui/button", () => ({
   ),
 }));
 
-vi.mock("./GenresToggleGroup", () => ({
+vi.mock("./media/GenresToggleGroup", () => ({
   GenresToggleGroup: () => <div data-testid="genre">Genres</div>,
 }));
 
@@ -38,7 +38,7 @@ describe("Hero", () => {
       />
     );
     const backgroundDiv = screen.getByTestId("backgroundImg");
-    expect(backgroundDiv.style.backgroundImage).toContain("hero-banner.jpg");
+    expect(backgroundDiv.style.backgroundImage).toContain("hero-atmosphere.jpg");
     expect(screen.getByText("Title Test")).toBeDefined();
     expect(screen.getByText("Subtitle Test")).toBeDefined();
     expect(screen.getByText("description test")).toBeDefined();
@@ -63,7 +63,7 @@ describe("Hero", () => {
     expect(screen.queryByText("description test")).toBeNull();
 
     const backgroundDiv = screen.getByTestId("backgroundImg");
-    expect(backgroundDiv.style.backgroundImage).toContain("hero-banner.jpg");
+    expect(backgroundDiv.style.backgroundImage).toContain("hero-atmosphere.jpg");
     expect(screen.queryByPlaceholderText("Search for anime or manga...")).toBeDefined();
     expect(screen.getByTestId("search-icon")).toBeDefined();
     expect(screen.queryByTestId("genre")).toBeDefined();

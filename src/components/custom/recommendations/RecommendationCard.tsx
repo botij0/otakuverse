@@ -18,7 +18,7 @@ export const RecommendationCard = ({
   const navigate = useNavigate();
 
   return (
-    <Card className="group overflow-hidden border-border bg-card hover:border-primary transition-all duration-300 hover:shadow-glow">
+    <Card className="group overflow-hidden border-border bg-card hover:border-primary/60 transition-all duration-300">
       <CardContent className="p-0">
         <div className="grid grid-cols-2 gap-0">
           <div

@@ -19,7 +19,7 @@ export const SearchMangaPage = () => {
     <>
       <Hero showSearchBar={true} img={mangaBanner} />
 
-      <main className="container mx-auto px-4 min-h-[calc(100vh-600px)]">
+      <main className="mx-auto max-w-7xl px-4 min-h-[calc(100dvh-600px)]">
         {(query || genres) && (
           <>
             <MediaGrid
@@ -34,11 +34,11 @@ export const SearchMangaPage = () => {
         )}
         {!query && (
           <div className="text-center py-20">
-            <h2 className="text-3xl font-bold mb-8 bg-linear-to-r from-primary to-accent bg-clip-text text-transparent font-title">
-              Manga Search Page
+            <h2 className="text-3xl font-title tracking-tight mb-4 text-foreground">
+              Manga Search
             </h2>
             <p className="text-muted-foreground text-lg">
-              Search for a manga by name!
+              Search for a manga by name.
             </p>
           </div>
         )}

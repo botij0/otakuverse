@@ -34,7 +34,7 @@ export const MangaTopPage = () => {
         description="Updated manga top from myanimelist"
         img={mangaBanner}
       />
-      <main className="container mx-auto px-4">
+      <main className="mx-auto max-w-7xl px-4">
         <MediaGrid media={mangaList ?? []} loading={isLoading} />
         {mangaData?.pagination && (
           <CustomPagination totalPages={mangaData!.pagination.last_visible_page} />

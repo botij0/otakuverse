@@ -34,7 +34,7 @@ export const SeasonalAnimePage = () => {
         description="Anime currently airing"
         img={animeBanner}
       />
-      <main className="container mx-auto px-4">
+      <main className="mx-auto max-w-7xl px-4">
         <MediaGrid media={animeList} loading={isLoadingAnime} />
         {animeData?.pagination && (
           <CustomPagination totalPages={animeData!.pagination.last_visible_page} />

@@ -29,7 +29,7 @@ export const MangaRecomendationsPage = () => {
         description="Discover new mangas based on community recommendations"
         img={mangaBanner}
       />
-      <main className="container mx-auto px-4 py-12">
+      <main className="mx-auto max-w-7xl px-4 py-12">
         <RecommendationsGrid
           isLoading={isLoading}
           recommendationList={mangaRecommendationsList}

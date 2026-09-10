@@ -9,9 +9,9 @@ const toggleVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary/50",
+        default: "bg-muted",
         outline:
-          "border border-primary bg-primary-off shadow-xs hover:bg-primary-on hover:text-accent-foreground",
+          "border border-border bg-background shadow-xs hover:bg-muted hover:text-foreground",
       },
       size: {
         default: "h-9 px-2 min-w-9",

@@ -18,7 +18,7 @@ export function NavMenuCustom() {
 
   return (
     <NavigationMenu viewport={isMobile}>
-      <NavigationMenuList className="flex-wrap lg:gap-x-10">
+      <NavigationMenuList className="flex-nowrap gap-x-0 lg:gap-x-2">
         <NavigationMenuItem>
           <NavigationMenuLink
             asChild

@@ -3,23 +3,20 @@ import { Github, Linkedin } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="border-t border-border bg-card mt-20">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
-          {/* Brand */}
-          <div className="space-y-4">
-            <h3 className="text-xl font-bold bg-linear-to-r from-primary to-accent bg-clip-text text-transparent">
-              OtakuVerse
+    <footer className="border-t border-border bg-background mt-16">
+      <div className="mx-auto max-w-7xl px-4 py-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+          <div className="space-y-3 sm:col-span-2 lg:col-span-1">
+            <h3 className="font-title text-lg tracking-tight text-foreground">
+              Otaku<span className="text-primary">Verse</span>
             </h3>
-            <p className="text-sm text-muted-foreground">
-              Your ultimate destination for discovering anime and manga. Powered by
-              MyAnimeList data.
+            <p className="text-sm text-muted-foreground max-w-[36ch] leading-relaxed">
+              Discover anime and manga with ratings, seasons, and recommendations. Data from MyAnimeList.
             </p>
           </div>
 
-          {/* Quick Links */}
           <div>
-            <h4 className="font-semibold mb-4 text-foreground">Anime</h4>
+            <h4 className="font-semibold mb-3 text-foreground">Anime</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
                 <Link to="/anime/top" className="hover:text-primary transition-colors">
@@ -27,10 +24,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link
-                  to="/anime/seasonal"
-                  className="hover:text-primary transition-colors"
-                >
+                <Link to="/anime/seasonal" className="hover:text-primary transition-colors">
                   Seasonal Anime
                 </Link>
               </li>
@@ -40,94 +34,89 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <a
-                  href="/anime/recommendations"
-                  className="hover:text-primary transition-colors"
-                >
+                <Link to="/anime/recommendations" className="hover:text-primary transition-colors">
                   Recommendations
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/anime/build-your-top"
-                  className="hover:text-primary transition-colors"
-                >
+                <Link to="/anime/build-your-top" className="hover:text-primary transition-colors">
                   Build Your Top
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
 
-          {/* Categories */}
           <div>
-            <h4 className="font-semibold mb-4 text-foreground">Manga</h4>
+            <h4 className="font-semibold mb-3 text-foreground">Manga</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
-                <a href="/manga/top" className="hover:text-primary transition-colors">
+                <Link to="/manga/top" className="hover:text-primary transition-colors">
                   Top Manga
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/manga/search" className="hover:text-primary transition-colors">
+                <Link to="/manga/search" className="hover:text-primary transition-colors">
                   Search Manga
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/manga/recommendations"
-                  className="hover:text-primary transition-colors"
-                >
+                <Link to="/manga/recommendations" className="hover:text-primary transition-colors">
                   Recommendations
-                </a>
+                </Link>
+              </li>
+              <li>
+                <Link to="/manga/build-your-top" className="hover:text-primary transition-colors">
+                  Build Your Top
+                </Link>
               </li>
             </ul>
           </div>
 
-          <div>
-            <h4 className="font-semibold mb-4 text-foreground">Characters</h4>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li>
-                <a href="/character/top" className="hover:text-primary transition-colors">
-                  Top Characters
-                </a>
-              </li>
-              <li>
+          <div className="space-y-6">
+            <div>
+              <h4 className="font-semibold mb-3 text-foreground">Characters</h4>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li>
+                  <Link to="/character/top" className="hover:text-primary transition-colors">
+                    Top Characters
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/character/search" className="hover:text-primary transition-colors">
+                    Search Character
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-3 text-foreground">Connect</h4>
+              <div className="flex gap-3">
                 <a
-                  href="/character/search"
-                  className="hover:text-primary transition-colors"
+                  href="https://github.com/botij0"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="GitHub"
                 >
-                  Search Character
+                  <Github className="h-5 w-5" />
                 </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Social */}
-          <div>
-            <h4 className="font-semibold mb-4 text-foreground">Connect</h4>
-            <div className="flex gap-4">
-              <a
-                href="https://github.com/botij0"
-                className="text-muted-foreground hover:text-primary transition-colors"
-                target="_blank"
-              >
-                <Github className="h-5 w-5" />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/javier-gonzalez-soldado/"
-                className="text-muted-foreground hover:text-primary transition-colors"
-                target="_blank"
-              >
-                <Linkedin className="h-5 w-5" />
-              </a>
+                <a
+                  href="https://www.linkedin.com/in/javier-gonzalez-soldado/"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin className="h-5 w-5" />
+                </a>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="mt-8 pt-5 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="mt-10 pt-5 border-t border-border">
           <p className="text-sm text-muted-foreground">
-            © 2025 Botij0. All rights reserved.
+            © 2026 Botij0. All rights reserved.
           </p>
         </div>
       </div>

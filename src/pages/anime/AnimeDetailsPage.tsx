@@ -35,7 +35,7 @@ export const AnimeDetailsPage = () => {
   }
 
   return (
-    <main className="container mx-auto px-4 py-8 text-primary-foreground">
+    <main className="mx-auto max-w-7xl px-4 py-8 text-foreground">
       <Button onClick={() => navigate(-1)} className="mb-6 group" variant={"outline"}>
         <ArrowLeft className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1" />
         Back
@@ -88,18 +88,16 @@ export const AnimeDetailsPage = () => {
           </div>
           {anime.streaming.length > 0 && (
             <div className="space-y-2 col-span-4 lg:col-span-1 mb-5">
-              <h3 className="text-xl font-semibold">Avialable on</h3>
+              <h3 className="text-xl font-semibold">Available on</h3>
               <div className="flex flex-wrap gap-2">
                 {anime.streaming.map((platform: Platform) => (
-                  <>
-                    <Badge
-                      key={platform.url}
-                      variant="default"
-                      className="flex gap-x-2 bg-pink-900 border-pink-500 hover:bg-cyan-950"
-                    >
-                      {platform.name}
-                    </Badge>
-                  </>
+                  <Badge
+                    key={platform.url}
+                    variant="default"
+                    className="flex gap-x-2"
+                  >
+                    {platform.name}
+                  </Badge>
                 ))}
               </div>
             </div>
@@ -108,7 +106,7 @@ export const AnimeDetailsPage = () => {
 
         <div className="col-span-4 lg:col-span-3 space-y-6">
           <div>
-            <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent font-title">
+            <h1 className="text-3xl md:text-4xl font-title tracking-tight leading-[1.15] mb-2 text-foreground">
               {anime.title}
             </h1>
             {anime.title_english && anime.title_english !== anime.title && (

@@ -1,4 +1,5 @@
 import { RouterProvider } from "react-router";
+import { ThemeProvider } from "next-themes";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import { appRouter } from "@/app.router";
@@ -8,11 +9,19 @@ const queryClient = new QueryClient();
 
 function OtakuverseApp() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <BuildYourTopProvider>
-        <RouterProvider router={appRouter} />
-      </BuildYourTopProvider>
-    </QueryClientProvider>
+    <ThemeProvider
+      attribute="class"
+      defaultTheme="dark"
+      enableSystem
+      storageKey="otakuverse-theme"
+      disableTransitionOnChange
+    >
+      <QueryClientProvider client={queryClient}>
+        <BuildYourTopProvider>
+          <RouterProvider router={appRouter} />
+        </BuildYourTopProvider>
+      </QueryClientProvider>
+    </ThemeProvider>
   );
 }
 

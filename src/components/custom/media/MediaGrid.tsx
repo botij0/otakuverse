@@ -24,13 +24,11 @@ const MediaGrid = ({
 }: MediaGridProps) => {
   if (loading) {
     return (
-      <section className="py-12">
+      <section className="py-12 md:py-16">
         <div className="flex justify-between items-center mb-8">
-          {title && (
-            <div className="h-9 w-64 bg-primary/10 animate-pulse rounded-md" />
-          )}
+          {title && <div className="h-9 w-64 bg-muted animate-pulse rounded-md" />}
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-5 gap-y-8">
           {Array.from({ length: 10 }).map((_, i) => (
             <MediaCardSkeleton key={i} />
           ))}
@@ -42,34 +40,37 @@ const MediaGrid = ({
   if (!media || media.length === 0) {
     return (
       <div className="text-center py-20">
-        <h2 className="text-3xl font-bold mb-8 bg-linear-to-r from-primary to-accent bg-clip-text text-transparent font-title">
-          {title}
-        </h2>
+        {title && (
+          <h2 className="text-2xl md:text-3xl font-title tracking-tight mb-4 text-foreground">
+            {title}
+          </h2>
+        )}
         <p className="text-muted-foreground text-lg">
-          No anime/manga found. Try a different search!
+          Nothing to show right now.
         </p>
       </div>
     );
   }
 
   return (
-    <section className="py-12">
-      <div className="flex justify-between items-center">
+    <section className="py-12 md:py-16">
+      <div className="flex justify-between items-end gap-4 mb-8">
         {title && (
-          <h2 className="text-3xl font-bold mb-8 bg-linear-to-r from-primary to-accent bg-clip-text text-transparent font-title">
+          <h2 className="text-2xl md:text-3xl font-title tracking-tight text-foreground">
             {title}
           </h2>
         )}
         {seeMore && seeMoreLink && (
           <Link
             to={seeMoreLink}
-            className="group flex bg-linear-to-r from-primary via-primary-glow to-accent bg-clip-text text-transparent text-lg gap-3 items-center hover:scale-105 transition-all duration-300 ease-in-out"
+            className="group flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors shrink-0"
           >
-            See More <ArrowRight className="text-fuchsia-500/70" />
+            See more
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
           </Link>
         )}
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 animate-fade-in">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-5 gap-y-8">
         {media.map((mediaItem: Anime | Manga | Character, index: number) => {
           const isCharacter = "name" in mediaItem;
           return (

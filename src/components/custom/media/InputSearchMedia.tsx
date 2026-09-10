@@ -90,7 +90,7 @@ export const InputSearchMedia = ({ setIsMenuOpen, enableHandleSearch = true }: P
           // Small delay to allow clicking on results
           setTimeout(() => setShowDropdown(false), 200);
         }}
-        className="pl-10 bg-muted border-border focus:ring-2 focus:ring-primary text-primary-foreground"
+        className="pl-10 bg-muted border-border focus-visible:ring-2 focus-visible:ring-primary text-foreground"
       />
 
       {showDropdown && (

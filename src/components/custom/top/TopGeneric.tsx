@@ -79,7 +79,7 @@ export const TopGeneric = ({ title, description, image, mediaTopList, mediaType 
       img={image}
     />
 
-    <main className="container mx-auto px-4 py-5">
+    <main className="mx-auto max-w-7xl px-4 py-5">
       <TopHeader
         listSize={listSize}
         setListSize={setListSize}

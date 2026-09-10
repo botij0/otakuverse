@@ -29,7 +29,7 @@ export const AnimeRecomendationsPage = () => {
         description="Discover new anime based on community recommendations"
         img={animeBanner}
       />
-      <main className="container mx-auto px-4 py-12">
+      <main className="mx-auto max-w-7xl px-4 py-12">
         <RecommendationsGrid
           isLoading={isLoading}
           recommendationList={animeRecommendationsList}

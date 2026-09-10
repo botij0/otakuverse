@@ -51,13 +51,13 @@ export const TopExportLayout = (
     <div className="fixed -left-[9999px] top-0">
       <div
         ref={shareGridRef}
-        className="w-[1080px] max-w-none bg-[#050816] text-white p-8 overflow-hidden relative"
+        className="w-[1080px] max-w-none bg-[#14120f] text-white p-8 overflow-hidden relative"
       >
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/20 blur-[120px] rounded-full pointer-events-none -translate-y-1/2 translate-x-1/3"></div>
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-accent/20 blur-[120px] rounded-full pointer-events-none translate-y-1/2 -translate-x-1/3"></div>
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/25 blur-[120px] rounded-full pointer-events-none -translate-y-1/2 translate-x-1/3"></div>
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-primary/15 blur-[120px] rounded-full pointer-events-none translate-y-1/2 -translate-x-1/3"></div>
 
         <div className="relative z-10 flex items-center justify-between mb-8 px-4 mt-4">
-          <h1 className="text-5xl font-title font-black bg-linear-to-r from-primary to-accent bg-clip-text text-transparent drop-shadow-sm">
+          <h1 className="text-5xl font-title font-black text-white drop-shadow-sm">
             {title}
           </h1>
           <div className="flex items-center gap-2 bg-white/5 backdrop-blur-sm px-5 py-2 rounded-full border border-white/10">
@@ -117,7 +117,7 @@ export const TopExportLayout = (
             Create your own top at
           </p>
           <div className="px-4 py-2 bg-white/5 rounded-xl border border-white/5">
-            <p className="text-2xl font-bold bg-linear-to-r from-white to-white/70 bg-clip-text text-transparent tracking-wide">
+            <p className="text-2xl font-bold text-white tracking-wide">
               otakuverse.botij0tech.com
             </p>
           </div>

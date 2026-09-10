@@ -30,7 +30,7 @@ export const CharacterTopPage = () => {
         description="Updated characters top from myanimelist"
         img={characterBanner}
       />
-      <main className="container mx-auto px-4">
+      <main className="mx-auto max-w-7xl px-4">
         <MediaGrid media={characterList} loading={isLoading} />
         {data?.pagination && <CustomPagination totalPages={data.pagination.last_visible_page} />}
       </main>

@@ -32,7 +32,7 @@ export const TopCard = ({ position, mediaItem, mediaType }: Props) => {
       onClick={handleCardClick}
       className={
         `group relative overflow-hidden cursor-pointer transition-all
-        hover:scale-105 hover:shadow-lg dark:hover:shadow-primary/20 border shadow-md
+        hover:scale-[1.02] hover:shadow-lg dark:hover:shadow-primary/20 border shadow-md
         ${getPodiumCardStyles(position)}
         ${activeSearchPosition === position ? 'ring-2 ring-accent scale-105 overflow-visible z-20' : ''}`
       }

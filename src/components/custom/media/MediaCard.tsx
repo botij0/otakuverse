@@ -1,7 +1,7 @@
 import { Award, Star, User } from "lucide-react";
+import type { KeyboardEvent } from "react";
 
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
 import type { Demographic, MediaType } from "@/interfaces/media";
 import { useNavigate, useSearchParams } from "react-router";
 
@@ -68,39 +68,48 @@ const MediaCard = ({
     }
   };
 
+  const handleKeyDown = (event: KeyboardEvent<HTMLElement>) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      handleClick();
+    }
+  };
+
   return (
-    <Card
-      className="group overflow-hidden border-border bg-card hover:border-primary transition-all duration-300 hover:shadow-primary cursor-pointer"
+    <article
+      role="link"
+      tabIndex={0}
       onClick={handleClick}
+      onKeyDown={handleKeyDown}
+      className="group cursor-pointer rounded-md outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
     >
-      <div className="relative aspect-[3/4] overflow-hidden">
+      <div className="relative aspect-[3/4] overflow-hidden rounded-md bg-muted">
         <img
           src={imageUrl}
           alt={title}
-          className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+          className="h-full w-full object-cover transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04] group-active:scale-[0.99]"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
         {score && (
-          <div className="absolute top-2 right-2 flex items-center gap-1 bg-background/80 backdrop-blur px-2 py-1 rounded-md">
-            <Star className="h-3 w-3 fill-accent text-accent" />
-            <span className="text-sm font-semibold">{score}</span>
+          <div className="absolute top-2 right-2 flex items-center gap-1 bg-background/85 backdrop-blur-sm px-2 py-1 rounded-md text-foreground">
+            <Star className="h-3 w-3 fill-primary text-primary" />
+            <span className="text-sm font-semibold tabular-nums">{score}</span>
           </div>
         )}
 
         {members && (
-          <div className="absolute bottom-2 right-2 flex items-center gap-1 bg-background/80 backdrop-blur px-2 py-1 rounded-md">
-            <User className="h-3 w-3 fill-accent text-accent" />
-            <span className="text-sm font-semibold">
+          <div className="absolute bottom-2 right-2 flex items-center gap-1 bg-background/85 backdrop-blur-sm px-2 py-1 rounded-md text-foreground">
+            <User className="h-3 w-3 text-primary" />
+            <span className="text-sm font-semibold tabular-nums">
               {members.toLocaleString("en-US")}
             </span>
           </div>
         )}
 
         {rank && (
-          <div className="absolute top-2 left-2 flex items-center gap-1 bg-background/80 backdrop-blur px-2 py-1 rounded-md">
-            <Award className="h-4 w-4 fill-accent text-accent" />
-            <span className="text-sm font-semibold">
+          <div className="absolute top-2 left-2 flex items-center gap-1 bg-primary text-primary-foreground px-2 py-1 rounded-md">
+            <Award className="h-4 w-4" />
+            <span className="text-sm font-semibold tabular-nums">
               {isCharacter
                 ? characterRank?.toLocaleString("en-US")
                 : rank.toLocaleString("en-US")}
@@ -109,16 +118,16 @@ const MediaCard = ({
         )}
       </div>
 
-      <CardContent className="p-4 flex flex-col h-auto min-h-[140px]">
-        <h3 className="font-semibold text-foreground line-clamp-2 mb-2 group-hover:text-primary transition-colors">
+      <div className="pt-3 flex flex-col min-h-[116px]">
+        <h3 className="font-semibold text-foreground line-clamp-2 mb-1.5 group-hover:text-primary transition-colors">
           {title}
         </h3>
         <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
           {type && <span className="capitalize">{type}</span>}
-          {type && episodes !== undefined && <span>•</span>}
+          {type && episodes !== undefined && <span aria-hidden="true">-</span>}
           {episodes !== undefined &&
             (episodes !== null ? (
-              <span>
+              <span className="tabular-nums">
                 {episodes} {epsLabel}
               </span>
             ) : (
@@ -127,12 +136,13 @@ const MediaCard = ({
           {kanjiName && <span>{kanjiName}</span>}
         </div>
 
-        {/* Badges */}
         <div className="flex items-center gap-2 text-sm text-muted-foreground mt-auto">
           {isCharacter ? (
             <>
               {nicknames && nicknames[0] && <Badge>{nicknames[0]}</Badge>}
-              {nicknames && nicknames[1] && <Badge variant={"secondary"}>{nicknames[1]}</Badge>}
+              {nicknames && nicknames[1] && (
+                <Badge variant={"secondary"}>{nicknames[1]}</Badge>
+              )}
             </>
           ) : (
             <>
@@ -141,8 +151,8 @@ const MediaCard = ({
             </>
           )}
         </div>
-      </CardContent>
-    </Card>
+      </div>
+    </article>
   );
 };
 

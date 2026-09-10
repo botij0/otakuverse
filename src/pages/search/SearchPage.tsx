@@ -27,7 +27,7 @@ export const SearchPage = () => {
     <>
       <Hero showSearchBar={true} />
 
-      <main className="container mx-auto px-4">
+      <main className="mx-auto max-w-7xl px-4">
         {query && (
           <>
             <MediaGrid

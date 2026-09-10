@@ -60,9 +60,10 @@ export const GenresToggleGroup = () => {
       {genreItems.map((genre) => {
         return (
           <ToggleGroupItem
+            key={genre.name}
             value={genre.name}
             aria-label={`Toggle ${genre.name}`}
-            className="data-[state=on]:bg-primary-on data-[state=on]:*:[svg]:fill-accent data-[state=on]:*:[svg]:stroke-white data-[state=off]:text-white/40 px-5"
+            className="data-[state=on]:bg-primary data-[state=on]:text-primary-foreground data-[state=on]:*:[svg]:stroke-current data-[state=off]:text-muted-foreground px-5"
           >
             {genre.icon}
             {capitalize(genre.name)}

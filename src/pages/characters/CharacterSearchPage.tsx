@@ -29,7 +29,7 @@ export const CharacterSearchPage = () => {
     <>
       <Hero showSearchBar={true} hideGenres={true} img={characterBanner} />
 
-      <main className="container mx-auto px-4 min-h-[calc(100vh-600px)]">
+      <main className="mx-auto max-w-7xl px-4 min-h-[calc(100dvh-600px)]">
         {query && (
           <>
             <MediaGrid
@@ -42,11 +42,11 @@ export const CharacterSearchPage = () => {
         )}
         {!query && (
           <div className="text-center py-20">
-            <h2 className="text-3xl font-bold mb-8 bg-linear-to-r from-primary to-accent bg-clip-text text-transparent font-title">
-              Character Search Page
+            <h2 className="text-3xl font-title tracking-tight mb-4 text-foreground">
+              Character Search
             </h2>
             <p className="text-muted-foreground text-lg">
-              Search for a character by name!
+              Search for a character by name.
             </p>
           </div>
         )}

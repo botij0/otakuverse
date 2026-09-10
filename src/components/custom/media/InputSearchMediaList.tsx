@@ -36,7 +36,7 @@ export const InputSearchMediaList = (
           {animes.map((anime) => (
             <div
               key={`anime-${anime.mal_id}`}
-              className="flex items-center gap-3 p-3 hover:bg-accent hover:text-accent-foreground cursor-pointer transition-colors"
+              className="flex items-center gap-3 p-3 hover:bg-muted cursor-pointer transition-colors"
               onClick={() => handleResultClick('anime', anime.mal_id)}
             >
               <img
@@ -60,7 +60,7 @@ export const InputSearchMediaList = (
           {mangas.map((manga) => (
             <div
               key={`manga-${manga.mal_id}`}
-              className="flex items-center gap-3 p-3 hover:bg-accent hover:text-accent-foreground cursor-pointer transition-colors"
+              className="flex items-center gap-3 p-3 hover:bg-muted cursor-pointer transition-colors"
               onClick={() => handleResultClick('manga', manga.mal_id)}
             >
               <img

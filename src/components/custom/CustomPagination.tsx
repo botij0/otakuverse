@@ -68,7 +68,7 @@ export const CustomPagination = ({ totalPages }: Props) => {
   const paginationItems = buildPaginationItems(page, totalPages);
 
   return (
-    <div className="flex items-center justify-center space-x-2 text-primary-foreground">
+    <div className="flex items-center justify-center space-x-2 text-foreground pb-12">
       <Button
         title="Previous page"
         variant="outline"

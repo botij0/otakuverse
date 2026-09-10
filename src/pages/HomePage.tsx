@@ -34,8 +34,14 @@ export const HomePage = () => {
     staleTime: 1000 * 60 * 5,
   });
 
-  const mangaList = (mangaData && !error) ? mangaData.data : null;
-  const animeList = (animeData && !errorAnime) ? animeData.data : null;
+  const mangaList = mangaData && !error ? mangaData.data : null;
+  const animeList = animeData && !errorAnime ? animeData.data : null;
+
+  const posters =
+    animeList?.slice(0, 5).map((anime) => ({
+      src: anime.images.webp.large_image_url,
+      alt: anime.title,
+    })) ?? [];
 
   return (
     <>
@@ -43,9 +49,10 @@ export const HomePage = () => {
         title="Discover Your Next"
         subtitle="Otaku Adventure"
         description="Search through thousands of anime and manga titles. Find your next obsession."
+        posters={posters}
       />
 
-      <main className="container mx-auto px-4">
+      <main className="mx-auto max-w-7xl px-4">
         <MediaGrid
           media={animeList?.slice(0, 10) ?? []}
           loading={isLoadingAnime}

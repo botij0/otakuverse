@@ -40,7 +40,7 @@ export const MangaDetailsPage = () => {
   }
 
   return (
-    <main className="container mx-auto px-4 py-8 text-primary-foreground">
+    <main className="mx-auto max-w-7xl px-4 py-8 text-foreground">
       <Button onClick={() => navigate(-1)} className="mb-6 group" variant={"outline"}>
         <ArrowLeft className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1" />
         Back
@@ -95,7 +95,7 @@ export const MangaDetailsPage = () => {
 
         <div className="md:col-span-3 space-y-6">
           <div>
-            <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent font-title">
+            <h1 className="text-3xl md:text-4xl font-title tracking-tight leading-[1.15] mb-2 text-foreground">
               {manga.title}
             </h1>
             {manga.title_english && manga.title_english !== manga.title && (

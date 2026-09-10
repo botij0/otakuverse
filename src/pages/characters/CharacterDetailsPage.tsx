@@ -52,7 +52,7 @@ export const CharacterDetailsPage = () => {
   }
 
   return (
-    <main className="container mx-auto px-4 py-8 text-primary-foreground">
+    <main className="mx-auto max-w-7xl px-4 py-8 text-foreground">
       <Button onClick={() => navigate(-1)} className="mb-6 group" variant={"outline"}>
         <ArrowLeft className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1" />
         Back
@@ -138,7 +138,7 @@ export const CharacterDetailsPage = () => {
 
         <div className="lg:col-span-3 space-y-6">
           <div>
-            <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent font-title">
+            <h1 className="text-3xl md:text-4xl font-title tracking-tight leading-[1.15] mb-2 text-foreground">
               {character.name}
             </h1>
 
@@ -204,12 +204,12 @@ export const CharacterDetailsPage = () => {
                     onClick={() => navigate(`/anime/${anime.anime.mal_id}`)}
                   >
                     <div className="p-1">
-                      <Card className="group overflow-hidden border-border bg-card hover:border-primary transition-all duration-300 hover:shadow-primary cursor-pointer">
+                      <Card className="group overflow-hidden border-border bg-card hover:border-primary/60 transition-all duration-300 cursor-pointer">
                         <div className="relative aspect-[3/4] overflow-hidden">
                           <img
                             src={anime.anime.images.webp.image_url}
                             alt={anime.anime.title}
-                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                            className="w-full h-full object-cover transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                         </div>
@@ -242,15 +242,15 @@ export const CharacterDetailsPage = () => {
                   <CarouselItem
                     key={index}
                     className="xs:basis-1/2 sm:basis-1/3 xl:basis-1/5"
-                    onClick={() => navigate(`/anime/${manga.manga.mal_id}`)}
+                    onClick={() => navigate(`/manga/${manga.manga.mal_id}`)}
                   >
                     <div className="p-1">
-                      <Card className="group overflow-hidden border-border bg-card hover:border-primary transition-all duration-300 hover:shadow-primary cursor-pointer">
+                      <Card className="group overflow-hidden border-border bg-card hover:border-primary/60 transition-all duration-300 cursor-pointer">
                         <div className="relative aspect-[3/4] overflow-hidden">
                           <img
                             src={manga.manga.images.webp.image_url}
                             alt={manga.manga.title}
-                            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                            className="h-full w-full object-cover transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                         </div>
